@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">div{width: 200px;height: 200px;background-color: blue;}
+	input{width: 300px;}</style>
+</head>
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<body>
+<script type="text/javascript">
+function a()
+{
+	var ajax;
+	if (window.XMLHttpRequest()) {
+		ajax=XMLHttpRequest();
+	}
+	else{
+		ajax=ActiveXObject("Microsoft.XMLHTTP")
+	}
+	var url="procesar.php";
+	var nom=document.getElementById("nombre");	
+	var datos="nombre="+nom;
+	ajax.open("POST",url,true);
+	ajax.setRequestHeader("Content-Type"."application/x-www-form-urlencoded");
+	ajax.onreadystatechange=function()
+	{
+		if (ajax.readyState==4 && ajax.status==200) {
+			document.getElementById("");
+		};
+	}
+	ajax.send(datos);
+	<!--
+    //var form=getElementById(name);
+    /*var oForm1 = document.forms['from'+name];//aqui obtenes todo el "formulario"    
+    var oForm1Element = oForm1['p_id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
+    var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
+    alert(preguntatexto);
+    <?php
+      echo "<form action=$_SERVER[PHP_SELF] method=post name=enviar>
+              <input type=hidden name=varphp></form>";
+      echo "<script language='javascript'>
+              document.enviar.varphp.value=preguntatexto;
+              document.enviar.submit();
+              
+    ?>*/-->
+
+  /*<?php include("../includes/config.inc");
+//Bloque de grado
+    $varphp = $_POST['varphp'];
+    
+    $peticion="delete from perfiles where id=".$varphp."" ;
+    $resultado=mysqli_query($conexion,$peticion);
+    echo $varphp;
+
+?> 
+
+
+}
+</script>
+
+
+	<input type="button" id="target" onclick="a();">
+	  
+</body>
+</html>
+

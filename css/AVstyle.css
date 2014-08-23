@@ -1,0 +1,55 @@
+#block {
+	background-color: #E4E4E4;
+	border: 5px solid #CCC;
+	float: right;
+	margin-top: 340px;
+	margin-right: 5px;
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-top: 1em;
+	width: 180px;
+	height: 250px;
+}
+
+#footer{
+text-align:center;
+padding:20px;
+margin:0;
+border-top:5px solid #ddd;
+color:#999;
+font-size:0.8em;
+text-shadow:0px 1px 1px #fff;
+position: relative;
+
+}
+
+h3, h2 {
+	text-align: center;
+	font-family: "Baskerville Old Face", "sans-serif";
+}
+
+#Log {
+	text-align: center;
+	font-family: "Baskerville Old Face", "sans-serif";
+	font-style: italic;
+	margin-top: 10px;
+	height: 40px;
+	width: 170px;
+}
+
+#Main {
+	background-color: #E4E4E4;
+	border: 5px solid #CCC;
+	float: left;
+	margin-top: 340px;
+	margin-left: 6px;
+	width: 1070px;
+	height: 265px;
+}
+
+#Agen {
+	height: 150px;
+	width: 300px;
+	background-color: #CCC;
+	margin-left: 5px;
+}
