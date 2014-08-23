@@ -1,4 +1,4 @@
-<?php include("../includes/header2.inc");?>
+<?php include("../includes/header2.php");?>
 
 
 <div  class="col_12 column">
@@ -21,4 +21,4 @@
 </div>
 
 
-<?php include("../includes/footer2.inc");?>   
+<?php include("../includes/footer2.php");?>   

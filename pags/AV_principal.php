@@ -1,4 +1,4 @@
-<?php include ("../includes/header_aula.inc");?>
+<?php include ("../includes/header_aula.php");?>
 
 <header>
 		<div class="slider">
@@ -80,4 +80,4 @@
     </section>
 </aside>
 
-<?php include("../includes/footer2.inc");?>
+<?php include("../includes/footer2.php");?>

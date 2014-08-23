@@ -1,4 +1,4 @@
-<?php include("../includes/inheader.inc");
+<?php include("../includes/inheader.php");
     $id_alumno=3;
 ?>
 
@@ -61,4 +61,4 @@
 
 ?>
 <!-- Creamos el inicio de la tabla manualmente-->
-<?php include("../includes/footer.inc");?>
+<?php include("../includes/footer.php");?>

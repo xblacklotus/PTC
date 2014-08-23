@@ -1,4 +1,4 @@
-<?php include("../includes/inheader.inc");?>
+<?php include("../includes/inheader.php");?>
 
 <?php
 
@@ -6,14 +6,14 @@
     //{
             //if(isset($_POST['elec_mat']))
             //{
-                include("../includes/eleccion_materia.inc");
+                include("../includes/eleccion_materia.php");
             //}
             if(isset($_POST['ele_perf']))
             {
-                include("../includes/elegir_perfil.inc");
+                include("../includes/elegir_perfil.php");
             }
         
 
     //}
 ?>
-<?php include("../includes/footer.inc");?>
+<?php include("../includes/footer.php");?>

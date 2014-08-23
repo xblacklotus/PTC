@@ -1,4 +1,4 @@
-<?php include("includes/header.inc");?>
+<?php include("includes/header.php");?>
 
 
 <div style="max-width=100px;" class="col_12 column">
@@ -15,4 +15,4 @@
 </div>
 
 
-<?php include("includes/footer.inc");?>             
+<?php include("includes/footer.php");?>             

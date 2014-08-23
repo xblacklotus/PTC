@@ -1,3 +1,33 @@
+
+<script type="text/javascript">
+function enviar(name)
+{
+    var resp=confirm("¿Esta seguro que desea eliminar este  perfil?");
+    if (resp)
+    {
+        var ajax;
+        ajax=new XMLHttpRequest();
+        var url= "../includes/eliminarPer.php" ;
+        var oForm1 = document.forms['from'+name];//aqui obtenes todo el "formulario"    
+        var oForm1Element = oForm1['p_id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
+        var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
+        var datos="strTexto="+preguntatexto;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+          if (ajax.readyState==4 && ajax.status==200) 
+          {
+            alert(ajax.responseText);
+            document.location.href="perfiles.php";
+            
+          };
+        }
+        ajax.send(datos);   
+    }
+}   
+</script> 
+
 <?php     
      if($_POST) 
      {        
@@ -37,48 +67,11 @@
                                      <input class="bids" type="hidden" name="id_profe" value='.$id_profe.'>
                                      <input class="bids" type="hidden" name="form'.$i.'" value='.$i.'>
                                      <input class="bids" type="hidden" name="recargada" value="false">   
-            <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar notas</i></button>            
-            <input type="button" name="botoneliminar" onclick="javascript:b();">
+            <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar</i></button>            
+            <button type="button" class="pill orange" name="botoneliminar" onclick="javascript:enviar('.$i.');" ><i class="icon-minus-sign">Eliminar</i></button>
               </form></td> </tr>';          
               $i++;
         };
-        echo '</tbody></table>'; 
-        echo '<input type="text" id="prueba"/>';       
+        echo '</tbody></table>';            
      }    
 ?>
-
-<script type="text/javascript">
-function b()
-{
-  alert("hola")
-}
-function asa(name)
-{
-    alert("hola");
-    var ajax;
-    if (window.XMLHttpRequest()) 
-    {
-      ajax=new XMLHttpRequest();
-    }
-    else
-    {
-      ajax=new ActiveXObject(Microsoft.XMLHTTP);
-    }
-    var url= "eliminarPer.php" ;
-    var oForm1 = document.forms['from'+name];//aqui obtenes todo el "formulario"    
-    var oForm1Element = oForm1['p_id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
-    var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
-    
-    var datos="strTexto="+preguntatexto;
-    ajax.open("POST",url,true);
-    ajax.setRequestHeader("Content-Type"."application/x-www-form-urlencoded");
-    ajax.onreadystatechange=function()
-    {
-      if (ajax.readyState==4 && ajax.status==200) 
-      {
-        //document.getElementById("");
-      };
-    }
-    ajax.send(datos);   
-}
-</script> 

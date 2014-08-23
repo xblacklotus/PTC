@@ -1,4 +1,4 @@
-<?php include("../includes/inheader.inc");?>
+<?php include("../includes/inheader.php");?>
 <script type="text/javascript">
 function ingresar()
 {    
@@ -48,6 +48,6 @@ function validar_notas()
 }
 </script>
 <?php        
-        include("../includes/llenar_notas.inc");
+        include("../includes/llenar_notas.php");
 ?>
-<?php include("../includes/footer.inc");?>
+<?php include("../includes/footer.php");?>
