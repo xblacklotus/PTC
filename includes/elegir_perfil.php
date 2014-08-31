@@ -1,32 +1,4 @@
-
-<script type="text/javascript">
-function enviar(name)
-{
-    var resp=confirm("¿Esta seguro que desea eliminar este  perfil?");
-    if (resp)
-    {
-        var ajax;
-        ajax=new XMLHttpRequest();
-        var url= "../includes/eliminarPer.php" ;
-        var oForm1 = document.forms['from'+name];//aqui obtenes todo el "formulario"    
-        var oForm1Element = oForm1['p_id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
-        var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
-        var datos="strTexto="+preguntatexto;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {
-          if (ajax.readyState==4 && ajax.status==200) 
-          {
-            alert(ajax.responseText);
-            document.location.href="perfiles.php";
-            
-          };
-        }
-        ajax.send(datos);   
-    }
-}   
-</script> 
+<script type="text/javascript" src="../js/funciones.js"></script>
 
 <?php     
      if($_POST) 
@@ -50,7 +22,7 @@ function enviar(name)
         </tr></thead>
         <tbody>';        
         $resultado=mysqli_query($conexion,$peticion);    
-        $i=0;
+        $i=0;        
         while($fila=mysqli_fetch_array($resultado))
         {
             
@@ -59,7 +31,7 @@ function enviar(name)
             echo '<td>'.$fila[1].'</td>';
             echo '<td>'.$fila[2].'</td>';
             echo '<td>'.$fila[3].'</td>';        
-            echo '<td><form name="from'.$i.'" method="post" action="ingresar_notas.php">                                                              
+            echo '<td><form name="from'.$i.'" method="post" action="ingresar_notas.php">
                                      <input class="bids" type="hidden" name="p_id" id="p_id" value='.$fila[4].'>
                                      <input class="bids" type="hidden" name="m_id" value='.$m_id.'>
                                      <input class="bids" type="hidden" name="s_id" value='.$s_id.'>
@@ -68,10 +40,12 @@ function enviar(name)
                                      <input class="bids" type="hidden" name="form'.$i.'" value='.$i.'>
                                      <input class="bids" type="hidden" name="recargada" value="false">   
             <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar</i></button>            
+            <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:verNotas('.$i.');">Ver</button>
             <button type="button" class="pill orange" name="botoneliminar" onclick="javascript:enviar('.$i.');" ><i class="icon-minus-sign">Eliminar</i></button>
               </form></td> </tr>';          
               $i++;
         };
+        
         echo '</tbody></table>';            
      }    
 ?>

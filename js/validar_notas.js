@@ -1,14 +1,12 @@
 function ingresar()
 {    
     var r = confirm("¿Esta seguro que de desea ingresar?");
-    if (r) {
-    	
-    	
-    		return true;        
-    	
-        
+    if (r) 
+    {
+    		return true;
     } 
-    else{
+    else
+    {
         return false;
     }
 }
@@ -18,7 +16,7 @@ function isNumber(n) {
 function validar_notas();
 {
 	var validas=false;
-	var k=document.getElementById('cantidad');	      
+	var k=document.getElementById('cantidad');
 	for (var i = 0 i <k ; i++) 
 	{
 		if(isNumber(document.notas.elements['nota'+i])
@@ -29,7 +27,7 @@ function validar_notas();
 			}
 			else{
 				validas=false;
-				alert("no cumple");
+				alert("Notas no validas");
 				return validas;
 			}
 			if(i==k-1){
@@ -38,9 +36,9 @@ function validar_notas();
 			}
 		}
 		else{
+			alert("Notas no son solo numeros");
 			return false;
-		}
-		
+		}		
 	};
 }
 

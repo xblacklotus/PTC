@@ -11,5 +11,4 @@
     {
         echo "Hubo un error a la hora de eliminar";
     }
-
 ?> 

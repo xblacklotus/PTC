@@ -1,4 +1,15 @@
 <?php include("../includes/inheader.php");?>
+<?php 
+if (isset($_POST['ver_notas']))
+{
+    include("../includes/llenar_notas.php");
+}
+else
+{
+    //no button pressed
+}
+
+?>
 <script type="text/javascript">
 function ingresar()
 {    
