@@ -1,4 +1,4 @@
 <script type="text/javascript">
-  alert("Hola Mundo!");
-  //se modifico C:
+  alert("Adios mundo!");
+  //se modifico! luis
 </script>
