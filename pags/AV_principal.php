@@ -80,4 +80,6 @@
     </section>
 </aside>
 
-<?php include("../includes/footer2.php");?>
+<?php include("../includes/footer2.php");
+//hola
+?>
