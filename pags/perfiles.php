@@ -1,4 +1,6 @@
-<?php include("../includes/inheader.php");?>
+<?php include("../includes/inheader.php");
+include("../includes/aside-maestros.php");
+?>
 
 <?php
 

@@ -11,7 +11,7 @@
         $peticion="select m.nombre,p.descripcion,p.porcentaje,p.trimestre,p.id from perfiles as p, materias as m,seccion as s 
                     where id_materia=".$m_id." and m.id=".$m_id." and s.id=".$s_id;
         echo '<h2>Eliga el perfil</h2>';
-        echo '<!-- Table --> <table id="tbmats" class="striped tight" 
+        echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" 
               cellspacing="0" cellpadding="0" style="max-width="100px">
         <thead><tr >
             <th>Materia</th>

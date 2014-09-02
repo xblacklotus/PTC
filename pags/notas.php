@@ -1,5 +1,5 @@
 <?php include("../includes/inheader.php");
-    $id_alumno=3;
+    $id_alumno=2;
 ?>
 <br>
 <div  class="tab-content">
