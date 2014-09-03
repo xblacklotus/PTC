@@ -24,6 +24,15 @@ function enviar(name)
     }    
 }   
 
+function modi(name)
+{    
+    alert("from"+name);  
+    var form = document.forms['from'+name];
+    form.action= "modificar_notas.php";
+    form.submit();
+
+}   
+
 function verNotas(name)
 {   
     alert("from"+name);  

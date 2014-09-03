@@ -30,7 +30,8 @@
                 <td>'.$fila[0].'</td>';
             echo '<td>'.$fila[1].'</td>';
             echo '<td>'.$fila[2].'</td>';
-            echo '<td>'.$fila[3].'</td>';        
+            echo '<td>'.$fila[3].'</td>';  
+            echo '<td>'.$fila[4].'</td>';        
             echo '<td><form name="from'.$i.'" method="post" action="ingresar_notas.php">
                                      <input class="bids" type="hidden" name="p_id" id="p_id" value='.$fila[4].'>
                                      <input class="bids" type="hidden" name="m_id" value='.$m_id.'>
@@ -42,6 +43,7 @@
             <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar</i></button>            
             <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:verNotas('.$i.');">Ver</button>
             <button type="button" class="pill orange" name="botoneliminar" onclick="javascript:enviar('.$i.');" ><i class="icon-minus-sign">Eliminar</i></button>
+              <button type="button" class="pill orange" name="botonmodificar" onclick="javascript:modi('.$i.');" ><i class="icon-minus-sign">Modificar</i></button>
               </form></td> </tr>';          
               $i++;
         };
