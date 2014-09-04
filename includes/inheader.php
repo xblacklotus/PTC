@@ -1,7 +1,4 @@
-<?php
-    include("config.inc");
-      
-?>
+<?php include("config.inc");?>
 <!DOCTYPE html>
 <html><head>
 <title>PTC</title>

@@ -36,6 +36,7 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
                     <td> '.$fila[0].'</td>
                     <td> '.$fila[2].' ,'.$fila[1].'</td>
                     <td> '.$fila[3].'</td>
+                    <td> <input type="text"> </input></td>
                  </tr>'; 
              }
              echo '</table>';

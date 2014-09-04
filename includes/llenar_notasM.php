@@ -39,7 +39,7 @@ and m.id=p.id_materia";
     $cantidad=0;    
     while($fila=mysqli_fetch_array($resultado))
     {
-        echo '<tr>
+            echo '<tr>
             <td> '.$fila[1].' ,'.$fila[0].'</td>';
             if(isset($_POST['cantidad']))
             {
