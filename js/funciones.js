@@ -69,6 +69,7 @@ function ingresar_seccion()
         //ajax.onreadystatechange se ejecuta cuando este listo el ajax
         ajax.onreadystatechange=function()
         {
+            alert("hoa");
             //y se ejecuta lo de adentro cuando la accion ha sido realizada
           if (ajax.readyState==4 && ajax.status==200) 
           {
@@ -80,4 +81,57 @@ function ingresar_seccion()
         }
         ajax.send(datos);
     }    
+}
+
+function modificar_seccion(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar las secciones?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_seccion.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['new_se'];
+        var elemento1 = form['se_id'];
+        var preg = elemento.value;
+        var preg1 = elemento1.value;
+        
+        var datos = "new_se="+preg+"&se_id="+preg1;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        alert(ajax);
+        ajax.onreadystatechange=function()
+        {            
+            if (ajax.readyState==4 && ajax.status==200) 
+            {                       
+                alert(ajax.responseText);                
+            }
+            
+        }
+        ajax.send(datos);
+    }
+}
+
+function eliminar_seccion(i) {
+    var resp = confirm("¿Estas seguro de eliminar esta seccion?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_seccion.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['se_id'];
+        var pregu = elemento.value;
+        var datos = "se_id="+pregu;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+            };
+            
+        }
+        ajax.send(datos);
+    };
 }
