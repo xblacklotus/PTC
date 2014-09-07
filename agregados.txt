@@ -1,0 +1,6 @@
+el maestro pueda ver todas las notas ingresadas al mismo tiempo con el promedio del grado
+importar a word, excel o pdf y poder imprimirlo agregar graficas
+
+poder subir lista de alumnos desde lista de excel
+ 
+mantenimientos completos 

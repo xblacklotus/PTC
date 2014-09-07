@@ -50,7 +50,7 @@ and m.id=p.id_materia";
             {
                 echo '<td class="textos"><input type="text" form="notas" 
              name="nota'.$cantidad.'" id="nota'.$cantidad.'" id value=""></td></tr>';
-            }        
+            }
 
             echo '<input class="bids" type="hidden" form="notas"name="a_id'.$cantidad.'" value='.$fila[6].'> ';        
         $cantidad++;        
