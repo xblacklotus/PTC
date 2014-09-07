@@ -298,3 +298,25 @@ function modificar_usuario(i)
         ajax.send(datos);
     }
 }
+function eliminar_usuario(i) {
+    var resp = confirm("¿Estas seguro de eliminar este usuario?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_usuario.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['id_usuario'];
+        var pregu = elemento.value;
+        var datos = "id_usuario="+pregu;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+            };
+            
+        }
+        ajax.send(datos);
+    };
+}
