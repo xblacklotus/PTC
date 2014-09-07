@@ -18,11 +18,11 @@
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-                echo "1";
+                echo "Guardado";
             }
             else
             {
-                echo "2";
+                echo "Error";
             }       
         }
          
