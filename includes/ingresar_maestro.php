@@ -6,23 +6,29 @@
 
         $nombre_maestro=$_POST['nombre_maestro'];
         $apellido_maestro=$_POST['apellido_maestro']; 
-        $usuario=$_POST["usuario"];       
-        if($nombre_maestros=="")
+        $usuario=$_POST["usuario"];
+        echo "Nombre ".$nombre_maestro;
+            echo "Apellidos ".$apellido_maestro;
+            echo "Id :".$usuario;     
+        if($nombre_maestro =="")
         {
+            echo "No se puede guardar datos vacios";
+        }elseif ($apellido_maestro == "") {
             echo "No se puede guardar datos vacios";
         }
         else
         {
-            $peticion= "insert into profesor (nombres,apellidos,id_usuario) values('".$nombre_maestro.",".$apellido_maestro.",".$usuario."')";
-            echo $peticion;
+
+            $peticion= "insert into profesor (nombres,apellidos,id_usuario)
+            values ('".$nombre_maestro."','".$apellido_maestro."','".$usuario."')";
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-                echo "1";
+                echo "Exito";
             }
             else
             {
-                echo "2";
+                echo "Error";
             }       
         }
          

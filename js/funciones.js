@@ -112,7 +112,7 @@ function ingresar_maestro()
         var preguntatexto2 =elemento2.value;
         var preguntatexto3 =elemento3.value;
         //y aqui ya pasas el valor a la variable para ajax
-        var datos="nombre_maestro="+preguntatexto+"& apellido_maestro="+preguntatexto2+"& usuario"+preguntatexto3;
+        var datos="nombre_maestro="+preguntatexto+"& apellido_maestro="+preguntatexto2+"& usuario="+preguntatexto3;
         alert(datos);
         //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
@@ -132,6 +132,9 @@ function ingresar_maestro()
             alert(ajax.responseText);
                 
           };
+
+
+
         }
         ajax.send(datos);
     };    
@@ -210,4 +213,33 @@ function ingresar_usuario()
         }
         ajax.send(datos);
     };
+}
+function modificar_usuario(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar el usuario?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_usuario.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['contra'];
+        var elemento1 = form['id_usuario'];
+        var preg = elemento.value;
+        var preg1 = elemento1.value;
+        
+        var datos = "contra="+preg+"&id_usuario="+preg1;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        alert(ajax);
+        ajax.onreadystatechange=function()
+        {            
+            if (ajax.readyState==4 && ajax.status==200) 
+            {                       
+                alert(ajax.responseText);                
+            }
+            
+        }
+        ajax.send(datos);
+    }
 }
