@@ -88,7 +88,7 @@ function ingresar_seccion()
 function ingresar_maestro()
 
 {
-    alert("entro");    
+   
     //VAlidar aqui
     var resp=confirm("¿Esta seguro que desea ingresar este maestro");
     if (resp)
@@ -102,7 +102,7 @@ function ingresar_maestro()
         //Se supone q aqui le da el formato pero no le hagan caso
         var url= "../includes/ingresar_maestro.php" ;
         //Aqui guardamos la variable de la pagina a llamar a ejecutarse
-        var form = document.forms['form'];
+        var form = document.forms['forming'];
         //aqui obtenes todo el "formulario"    
         var elemento = form['nombre_maestro'];
         var elemento2 = form['apellido_maestro'];
@@ -112,7 +112,7 @@ function ingresar_maestro()
         var preguntatexto2 =elemento2.value;
         var preguntatexto3 =elemento3.value;
         //y aqui ya pasas el valor a la variable para ajax
-        var datos="nombre_maestro="+preguntatexto+"apellido_maestro="+preguntatexto2+"usuario"+preguntatexto3;
+        var datos="nombre_maestro="+preguntatexto+"& apellido_maestro="+preguntatexto2+"& usuario"+preguntatexto3;
         alert(datos);
         //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
@@ -128,13 +128,13 @@ function ingresar_maestro()
           {
             //El estado 4 ya completo la accion
             //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos  
-            alert("entro2")                      
+                           
             alert(ajax.responseText);
                 
           };
         }
         ajax.send(datos);
-    }    
+    };    
 }
 function modificar_seccion(i)
 {
