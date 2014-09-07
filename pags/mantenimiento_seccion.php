@@ -2,7 +2,7 @@
 <?php include("../includes/config.inc");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
-/**Agregar sección*/
+
 <form name="form" method="post" >
 <label>Nombre de sección</label>
 <input type="text" id="nombre_seccion"></input>

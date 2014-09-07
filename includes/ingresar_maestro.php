@@ -7,7 +7,7 @@
         $nombre_maestro=$_POST['nombre_maestro'];
         $apellido_maestro=$_POST['apellido_maestro']; 
         $usuario=$_POST["usuario"];       
-        if($nombre_seccion=="")
+        if($nombre_maestros=="")
         {
             echo "No se puede guardar datos vacios";
         }
