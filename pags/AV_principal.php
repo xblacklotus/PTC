@@ -18,20 +18,20 @@
         <div class="slider">
             <ul class="frames">
                 <li id="one" class="slide">
-                    <img src="../imgs/Slider.jpg" alt="Slide1">
+                    <img src="../imgs/1.jpg" alt="Slide1">
                     <nav>
                         <a class="prev" href="#five">&larr;</a>
                         <a class="next" href="#two">&rarr;</a>
                     </nav>
                     <li id="two" class="slide">
-                    <img src="../imgs/Slider2.jpg" alt="Slide 2">
+                    <img src="../imgs/2.jpg" alt="Slide 2">
                     <nav>
                         <a class="prev" href="#one">&larr;</a>
                         <a class="next" href="#three">&rarr;</a>
                     </nav>            
                 </li>
                 <li id="three" class="slide">
-                    <img src="../imgs/Slider3.jpg" alt="Slide 3">
+                    <img src="../imgs/3.jpg" alt="Slide 3">
                     <nav>
                         <a class="prev" href="#two">&larr;</a>
                         <a class="next" href="#four">&rarr;</a>

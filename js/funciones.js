@@ -196,3 +196,26 @@ function eliminar_seccion(i) {
         ajax.send(datos);
     };
 }
+
+function ingresar_usuario()
+{
+    var resp = confirm("¿Estasseguro de ingresar este usuario?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_usuarios.php";
+        var form = document.forms['formIng'];
+        var elemento = form['contra_usu'];
+        var elemento1 = form['contra_rea'];
+        var datos = "contra_usu="+elemento.value+"&contra_rea="+elemento1.value;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200){
+                alert(ajax.responseText);
+            }
+        }
+        ajax.send(datos);
+    };
+}
