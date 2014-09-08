@@ -194,6 +194,90 @@ function eliminar_maestro(i) {
     };
 }
 
+function ingresar_materias(){
+    var resp = confirm("¿Estas seguro de ingresar esta seccion?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_materias.php";
+        var form = document.forms['form'];
+        //
+        //
+        var elemento = form['nombre_materia'];
+        var elemento2 = form['inputgra'];
+        var elemento3 = form['inputse'];
+        var datos = "nombre_materia="+elemento.value+"&grados="+elemento2.value+"&secciones="+elemento3.value;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+            };
+        }
+        ajax.send(datos);
+    };
+}
+
+function combo(thelist, theinput)
+{
+  theinput = document.getElementById(theinput);
+  theinput.value = thelist.value; 
+}
+
+function modificar_materia(i){
+    var resp=confirm("¿Esta seguro que desea modificar las materia?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_materia.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['new_ma'];
+        var elemento1 = form['new_gra'];
+        var elemento2 = form['new_se'];
+        var elemento3 = form['ma_id'];
+        var preg = elemento.value;
+        var preg1 = elemento1.value;
+        var preg2 = elemento2.value;
+        var datos = "new_ma="+preg+"&new_gra="+preg1+"&new_se="+preg2+"&ma_id="+elemento3.value;
+        alert(datos);
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {            
+            if (ajax.readyState==4 && ajax.status==200) 
+            {                       
+                alert(ajax.responseText);                
+            }
+            
+        }
+        ajax.send(datos);
+    }
+}
+
+function eliminar_materia(i){
+    var resp = confirm("¿Estas seguro de eliminar esta materia?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_materia.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['ma_id'];
+        var pregu = elemento.value;
+        var datos = "ma_id="+pregu;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+            };
+            
+        }
+        ajax.send(datos);
+    };
+}
 function modificar_seccion(i)
 {
     var resp=confirm("¿Esta seguro que desea modificar las secciones?");
