@@ -116,6 +116,10 @@ function verNotas(name)
     form.action= "visualizar_notas.php";
     form.submit();
 }
+//función para comprobar si una variable es númerica
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
 
 function ingresar_seccion()
 {
@@ -137,28 +141,38 @@ function ingresar_seccion()
         var elemento = form['nombre_seccion'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preguntatexto =elemento.value;
-        //y aqui ya pasas el valor a la variable para ajax
-        var datos="nombre_seccion="+preguntatexto;
-        //Aqui haces el arreglo para todos los datos q fueras a mandar
-        ajax.open("POST",url,true);
-        //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
-        //No recuerdo para q era el true pero ahi lo dejan
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        //y esto es otra cosa q ahi la dejan
-        //ajax.onreadystatechange se ejecuta cuando este listo el ajax
-        ajax.onreadystatechange=function()
-        {
-            alert("hoa");
-            //y se ejecuta lo de adentro cuando la accion ha sido realizada
-          if (ajax.readyState==4 && ajax.status==200) 
-          {
-            //El estado 4 ya completo la accion
-            //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos                        
-            alert(ajax.responseText);
-                
-          };
+        if(isNumber(preguntatexto)) {
+            alert("ERROR: El nombre de la sección no puede ser un número!");
+        }else {
+            if (preguntatexto != "") {
+                if (preguntatexto.length > 1) {
+                    alert("ERROR: La longitud del nombre de la sección excede el límite permitido!");
+                }else{
+                //y aqui ya pasas el valor a la variable para ajax
+                var datos="nombre_seccion="+preguntatexto;
+                //Aqui haces el arreglo para todos los datos q fueras a mandar
+                ajax.open("POST",url,true);
+                //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
+                //No recuerdo para q era el true pero ahi lo dejan
+                ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                //y esto es otra cosa q ahi la dejan
+               //ajax.onreadystatechange se ejecuta cuando este listo el ajax
+                ajax.onreadystatechange=function()
+                {
+                    //y se ejecuta lo de adentro cuando la accion ha sido realizada
+                    if (ajax.readyState==4 && ajax.status==200) 
+                    {
+                        //El estado 4 ya completo la accion
+                        //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos                        
+                        alert(ajax.responseText);
+                    };
+                }
+                ajax.send(datos);
+                }
+            }else{
+                alert("ERROR: Llene los campos obligatorios!");
+            }
         }
-        ajax.send(datos);
     }    
 }
 
@@ -376,20 +390,33 @@ function modificar_seccion(i)
         var elemento1 = form['se_id'];
         var preg = elemento.value;
         var preg1 = elemento1.value;
-        
-        var datos = "new_se="+preg+"&se_id="+preg1;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        alert(ajax);
-        ajax.onreadystatechange=function()
-        {            
-            if (ajax.readyState==4 && ajax.status==200) 
-            {                       
-                alert(ajax.responseText);                
-            }
+        if (preg == "" || preg1 == "") {
+            alert("ERROR: Llene los campos obligatorios!");
+        }else{
+            if (isNumber(preg)) {
+                alert("ERROR: El nombre de la sección no puede ser un número!");
+            }else{
+                if (preg.length >1) {
+                    alert("ERROR: La longitud del nombre de la sección excede el límite permitido!");
+                }else{
+                    /////////////////////////
+                    var datos = "new_se="+preg+"&se_id="+preg1;
+                    ajax.open("POST",url,true);
+                    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                    alert(ajax);
+                    ajax.onreadystatechange=function()
+                    {            
+                        if (ajax.readyState==4 && ajax.status==200) 
+                        {                       
+                            alert(ajax.responseText);                
+                        }
             
+                    }
+                    ajax.send(datos);
+                    ////////////////////////
+                }
+            }
         }
-        ajax.send(datos);
     }
 }
 
