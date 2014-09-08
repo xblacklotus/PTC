@@ -415,7 +415,6 @@ function modificar_seccion(i)
                     var datos = "new_se="+preg+"&se_id="+preg1;
                     ajax.open("POST",url,true);
                     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-                    alert(ajax);
                     ajax.onreadystatechange=function()
                     {            
                         if (ajax.readyState==4 && ajax.status==200) 
@@ -441,17 +440,26 @@ function eliminar_seccion(i) {
         var form = document.forms['formMo'+i+''];
         var elemento = form['se_id'];
         var pregu = elemento.value;
-        var datos = "se_id="+pregu;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {
-            if (ajax.readyState==4 && ajax.status==200) {
-                alert(ajax.responseText);
-            };
-            
+        if (pregu == "") {
+            alert("ERROR: Llene los campos obligatorios!");
+        }else{
+            if (isNumber(pregu)) {
+                //////////////////////////
+                var datos = "se_id="+pregu;
+                ajax.open("POST",url,true);
+                ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                ajax.onreadystatechange=function()
+                {
+                    if (ajax.readyState==4 && ajax.status==200) {
+                    alert(ajax.responseText);
+                    };
+                }
+                ajax.send(datos);
+                /////////////////////////
+            }else{
+                alert("ERROR: Conflicto al eliminar el ID de la sección!");
+            }
         }
-        ajax.send(datos);
     };
 }
 
