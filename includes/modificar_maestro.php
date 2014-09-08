@@ -5,45 +5,51 @@
 		$nombre = $_POST['nombre2'];
 		$apellido = $_POST['apellido2'];
 		$usuario = $_POST['id_usuario2'];
-		$id = $_POST['id_ma'];
-		$bole = false;
+		 $id= $_POST['id_ma'];
+		echo "prueba ".$id;
 		?>
 		<?php 
-		if ($nombre == "") {
-			echo "No se pueden ingresar valores nulos";
-		}
-		else if($apellido=="")
-		{
-			echo "No se pueden ingresar valores nulos";
-		}
-		else if($usuario=="")
-		{
-			echo "No se pueden ingresar valores nulos";
-		}
-		else
-		{
-			//$consulta = "select nombres,apellidos,id_usuario from profesor";
-			//$res = mysqli_query($conexion,$consulta);
-			//while ($fila = mysqli_fetch_array($res)) {
-				//if ($fila == $se) {
-			//		$bole = true;
-			//	}
+		if ($nombre != "") {
 			
-			if ($bole == false) {
-				$peticion= "update profesor set nombres ='".$nombre."', apellidos='".$apellido."', id_usuario='".$usuario."' where id =".$id;
-            		$resultado=mysqli_query($conexion,$peticion);
-           			if($resultado)
-            		{
-                		echo "Exito";
-            		}
-            		else
-            		{
-                		echo "Error";
-            		}
-			}else{
-				echo "Ya existe la seccion";
-			}
+			$peticion= "update profesor set nombres ='".$nombre."' where id ='".$id."'";
+            $resultado=mysqli_query($conexion,$peticion);
+           	if($resultado)
+            {
+                echo "Exito";
+            }
+            else
+            {
+               	echo "Error en nombre";
+            }
+
 		}
+		 if($apellido !="")
+		{
+			$peticion= "update profesor set apellidos ='".$apellido."' where id ='".$id."'";
+            $resultado=mysqli_query($conexion,$peticion);
+           	if($resultado)
+            {
+                echo "Exito";
+            }
+            else
+            {
+               	echo "Error en apellido";
+            }
+		}
+		if($usuario !="")
+		{
+			$peticion= "update profesor set id_usuario2 ='".$usuario."' where id ='".$id."'";
+            $resultado=mysqli_query($conexion,$peticion);
+           	if($resultado)
+            {
+                echo "Exito";
+            }
+            else
+            {
+               	echo "Error en usuario";
+            }
+		}
+		
 	}
 		
 ?>
