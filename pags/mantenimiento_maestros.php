@@ -27,9 +27,9 @@
 			<tr>
 			
 				<td>
-				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="nombres2" placeholder="'.$rsSecc['nombres'].'"></input> 
-				<input type="text" id="apellidos2" placeholder="'.$rsSecc['apellidos'].'"></input> 
+				<form name="formMo" method="post">
+				<?php echo '<input type="text" id="nombre2" placeholder="'.$rsSecc['nombres'].'"></input> 
+				<input type="text" id="apellido2" placeholder="'.$rsSecc['apellidos'].'"></input> 
 				<input type="text" id= "id_usuario2" placeholder="'.$rsSecc['id_usuario'].'"></input> 
 				<input class="bids" type="hidden" name="id_ma" value='.$rsSecc['id'].'> </input>
 				<button type="button" class="pill orange" onclick="javascript:modificar_maestro('.$i.');" >

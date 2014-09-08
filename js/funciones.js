@@ -149,15 +149,15 @@ function modificar_maestro(i)
         var ajax;
         ajax = new XMLHttpRequest();
         var url = "../includes/modificar_maestro.php";
-        var form = document.forms['formMo'+i+''];
+        var form = document.forms['formMo'];
         var elemento = form['nombre2'];
         var elemento1 = form['apellido2'];
-        var elemento3 = form['id_usuario2'];
+        var elemento2 = form['id_usuario2'];
         var preg = elemento.value;
         var preg1 = elemento1.value;
-        var preg3 = elemento3.value;
+        var preg2 = elemento2.value;
         
-        var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2";
+        var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2="+preg2;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         alert(ajax);
