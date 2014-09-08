@@ -24,11 +24,9 @@
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-<<<<<<< HEAD
-                echo "Exito";
-=======
-                echo "Guardado";
->>>>>>> origin/master
+
+                echo "Guardado con exito";
+
             }
             else
             {

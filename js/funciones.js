@@ -150,12 +150,14 @@ function modificar_maestro(i)
         ajax = new XMLHttpRequest();
         var url = "../includes/modificar_maestro.php";
         var form = document.forms['formMo'+i+''];
-        var elemento = form['new_se'];
-        var elemento1 = form['se_id'];
+        var elemento = form['nombre2'];
+        var elemento1 = form['apellido2'];
+        var elemento3 = form['id_usuario2'];
         var preg = elemento.value;
         var preg1 = elemento1.value;
+        var preg3 = elemento3.value;
         
-        var datos = "new_se="+preg+"&se_id="+preg1;
+        var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2";
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         alert(ajax);
@@ -178,9 +180,9 @@ function eliminar_maestro(i) {
         ajax = new XMLHttpRequest();
         var url = "../includes/eliminar_maestro.php";
         var form = document.forms['formMo'+i+''];
-        var elemento = form['se_id'];
+        var elemento = form['id_ma'];
         var pregu = elemento.value;
-        var datos = "se_id="+pregu;
+        var datos = "id_ma="+pregu;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()
