@@ -24,6 +24,85 @@ function enviar(name)
     }    
 }   
 
+function ingresar()
+{    
+    var r = confirm("¿Esta seguro que de desea ingresar?");
+    if (r ) {
+        
+        if(validar_notas())
+        {
+            return true;        
+        }
+        else
+            return false;  
+    } 
+    else{
+        return false;
+    }
+}
+
+function validar_notas()
+{
+    var validas=false;
+    var k=document.getElementById('cantidad').value;
+    var i =0;
+    for (i= 0 ;i <k ; i++) 
+    {
+        if(!isNaN(document.getElementById('nota'+i).value))
+        {
+            if(document.getElementById('nota'+i).value>=1 && document.getElementById('nota'+i).value<=10)
+            {                
+                validas=true;
+            }
+            else{
+                validas=false;  
+                alert("Valor/es invalido");
+                return validas;
+            }
+            if(i==k-1){                
+                return validas;
+            }        
+        }
+        else
+        {
+            alert(document.getElementById('nota'+i).value+ " no es un numero");            
+            return false;
+        }
+    };    
+}
+
+function ingresar_notas()
+{
+    var resp=confirm("¿Esta seguro que desea modificar las secciones?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "guardar_notas.php";        
+        var datos = $("#notas").serialize();
+
+        alert(datos);
+
+        if(validar_notas())
+        {
+            
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            alert(ajax);
+            ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    alert(ajax.responseText);                
+                }
+                
+            }
+            ajax.send(datos);
+        }
+        
+    }
+}
+
 function modi(name)
 {
     var form = document.forms['from'+name];
@@ -410,3 +489,63 @@ function eliminar_usuario(i) {
         ajax.send(datos);
     };
 }
+
+function graficarPastel(datos,div_donde_imprimir,titulo)
+{
+    AmCharts.ready(function () {
+                // PIE CHART
+                chart = new AmCharts.AmPieChart();
+                chart.dataProvider = datos;
+                chart.titleField = titulo;
+                chart.valueField = "value";
+                chart.outlineColor = "#FFFFFF";
+                chart.outlineAlpha = 0.8;
+                chart.outlineThickness = 2;
+                chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+                // this makes the chart 3D
+                chart.depth3D = 15;
+                chart.angle = 30;
+
+                // WRITE
+                chart.write(div_donde_imprimir);
+            });
+}
+
+function graficarColumnas(datos,div_donde_imprimir,titulo)
+{
+    AmCharts.ready(function ()
+     {
+         // PIE CHART   
+        var chart;
+        var chart = new AmCharts.AmSerialChart();
+        chart.dataProvider = chartData;
+        chart.categoryField = "country";
+
+        var graph = new AmCharts.AmGraph();
+        graph.valueField = "visits";
+        graph.type = "column";
+        chart.addGraph(graph);
+
+
+        var categoryAxis = chart.categoryAxis;
+        categoryAxis.autoGridCount  = false;
+        categoryAxis.gridCount = chartData.length;
+        categoryAxis.gridPosition = "start";
+
+
+        categoryAxis.labelRotation = 90;
+
+        graph.fillAlphas = 0.8;
+
+        chart.angle = 30;
+        chart.depth3D = 15;
+        // WRITE
+
+
+        chart.write(div_donde_imprimir);
+    });
+}
+
+
+    
+    

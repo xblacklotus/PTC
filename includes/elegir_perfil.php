@@ -2,8 +2,7 @@
 
 <?php     
      if($_POST) 
-     {        
-      var_dump($_POST);
+     {
         $m_id=$_POST['m_id'];
         $s_id=$_POST['s_id'];
         $grado=$_POST['grado'];

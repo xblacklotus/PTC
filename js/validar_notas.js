@@ -3,7 +3,7 @@ function ingresar()
     var r = confirm("¿Esta seguro que de desea ingresar?");
     if (r) 
     {
-    		return true;
+    	return true;
     } 
     else
     {
@@ -25,7 +25,8 @@ function validar_notas();
 			{
 				validas=true;
 			}
-			else{
+			else
+			{
 				validas=false;
 				alert("Notas no validas");
 				return validas;
@@ -35,7 +36,8 @@ function validar_notas();
 				return validas;
 			}
 		}
-		else{
+		else
+		{
 			alert("Notas no son solo numeros");
 			return false;
 		}		

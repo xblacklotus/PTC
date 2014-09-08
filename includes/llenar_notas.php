@@ -1,7 +1,7 @@
 <?php
 if($_POST)
-{
-    var_dump($_POST);
+{    
+    
     $m_id=$_POST['m_id'];
     $s_id=$_POST['s_id'];
     $grado=$_POST['grado'];
@@ -56,14 +56,14 @@ and m.id=p.id_materia";
         $cantidad++;        
     }
     echo '</tbody></table>
-    <form name="notas" id="notas" method="post" onsubmit="return ingresar();" action="guardar_notas.php">
+    <form name="notas" id="notas" method="post" onsubmit="return ingresar();">
         <input class="bids" type="hidden" name="p_id" value='.$p_id.'>        
         <input class="bids" type="hidden" name="cantidad" id="cantidad" value='.$cantidad.'>        
          <input class="bids" type="hidden" name="m_id" value='.$m_id.'>
          <input class="bids" type="hidden" name="s_id" value='.$s_id.'>
          <input class="bids" type="hidden" name="grado" value='.$grado.'>
          <input class="bids" type="hidden" name="id_profe" value='.$id_profe.'>         
-        <button type="submit"class="orange spill" name="guardar_notas">Ingresar notas</button>
+        <button type="button"class="orange spill" name="guardar_notas" onclick="ingresar_notas();">Ingresar notas</button>
         </form>';
 }
 ?>

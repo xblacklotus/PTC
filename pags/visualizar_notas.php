@@ -4,8 +4,7 @@
     $s_id=$_POST['s_id'];
     $grado=$_POST['grado'];
     $id_profe=$_POST['id_profe'];
-    $p_id=$_POST['p_id'];
-    var_dump($_POST);
+    $p_id=$_POST['p_id'];    
     $peticion="select a.id,a.nombres,a.apellidos,np.nota,m.grado,s.nombre,m.nombre,p.trimestre
 from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
     where a.id_seccion=m.id_seccion
@@ -21,7 +20,7 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
     if($resultado)
     {
         echo '<!-- Table --><table id="tbmats" class="striped tight" 
-          cellspacing="0" cellpadding="0" style="max-width="100px">
+          cellspacing="0" cellpadding="0" style="max-width="500px">
         <thead><tr>
             <th max-width="100px">ID</th>
             <th>Alumno</th>
@@ -35,8 +34,7 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
             echo '<tr>
                     <td> '.$fila[0].'</td>
                     <td> '.$fila[2].' ,'.$fila[1].'</td>
-                    <td> '.$fila[3].'</td>
-                    <td> <input type="text"> </input></td>
+                    <td> '.$fila[3].'</td>                    
                  </tr>'; 
              }
              echo '</table>';
