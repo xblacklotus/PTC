@@ -303,7 +303,37 @@ function eliminar_maestro(i) {
         ajax.send(datos);
     };
 }
+function ingresar_alumno()
+{
+    var resp = confirm("¿Estasseguro de ingresar este alumno?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_alumno.php";
+        var form = document.forms['formIng'];
+        var elemento = form['nombre'];
+        var elemento1 = form['apellido'];
+        var elemento2 = form['grad'];
+        var elemento3 = form['sec'];
+        var elemento4 = form['user']
+        var datos = "nombre="+elemento.value+"&apellido="+elemento1.value+"&grad="+elemento2.value+"&sec="+elemento3.value+"&user="+elemento4.value;
 
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200){
+                alert(ajax.responseText);
+            }
+        }
+        ajax.send(datos);
+    };
+}
+function combo(thelist, theinput)
+{
+  theinput = document.getElementById(theinput);
+  theinput.value = thelist.value; 
+}
 function ingresar_materias(){
     var resp = confirm("¿Estas seguro de ingresar esta materia?");
     if (resp) {
