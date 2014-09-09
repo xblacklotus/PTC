@@ -20,28 +20,14 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
     and m.id=p.id_materia";
     $resultado=mysqli_query($conexion,$peticion);
     if($resultado)
-    {
-        echo '<!-- Table --><table id="tbmats" class="striped tight" 
-          cellspacing="0" cellpadding="0" style="max-width="100px">
-        <thead><tr>
-            <th max-width="100px">ID</th>
-            <th>Alumno</th>
-            <th max-width="100px">Nota</th>            
-        </tr></thead>
-        <tbody>';
-        $resultado=mysqli_query($conexion,$peticion);    
-        $cantidad=0;    
+    {        
         while($fila=mysqli_fetch_array($resultado))
         {
-            echo '<tr>
-                    <td> '.$fila[0].'</td>
-                    <td> '.$fila[2].' ,'.$fila[1].'</td>
-                    <td> '.$fila[3].'</td>
-                 </tr>';
+           
         }
     }
     else
     {
-        echo "Hubo un error a la hora de eliminar";
+        echo "Hubo un error";
     }
 ?>

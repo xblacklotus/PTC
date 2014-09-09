@@ -55,15 +55,12 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
 // Add some data
 echo date('H:i:s') , " Add some data" , EOL;
 $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A1', 'Hello')
-            ->setCellValue('B2', 'world!')
+            ->setCellValue('A1', 'Helasfasfasflo')
+            ->setCellValue('B2', 'worsafasfld!')
             ->setCellValue('C1', 'Hello')
             ->setCellValue('D2', 'world!');
 
-// Miscellaneous glyphs, UTF-8
-$objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('A4', 'Miscellaneous glyphs')
-            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
+
 
 // Rename worksheet
 echo date('H:i:s') , " Rename worksheet" , EOL;

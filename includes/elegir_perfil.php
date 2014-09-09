@@ -9,11 +9,19 @@
         $id_profe=$_POST['id_profe'];
         $peticion="select m.nombre,p.descripcion,p.porcentaje,p.trimestre,p.id from perfiles as p, materias as m,seccion as s 
                     where id_materia=".$m_id." and m.id=".$m_id." and s.id=".$s_id;
-        echo '<h2>Eliga el perfil</h2>';
+        $peticion1="select m.nombre where m.id=".$m_id;
+        
+         $resultado1=mysqli_query($conexion,$peticion);    
+                
+        if($fila1=mysqli_fetch_array($resultado1))
+        {
+            echo '<h2>Materia : '.$fila1[0].'</h2>';
+        }
+        echo '<h4>Eliga el perfil</h4>';
         echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" 
               cellspacing="0" cellpadding="0" style="max-width="100px">
         <thead><tr >
-            <th>Materia</th>
+            
             <th>Descripcion</th>
             <th>Porcentaje</th>
             <th>Trimestre</th>
@@ -25,8 +33,7 @@
         while($fila=mysqli_fetch_array($resultado))
         {
             
-            echo '<tr>
-                <td>'.$fila[0].'</td>';
+            echo '<tr>';                
             echo '<td>'.$fila[1].'</td>';
             echo '<td>'.$fila[2].'</td>';
             echo '<td>'.$fila[3].'</td>';  

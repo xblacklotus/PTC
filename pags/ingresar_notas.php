@@ -6,9 +6,7 @@ if (isset($_POST['ver_notas']))
     include("../includes/llenar_notas.php");
 }
 ?>
-<script type="text/javascript">
 
-</script>
 <?php        
         include("../includes/llenar_notas.php");
 ?>

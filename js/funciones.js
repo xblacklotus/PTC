@@ -11,36 +11,21 @@ function enviar(name)
         var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
         var datos="strTexto="+preguntatexto;
         ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
         ajax.onreadystatechange=function()
         {
           if (ajax.readyState==4 && ajax.status==200) 
           {
             alert(ajax.responseText);
-            document.location.href="perfiles.php";
-          };
+            if(ajax.responseText==ajax.responseText)
+            {
+                document.location.href="perfiles.php";
+            }
+          }
         }
         ajax.send(datos);
     }    
-}   
-
-function ingresar()
-{    
-    var r = confirm("¿Esta seguro que de desea ingresar?");
-    if (r ) {
-        
-        if(validar_notas())
-        {
-            return true;        
-        }
-        else
-            return false;  
-    } 
-    else{
-        return false;
-    }
 }
-
 function validar_notas()
 {
     var validas=false;
@@ -80,20 +65,20 @@ function ingresar_notas()
         ajax = new XMLHttpRequest();
         var url = "guardar_notas.php";        
         var datos = $("#notas").serialize();
-
-        alert(datos);
-
         if(validar_notas())
         {
             
             ajax.open("POST",url,true);
-            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            alert(ajax);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");            
             ajax.onreadystatechange=function()
             {            
                 if (ajax.readyState==4 && ajax.status==200) 
                 {                       
-                    alert(ajax.responseText);                
+                    alert(ajax.responseText);
+                    if(ajax.responseText=='Exito al guardar notas')
+                    {
+                        document.location.href="perfiles.php";
+                    }
                 }
                 
             }
@@ -147,8 +132,7 @@ function ingresar_seccion()
         //y esto es otra cosa q ahi la dejan
         //ajax.onreadystatechange se ejecuta cuando este listo el ajax
         ajax.onreadystatechange=function()
-        {
-            alert("hoa");
+        {            
             //y se ejecuta lo de adentro cuando la accion ha sido realizada
           if (ajax.readyState==4 && ajax.status==200) 
           {
@@ -192,7 +176,7 @@ function ingresar_maestro()
         var preguntatexto3 =elemento3.value;
         //y aqui ya pasas el valor a la variable para ajax
         var datos="nombre_maestro="+preguntatexto+"& apellido_maestro="+preguntatexto2+"& usuario="+preguntatexto3;
-        alert(datos);
+        
         //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
         //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
@@ -239,7 +223,7 @@ function modificar_maestro(i)
         var preg3 = elemento3.value;
         
         var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2="+preg2+"$id_ma="+preg3;
-        alert(datos);
+        
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         alert(ajax);
@@ -264,8 +248,7 @@ function eliminar_maestro(i) {
         var form = document.forms['formMo'+i+''];
         var elemento = form['id_ma'];
         var pregu = elemento.value;
-        var datos = "id_ma="+pregu;
-        alert(datos);
+        var datos = "id_ma="+pregu;        
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()
@@ -326,7 +309,6 @@ function modificar_materia(i){
         var preg1 = elemento1.value;
         var preg2 = elemento2.value;
         var datos = "new_ma="+preg+"&new_gra="+preg1+"&new_se="+preg2+"&ma_id="+elemento3.value;
-        alert(datos);
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()
@@ -489,63 +471,3 @@ function eliminar_usuario(i) {
         ajax.send(datos);
     };
 }
-
-function graficarPastel(datos,div_donde_imprimir,titulo)
-{
-    AmCharts.ready(function () {
-                // PIE CHART
-                chart = new AmCharts.AmPieChart();
-                chart.dataProvider = datos;
-                chart.titleField = titulo;
-                chart.valueField = "value";
-                chart.outlineColor = "#FFFFFF";
-                chart.outlineAlpha = 0.8;
-                chart.outlineThickness = 2;
-                chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
-                // this makes the chart 3D
-                chart.depth3D = 15;
-                chart.angle = 30;
-
-                // WRITE
-                chart.write(div_donde_imprimir);
-            });
-}
-
-function graficarColumnas(datos,div_donde_imprimir,titulo)
-{
-    AmCharts.ready(function ()
-     {
-         // PIE CHART   
-        var chart;
-        var chart = new AmCharts.AmSerialChart();
-        chart.dataProvider = chartData;
-        chart.categoryField = "country";
-
-        var graph = new AmCharts.AmGraph();
-        graph.valueField = "visits";
-        graph.type = "column";
-        chart.addGraph(graph);
-
-
-        var categoryAxis = chart.categoryAxis;
-        categoryAxis.autoGridCount  = false;
-        categoryAxis.gridCount = chartData.length;
-        categoryAxis.gridPosition = "start";
-
-
-        categoryAxis.labelRotation = 90;
-
-        graph.fillAlphas = 0.8;
-
-        chart.angle = 30;
-        chart.depth3D = 15;
-        // WRITE
-
-
-        chart.write(div_donde_imprimir);
-    });
-}
-
-
-    
-    
