@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
                where p.id=id_profesor and id_seccion=s.id and p.id=1";
@@ -9,7 +10,8 @@
         <th>Acción</th>
     </tr></thead>
     <tbody>';
-    $resultado=mysqli_query($conexion,$peticion);    
+    $resultado=mysqli_query($conexion,$peticion);  
+    $i=0;   
     while($fila=mysqli_fetch_array($resultado))
     {
         echo '<tr>
@@ -24,7 +26,10 @@
                                  <input class="bids" type="text" name="s_id" value='.$fila[4].'>
                                  <input class="bids" type="text" name="id_profe" value=1>
         <button type="submit" class="pill orange"  name="ele_perf" ><i>Elegir perfil</i></button>
-          </form></td> </tr>';          
+         <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria();">Ver notas</button>
+          </form></td> </tr>';  
+          $i++ ;
+          //document.formulario.action= "hola.php";
     }               
     //<input class="bids" type="hidden" name="grado" value='.$fila[4].'>
     //<input class="bids" type="hidden" name="s_id" value='.$fila[1].'>

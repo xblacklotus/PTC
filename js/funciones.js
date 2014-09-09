@@ -110,6 +110,15 @@ function modi(name)
     form.submit();
 }   
 
+function notasMateria()
+{
+   alert("entro1");
+    var form = document.forms['form'];
+    form.action= "../includes/notas_Materias.php";
+    form.submit();
+    alert("entro2");
+}
+
 function verNotas(name)
 {
     var form = document.forms['from'+name];
