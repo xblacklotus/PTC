@@ -96,12 +96,10 @@ function modi(name)
 }   
 
 function notasMateria(name)
-{
-   alert("entro1");
+{   
     var form = document.forms['form'+name];
     form.action= "../includes/notas_Materias.php";
-    form.submit();
-    alert("entro2");
+    form.submit();    
 }
 
 function verNotas(name)

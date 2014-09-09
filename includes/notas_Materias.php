@@ -1,4 +1,4 @@
-<?php include("../includes/config.inc");
+<?php 
 include("../includes/inheader.php");
 if($_POST) 
      {
@@ -42,5 +42,24 @@ if($_POST)
                 echo "<td style=padding:3px;>".$total."</td>";
                 echo "</tr>";
         }        
+        echo "</table>";
+        echo '<script src="../amcharts/amcharts.js" type="text/javascript"></script>
+        <script src="../amcharts/pie.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            var chart;
+            var legend;
+
+            var chartData = [
+                {
+                    "country": "Lithuania",
+                    "value": 260
+                },
+                {
+                    "country": "Ireland",
+                    "value": 201
+                }]';
+        include("../includes/footer.php");
     }
+
 ?> 
