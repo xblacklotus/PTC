@@ -17,7 +17,7 @@ if($_POST)
           echo "<thead>";
           echo "<th style=padding:3px;>Alumno</th>";
           while ($fila5=mysqli_fetch_array($resultado)){
-            echo "<th style=padding:3px;>".$fila5[1]."</th>";
+            echo "<th style=padding:3px;>".$fila5[1]."(".$fila5[2]."%)"."</th>";
           }
           echo "<th style=padding:3px;>Promedio</th>";
          
@@ -44,5 +44,6 @@ if($_POST)
                 echo "</tr>";
         }        
     }
+    echo "</table"; 
     echo "</div>";
 ?> 
