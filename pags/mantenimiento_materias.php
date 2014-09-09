@@ -9,16 +9,16 @@
 <input type="text" id="nombre_materia"></input>
 <label>Grado :</label>
 <input class="bids" type="hidden" name="inputgra" id="inputgra"/>
-<input type="text" list="grados" name="grados" onchange="combo(this,'inputgra')">
-	<datalist id="grados">
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-	</datalist>
+<select contenteditable="false" id="grados" onchange="combo(this,'inputgra')">
+	<option></option>
+	<option>7</option>
+	<option>8</option>
+	<option>9</option>
+</select>
 </input>
 <label>Sección :</label>
 <input class="bids" type="hidden" name="inputse" id="inputse"/>
-<input type="text" list="secciones" name="secciones" onchange="combo(this,'inputse')">
+<input type="text" contenteditable="false"list="secciones" name="secciones" onchange="combo(this,'inputse')">
 	<datalist id="secciones">
 	<?php
 		$sql = "select * from seccion";

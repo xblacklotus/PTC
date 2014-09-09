@@ -1,7 +1,7 @@
 <?php include("../includes/inheader.php");
 include("../includes/aside-maestros.php");
 ?>
-
+<div id="divperfiles">
 <?php
 
     //if($_POST)
@@ -23,4 +23,5 @@ include("../includes/aside-maestros.php");
 
     //}
 ?>
+</div>
 <?php include("../includes/footer.php");?>

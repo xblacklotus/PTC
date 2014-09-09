@@ -350,7 +350,12 @@ function ingresar_materias(){
                                     ajax.onreadystatechange=function()
                                     {
                                         if (ajax.readyState==4 && ajax.status==200) {
-                                            alert(ajax.responseText);
+                                            if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
+                                            {
+                                                alert(ajax.responseText);
+                                                document.location.href="mantenimiento_materias.php";
+                                            }
+                                            
                                         };
                                     }
                                     ajax.send(datos);
@@ -420,7 +425,13 @@ function modificar_materia(i){
                                     {            
                                         if (ajax.readyState==4 && ajax.status==200) 
                                         {                       
-                                            alert(ajax.responseText);                
+
+                                            if("ADVERTENCIA: La materia se ha modificado correctamente!"==ajax.responseText)
+                                            {
+                                                alert(ajax.responseText);
+                                                document.location.href="mantenimiento_materias.php";
+                                            }
+                                            
                                         }
             
                                     }
@@ -458,7 +469,11 @@ function eliminar_materia(i){
             ajax.onreadystatechange=function()
             {
                 if (ajax.readyState==4 && ajax.status==200) {
-                    alert(ajax.responseText);
+                    if(ajax.responseText=="ADVERTENCIA: La materia se ha eliminado correctamente!")
+                    {
+                        alert(ajax.responseText);
+                        document.location.href="mantenimiento_materias.php";
+                    }
                 };
             
             }

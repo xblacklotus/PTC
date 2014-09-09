@@ -30,7 +30,7 @@ position:relative;z-index:1000;}
 
 
 /*--------------Right---------------------*/
-	.menu li.right{float:right;}
+	.menu li.right{float:left;}
 
 
 /*--------------Arrows-------------------*/
@@ -95,7 +95,7 @@ z-index:600;
 
 		.menu li a:hover,
 		.menu li.hover>a{
-		background:#f5f5f5;
+		background:rgb(122,188,255);
 		}
 
 	/* sub menus */

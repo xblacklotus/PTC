@@ -16,9 +16,16 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li class="current"><a href="../pags/mantenimiento_maestros.php">Mantenimiento Maestros</a></li>
-<li><a href="../pags/mantenimiento_materias.php">Mantenimiento Materias</a></li>
-<li><a href="../pags/mantenimiento_seccion.php"><span class="icon" data-icon="R"></span>Mantenimiento Sección</a>
+<li id="primerli"><a href="../pags/perfiles.php">Perfiles</a></li>
+<li><a href="../pags/notas.php">Ver notas por alumno</a></li>
+<li><a href=""><span class="icon" data-icon="A"></span>Mantenimientos</a>
+		<ul>
+		<li><a href="../pags/mantenimiento_maestros.php">Maestros</a></li>
+		<li><a href="../pags/mantenimiento_materias.php">Materias</a></li>
+		<li><a href="../pags/mantenimiento_seccion.php">Sección</a></li>
+		<li><a href="../pags/mantenimiento_usuarios.php">Usuarios</a></li>
+		</ul>
+	</li>
 	<!--<<ul>
 	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
 	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
@@ -31,8 +38,6 @@
 	</li>
 	<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
 	</ul>-->
-</li>
-<li><a href="../pags/mantenimiento_usuarios.php">Mantenimiento Usuarios</a></li>
 </ul>
 
 <div class="grid">
