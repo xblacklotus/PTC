@@ -16,9 +16,9 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li class="current"><a href="">Item 1</a></li>
-<li><a href="">Item 2</a></li>
-<li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
+<li class="current"><a href="../pags/mantenimiento_maestros.php">Mantenimiento Maestros</a></li>
+<li><a href="../pags/mantenimiento_materias.php">Mantenimiento Materias</a></li>
+<li><a href="../pags/mantenimiento_seccion.php"><span class="icon" data-icon="R"></span>Mantenimiento Sección</a>
 	<!--<<ul>
 	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
 	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
@@ -32,7 +32,7 @@
 	<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
 	</ul>-->
 </li>
-<li><a href="">Item 4</a></li>
+<li><a href="../pags/mantenimiento_usuarios.php">Mantenimiento Usuarios</a></li>
 </ul>
 
 <div class="grid">
