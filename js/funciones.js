@@ -251,8 +251,26 @@ function modificar_maestro(i)
         var preg1 = elemento1.value;
         var preg2 = elemento2.value;
         var preg3 = elemento3.value;
-        
-        var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2="+preg2+"$id_ma="+preg3;
+        if(preg =="" || preg2 =="" || preg3=="")
+        {
+            alert("No pueden haber espacios en blanco");
+        }
+        else if(isNaN(preg) || isNaN(preg1))
+        {
+            alert("Hay campos que no tienen que ser numericos");
+        }
+        else if(!isNaN(preg2))
+        {
+            alert("El usuario tiene que ser numerico");
+        }
+        else if(preg2<1)
+        {
+            alert("Usuario fuera de rango");
+            
+        }
+        else
+        {
+            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2="+preg2+"&id_ma="+preg3;
         alert(datos);
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -266,6 +284,8 @@ function modificar_maestro(i)
             
         }
         ajax.send(datos);
+        }
+        
     }
 }
 
