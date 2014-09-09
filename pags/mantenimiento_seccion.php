@@ -2,7 +2,7 @@
 <?php include("../includes/config.inc");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
-
+<!--Formulario para ingresar una sección-->
 <form name="form" method="post" >
 <label>Nombre de sección</label>
 <input type="text" id="nombre_seccion"></input>
@@ -11,10 +11,10 @@
 <div id="divprueba"></div>
 
 /**Modificar, Eliminar sección**/
+<!--Formulario para modificar y eleiminar una sección-->
 		<?php
 			$consulta = "select * from seccion";
 			$res = mysqli_query($conexion,$consulta);
-			
 			
 		?>
 		<table>
@@ -27,7 +27,7 @@
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="new_se" placeholder="'.$rsSecc['nombre'].'"></input> 
+				<?php echo '<input type="text" id="new_se" value="'.$rsSecc['nombre'].'"></input> 
 				<input class="bids" type="hidden" name="se_id" value='.$rsSecc['id'].'> 
 				<button type="button" class="pill orange" onclick="javascript:modificar_seccion('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
