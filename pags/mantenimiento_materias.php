@@ -2,12 +2,13 @@
 <?php include("../includes/config.inc");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
+<!--Formulario para ingresar una materia-->
 /**Agregar materias**/
 <form name="form" method="post">
 <label>Nombre de la materia: </label>
 <input type="text" id="nombre_materia"></input>
 <label>Grado :</label>
-<input class="bids" type="hidden" name="inputgra" id="inputgra" value=0 />
+<input class="bids" type="hidden" name="inputgra" id="inputgra"/>
 <input type="text" list="grados" name="grados" onchange="combo(this,'inputgra')">
 	<datalist id="grados">
 		<option>7</option>
@@ -16,7 +17,7 @@
 	</datalist>
 </input>
 <label>Sección :</label>
-<input class="bids" type="hidden" name="inputse" id="inputse" value=0 />
+<input class="bids" type="hidden" name="inputse" id="inputse"/>
 <input type="text" list="secciones" name="secciones" onchange="combo(this,'inputse')">
 	<datalist id="secciones">
 	<?php
@@ -33,6 +34,7 @@
 </form>
 
 
+<!--Formulario para modificar y eliminar una materia-->
 /**Modificar, eliminar materias**/
 <?php
 	$consulta = "select * from materias";
@@ -55,9 +57,9 @@
 			
 		<td>
 			<form name="formMo<?php echo $i ?>" method="post">
-			<?php echo '<input type="text" id="new_ma" placeholder="'.$rsMat['nombre'].'"></input>
-			<input type="text" id="new_gra" placeholder="'.$rsMat['grado'].'"></input>
-			<input type="text" id="new_se" placeholder="'.$fila[0].'"></input>  
+			<?php echo '<input type="text" id="new_ma" value="'.$rsMat['nombre'].'"></input>
+			<input type="text" id="new_gra" value="'.$rsMat['grado'].'"></input>
+			<input type="text" id="new_se" value="'.$fila[0].'"></input>  
 			<input class="bids" type="hidden" name="ma_id" value='.$rsMat['id'].'> 
 			<button type="button" class="pill orange" onclick="javascript:modificar_materia('.$i.');" >
 			<i class="icon-plus-sign">Modificar</i></button>

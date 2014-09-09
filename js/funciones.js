@@ -307,7 +307,7 @@ function eliminar_maestro(i) {
 }
 
 function ingresar_materias(){
-    var resp = confirm("¿Estas seguro de ingresar esta seccion?");
+    var resp = confirm("¿Estas seguro de ingresar esta materia?");
     if (resp) {
         var ajax;
         ajax = new XMLHttpRequest();
@@ -316,18 +316,55 @@ function ingresar_materias(){
         //
         //
         var elemento = form['nombre_materia'];
-        var elemento2 = form['inputgra'];
-        var elemento3 = form['inputse'];
-        var datos = "nombre_materia="+elemento.value+"&grados="+elemento2.value+"&secciones="+elemento3.value;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {
-            if (ajax.readyState==4 && ajax.status==200) {
-                alert(ajax.responseText);
-            };
+        var elemento1 = form['inputgra'];
+        var elemento2 = form['inputse'];
+        var pregunta = elemento.value;
+        var pregunta1 = elemento1.value;
+        var pregunta2 = elemento2.value;
+        if (pregunta =="") {
+            alert("ERROR : Llene el campo obligatorio del nombre de la materia!");
+        }else{
+            if (pregunta1 =="") {
+                alert("ERROR : Llene el campo obligatorio del grado al que pertenece la materia!");
+            }else{
+                if (pregunta2 == "") {
+                    alert("ERROR : Llene el campo obligatorio de la sección del grado al que pertenece la materia!");
+                }else{
+                    if (pregunta.length > 20) {
+                        alert("ERROR: La longitud del nombre de la materia excede el límite permitido!");
+                    }else{
+                        if (pregunta1.length > 1) {
+                            alert("ERROR: La longitud del grado excede el límite permitido!");
+                        }else{
+                            if (isNumber(pregunta)) {
+                            alert("ERROR: El nombre de la materia no puede ser un número!");
+                        }else{
+                            if (isNumber(pregunta1)) {
+                                if (isNumber(pregunta2)) {
+                                    alert("ERROR: El nombre de la sección no puede ser numerica!");
+                                }else{
+                                    ///////////////////////////
+                                    var datos = "nombre_materia="+elemento.value+"&grados="+elemento1.value+"&secciones="+elemento2.value;
+                                    ajax.open("POST",url,true);
+                                    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                                    ajax.onreadystatechange=function()
+                                    {
+                                        if (ajax.readyState==4 && ajax.status==200) {
+                                            alert(ajax.responseText);
+                                        };
+                                    }
+                                    ajax.send(datos);
+                                    ///////////////////////////
+                                }
+                            }else{
+                                alert("ERROR: El grado no puede tener letras!");
+                            }
+                        }
+                        }
+                    }
+                }
+            }
         }
-        ajax.send(datos);
     };
 }
 
@@ -349,21 +386,56 @@ function modificar_materia(i){
         var elemento1 = form['new_gra'];
         var elemento2 = form['new_se'];
         var elemento3 = form['ma_id'];
-        var preg = elemento.value;
-        var preg1 = elemento1.value;
-        var preg2 = elemento2.value;
-        var datos = "new_ma="+preg+"&new_gra="+preg1+"&new_se="+preg2+"&ma_id="+elemento3.value;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {            
-            if (ajax.readyState==4 && ajax.status==200) 
-            {                       
-                alert(ajax.responseText);                
-            }
+        var pregunta = elemento.value;
+        var pregunta1 = elemento1.value;
+        var pregunta2 = elemento2.value;
+        var pregunta3 = elemento3.value;
+        if (pregunta =="") {
+            alert("ERROR : Llene el campo obligatorio del nombre de la materia!");
+        }else{
+            if (pregunta1 =="") {
+                alert("ERROR : Llene el campo obligatorio del grado al que pertenece la materia!");
+            }else{
+                if (pregunta2 == "") {
+                    alert("ERROR : Llene el campo obligatorio de la sección del grado al que pertenece la materia!");
+                }else{
+                    if (pregunta.length > 20) {
+                        alert("ERROR: La longitud del nombre de la materia excede el límite permitido!");
+                    }else{
+                        if (pregunta1.length >1) {
+                            alert("ERROR: La longitud del número del grado excede el límite permitido!");
+                        }else{
+                            if (isNumber(pregunta)) {
+                            alert("ERROR: El nombre de la materia no puede ser un número!");
+                        }else{
+                            if (isNumber(pregunta1)) {
+                                if (isNumber(pregunta2)) {
+                                    alert("ERROR: El nombre de la sección no puede ser numerica!");
+                                }else{
+                                    /////////////////////////////
+                                    var datos = "new_ma="+pregunta+"&new_gra="+pregunta1+"&new_se="+pregunta2+"&ma_id="+pregunta3;
+                                    ajax.open("POST",url,true);
+                                    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                                    ajax.onreadystatechange=function()
+                                    {            
+                                        if (ajax.readyState==4 && ajax.status==200) 
+                                        {                       
+                                            alert(ajax.responseText);                
+                                        }
             
+                                    }
+                                    ajax.send(datos);
+                                    ///////////////////////////
+                                }
+                            }else{
+                                alert("ERROR: El grado no puede tener letras!");
+                            }
+                        }
+                        }
+                    }
+                }
+            }
         }
-        ajax.send(datos);
     }
 }
 
@@ -376,17 +448,23 @@ function eliminar_materia(i){
         var form = document.forms['formMo'+i+''];
         var elemento = form['ma_id'];
         var pregu = elemento.value;
-        var datos = "ma_id="+pregu;
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {
-            if (ajax.readyState==4 && ajax.status==200) {
-                alert(ajax.responseText);
-            };
+        if (pregu == "") {
+            alert("ERROR: conflicto al intentar eliminar la materia!");
+        }else{
+            ////////
+            var datos = "ma_id="+pregu;
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function()
+            {
+                if (ajax.readyState==4 && ajax.status==200) {
+                    alert(ajax.responseText);
+                };
             
+            }
+            ajax.send(datos);
+            ////////
         }
-        ajax.send(datos);
     };
 }
 function modificar_seccion(i)

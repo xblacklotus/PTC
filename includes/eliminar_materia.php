@@ -6,7 +6,7 @@
         $id=$_POST['ma_id'];        
         if($id=="")
         {
-            echo "No hay seccion ingresada";
+            echo "ERROR: conflicto al intentar eliminar la materia!";
         }
         else
         {
@@ -14,11 +14,11 @@
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-                echo "eliminada";
+                echo "ADVERTENCIA: La materia se ha eliminado correctamente!";
             }
             else
             {
-                echo "error";
+                echo "Error: Error al intentar eliminar la materia!";
             }       
         }
          
