@@ -20,15 +20,15 @@
         echo '<td>'.$fila[1].'</td>';
         echo '<td>'.$fila[2].'</td>';
         
-        echo '<td><form name="form" method="post" action="perfiles.php">    
+        echo '<td><form name="form'.$i.'" method="post" action="perfiles.php">    
         <input class="bids" type="text" name="grado" value='.$fila[1].'>                                 
                                  <input class="bids red" type="text" name="m_id" value='.$fila[3].'>                                  
                                  <input class="bids" type="text" name="s_id" value='.$fila[4].'>
                                  <input class="bids" type="text" name="id_profe" value=1>
         <button type="submit" class="pill orange"  name="ele_perf" ><i>Elegir perfil</i></button>
-         <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria();">Ver notas</button>
+         <button type="submit" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria('.$i.');">Ver notas</button>
           </form></td> </tr>';  
-          $i++ ;
+          $i++ ;        
           //document.formulario.action= "hola.php";
     }               
     //<input class="bids" type="hidden" name="grado" value='.$fila[4].'>

@@ -95,10 +95,10 @@ function modi(name)
     form.submit();
 }   
 
-function notasMateria()
+function notasMateria(name)
 {
    alert("entro1");
-    var form = document.forms['form'];
+    var form = document.forms['form'+name];
     form.action= "../includes/notas_Materias.php";
     form.submit();
     alert("entro2");
