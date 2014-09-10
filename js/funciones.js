@@ -203,16 +203,20 @@ function ingresar_maestro()
     var resp=confirm("¿Esta seguro que desea ingresar este maestro");
     if (resp)
     {
+        
         //
         //le puse mute a todo por cierto
         //
         var ajax;
         //vaya aqui se crea la variable q contendra el "ajax"
         ajax=new XMLHttpRequest();
+       
         //Se supone q aqui le da el formato pero no le hagan caso
         var url= "../includes/ingresar_maestro.php" ;
+       
         //Aqui guardamos la variable de la pagina a llamar a ejecutarse
         var form = document.forms['forming'];
+        
         //aqui obtenes todo el "formulario"    
         var elemento = form['nombre_maestro'];
         var elemento2 = form['apellido_maestro'];
@@ -221,46 +225,52 @@ function ingresar_maestro()
         var preg =elemento.value;
         var preg2 =elemento2.value;
         var preg3 =elemento3.value;
-
+        
 
         if(preg =="" || preg2 =="" || preg3=="")
         {
             alert("No pueden haber espacios en blanco");
+            
         }
-        else if(!isNaN(preg) || !isNaN(preg1))
+        else if(!isNaN(preg) || !isNaN(preg2))
         {
-            alert("Hay campos que no tienen que ser numericos");
+          alert("Hay campos que no tienen que ser numericos");
+            
         }
-        else if(isNaN(preg2))
+        else if(!isNaN(preg2))
         {
             alert("El usuario tiene que ser numerico");
+             
         }
         else if(preg2<1)
         {
             alert("Usuario fuera de rango");
+             
             
         }
         else
         {
+           
             //y aqui ya pasas el valor a la variable para ajax
         var datos="nombre_maestro="+preg+"& apellido_maestro="+preg2+"& usuario="+preg3;
         
         //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
+        
         //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
         //No recuerdo para q era el true pero ahi lo dejan
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        
         //y esto es otra cosa q ahi la dejan
         //ajax.onreadystatechange se ejecuta cuando este listo el ajax
         ajax.onreadystatechange=function()
         {
+            
             //y se ejecuta lo de adentro cuando la accion ha sido realizada
           if (ajax.readyState==4 && ajax.status==200) 
-          {
-            //El estado 4 ya completo la accion
-            //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos  
-                           
+          {           
             alert(ajax.responseText);
+            document.location.href="mantenimiento_maestros.php";
                 
           };
         }
@@ -282,13 +292,11 @@ function modificar_maestro(i)
         var form = document.forms['formMo'+i+''];
         var elemento = form['nombre2'];
         var elemento1 = form['apellido2'];
-        var elemento2 = form['id_usuario2'];
-        var elemento3 = form['id_ma'];
+        var elemento2 = form['id_ma'];
         var preg = elemento.value;
         var preg1 = elemento1.value;
         var preg2 = elemento2.value;
-        var preg3 = elemento3.value;
-        if(preg =="" || preg2 =="" || preg3=="")
+        if(preg =="" || preg2 =="" )
         {
             alert("No pueden haber espacios en blanco");
         }
@@ -296,18 +304,10 @@ function modificar_maestro(i)
         {
             alert("Hay campos que no tienen que ser numericos");
         }
-        else if(isNaN(preg2))
-        {
-            alert("El usuario tiene que ser numerico");
-        }
-        else if(preg2<1)
-        {
-            alert("Usuario fuera de rango");
-            
-        }
+       
         else
         {
-            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_usuario2="+preg2+"&id_ma="+preg3;
+            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_ma="+preg2;
             alert(datos);
             ajax.open("POST",url,true);
             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -316,9 +316,9 @@ function modificar_maestro(i)
             {            
                 if (ajax.readyState==4 && ajax.status==200) 
                 {                       
-                    alert(ajax.responseText);                
+                    alert(ajax.responseText);    
+                    document.location.href="mantenimiento_maestros.php";            
                 }
-                
             }
             ajax.send(datos);
         }
@@ -342,6 +342,7 @@ function eliminar_maestro(i) {
         {
             if (ajax.readyState==4 && ajax.status==200) {
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_maestros.php";
             };
             
         }
@@ -417,11 +418,10 @@ function ingresar_perfiles()
                 //y se ejecuta lo de adentro cuando la accion ha sido realizada
               if (ajax.readyState==4 && ajax.status==200) 
               {
-                    if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                    {
+                   
                         alert(ajax.responseText);
                         document.location.href="mantenimiento_perfiles.php";
-                    }
+                    
                     
               };
             }
@@ -446,12 +446,12 @@ function modificar_perfiles(i)
         var url= "../includes/modificar_perfiles.php" ;
         
         //Aqui guardamos la variable de la pagina a llamar a ejecutarse
-        var form = document.forms['formMo'];
+        var form = document.forms['formMo'+i+''];
        // obtenes todo el "formulario"    
-        var elemento = form['descripcion2'];
-        var elemento2 = form['porcentaje2'];
+        var elemento = form['d2'];
+        var elemento2 = form['p2'];
         var elemento3 = form['id_materia2'];
-        var elemento4 = form['trimestre2'];
+        var elemento4 = form['t2'];
         var elemento5 = form['id_per'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
@@ -482,7 +482,7 @@ function modificar_perfiles(i)
         {
             
             //y aqui ya pasas el valor a la variable para ajax
-            var datos="descripcion="+preg+"& porcentaje="+preg2+"& metermateria="+preg3+"& metertri="+preg4+"& id_per="+preg5;
+            var datos="d2="+preg+"& p2="+preg2+"& id_materia2="+preg3+"& t2="+preg4+"& id_per="+preg5;
             
             //Aqui haces el arreglo para todos los datos q fueras a mandar
             ajax.open("POST",url,true);
@@ -499,13 +499,12 @@ function modificar_perfiles(i)
                 //y se ejecuta lo de adentro cuando la accion ha sido realizada
               if (ajax.readyState==4 && ajax.status==200) 
               {
-                    if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                    {
+                    
                         alert(ajax.responseText);
                         document.location.href="mantenimiento_perfiles.php";
-                    }
                     
-              };
+                    
+              }
             }
             ajax.send(datos);
         }
@@ -527,7 +526,10 @@ function eliminar_perfiles(i) {
         ajax.onreadystatechange=function()
         {
             if (ajax.readyState==4 && ajax.status==200) {
-                alert(ajax.responseText);
+               
+                        alert(ajax.responseText);
+                        document.location.href="mantenimiento_perfiles.php";
+                    
             };
             
         }
