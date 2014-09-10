@@ -81,6 +81,57 @@ if($_POST)
                 $filasi++;
         }        
         echo "</table></div>";
+        echo "<script type='text/javascript'>
+var tabla=[[
+";
+foreach ($titulos as $key => $value) 
+{   
+    if($key==sizeof($titulos)-1)
+    {
+      echo "'".$value."'";
+    }
+    else if($key<sizeof($titulos)-1)
+    {
+      echo "'".$value."',";
+    }
+
+
+}
+echo "],";
+$columnasj=0;
+//echo ($cantidad_perfiles);
+if($numperfil==1)
+{
+
+}
+  
+for($i=0;$i<$numperfil;$i++)
+{
+
+    echo "['".$nombres[$i]."',";
+    for($j=0;$j<$cantidad_perfiles;$j++)
+    {
+        echo "".$perfiles[$i][$j].",";
+    }
+    
+    if($i<$numperfil-1)
+    {
+      echo "".number_format((float)$promedios[$i], 2, '.', '')."],";
+    }
+    else
+    {
+      echo "".number_format((float)$promedios[$i], 2, '.', '')."]";
+    }
+    if($i<$numperfil-1)
+    {
+      //echo ",";
+    }
+    
+    
+}
+echo "];</script>";
+echo "<button type='button' onclick='javascript:exportar_excel(tabla,".($filasi+1).",".($cantidad_perfiles+2).");'>Descargar datos en archivo de excel</button>";
+echo "<div  id='prueba' style='display:none;'><a id='descarga' download='notas.xls' href='importar_excel.xls'>asfs</a></div>";
 
         echo '<div id="chartdiv" style="width: 100%; height: 400px;"></div>';
         $script='<script src="../amcharts/amcharts.js" type="text/javascript"></script>
@@ -137,57 +188,7 @@ for($i=0;$i<$cantidad_perfiles-1;$i++)
     }
     echo $letras[$ultcol+1].($i+2)."  - ".$promedios[$i]."<br>";
 }*/
-echo "<script type='text/javascript'>
-var tabla=[[
-";
-foreach ($titulos as $key => $value) 
-{   
-    if($key==sizeof($titulos)-1)
-    {
-      echo "'".$value."'";
-    }
-    else if($key<sizeof($titulos)-1)
-    {
-      echo "'".$value."',";
-    }
 
-
-}
-echo "],";
-$columnasj=0;
-//echo ($cantidad_perfiles);
-if($numperfil==1)
-{
-
-}
-  
-for($i=0;$i<$numperfil;$i++)
-{
-
-    echo "['".$nombres[$i]."',";
-    for($j=0;$j<$cantidad_perfiles;$j++)
-    {
-        echo "".$perfiles[$i][$j].",";
-    }
-    
-    if($i<$numperfil-1)
-    {
-      echo "".number_format((float)$promedios[$i], 2, '.', '')."],";
-    }
-    else
-    {
-      echo "".number_format((float)$promedios[$i], 2, '.', '')."]";
-    }
-    if($i<$numperfil-1)
-    {
-      //echo ",";
-    }
-    
-    
-}
-echo "];</script>";
-echo "<button type='button' onclick='javascript:exportar_excel(tabla,".($filasi+1).",".($cantidad_perfiles+2).");'>Descargar</button>";
-echo "<div  id='prueba' style='display:none;'><a id='descarga' download='notas.xls' href='importar_excel.xls'>asfs</a></div>";
 }
 
     

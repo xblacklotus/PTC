@@ -24,6 +24,9 @@
 		<li><a href="../pags/mantenimiento_materias.php">Materias</a></li>
 		<li><a href="../pags/mantenimiento_seccion.php">Sección</a></li>
 		<li><a href="../pags/mantenimiento_usuarios.php">Usuarios</a></li>
+
+		<li><a href="../pags/mantenimiento_alumnos.php">Usuarios</a></li>
+		<li><a href="../pags/mantenimiento_perfiles.php">Usuarios</a></li>
 		</ul>
 	</li>
 	<!--<<ul>
