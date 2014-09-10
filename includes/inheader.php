@@ -16,7 +16,7 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li id="primerli"><a href="../pags/perfiles.php">Perfiles</a></li>
+<li id="primerli"><a href="../pags/perfiles.php">Notas</a></li>
 <li><a href="../pags/notas.php">Ver notas por alumno</a></li>
 <li><a href=""><span class="icon" data-icon="A"></span>Mantenimientos</a>
 		<ul>
@@ -25,8 +25,8 @@
 		<li><a href="../pags/mantenimiento_seccion.php">Sección</a></li>
 		<li><a href="../pags/mantenimiento_usuarios.php">Usuarios</a></li>
 
-		<li><a href="../pags/mantenimiento_alumnos.php">Usuarios</a></li>
-		<li><a href="../pags/mantenimiento_perfiles.php">Usuarios</a></li>
+		<li><a href="../pags/mantenimiento_alumnos.php">Alumnos</a></li>
+		<li><a href="../pags/mantenimiento_perfiles.php">Perfiles</a></li>
 		</ul>
 	</li>
 	<!--<<ul>
