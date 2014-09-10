@@ -303,32 +303,6 @@ function eliminar_maestro(i) {
         ajax.send(datos);
     };
 }
-function ingresar_alumno()
-{
-    var resp = confirm("¿Estasseguro de ingresar este alumno?");
-    if (resp) {
-        var ajax;
-        ajax = new XMLHttpRequest();
-        var url = "../includes/ingresar_alumno.php";
-        var form = document.forms['formIng'];
-        var elemento = form['nombre'];
-        var elemento1 = form['apellido'];
-        var elemento2 = form['grad'];
-        var elemento3 = form['sec'];
-        var elemento4 = form['user']
-        var datos = "nombre="+elemento.value+"&apellido="+elemento1.value+"&grad="+elemento2.value+"&sec="+elemento3.value+"&user="+elemento4.value;
-
-        ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        ajax.onreadystatechange=function()
-        {
-            if (ajax.readyState==4 && ajax.status==200){
-                alert(ajax.responseText);
-            }
-        }
-        ajax.send(datos);
-    };
-}
 function combo(thelist, theinput)
 {
   theinput = document.getElementById(theinput);
@@ -584,7 +558,7 @@ function eliminar_seccion(i) {
     };
 }
 
-function ingresar_usuario()
+function ingresar_usuario(i)
 {
     var resp = confirm("¿Estasseguro de ingresar este usuario?");
     if (resp) {
@@ -619,7 +593,6 @@ function modificar_usuario(i)
         var elemento1 = form['id_usuario'];
         var preg = elemento.value;
         var preg1 = elemento1.value;
-        
         var datos = "contra="+preg+"&id_usuario="+preg1;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -645,6 +618,93 @@ function eliminar_usuario(i) {
         var elemento = form['id_usuario'];
         var pregu = elemento.value;
         var datos = "id_usuario="+pregu;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+            };
+            
+        }
+        ajax.send(datos);
+    };
+}
+function ingresar_alumno(i)
+{
+    var resp = confirm("¿Estasseguro de ingresar este alumno?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_alumno.php";
+        var form = document.forms['formIng'];
+        var elemento = form['nombre'];
+        var elemento1 = form['apellido'];
+        var elemento2= form['gradd'];
+        var elemento3= form['secc'];
+        var elemento4=form['userr'];
+        var preg = elemento.value;
+        var preg1  = elemento1.value;
+        var preg2 = elemento2.value;
+        var preg3 = elemento3.value;
+        var preg4 = elemento4.value;
+        var datos = "nombre="+preg+"&apellido="+preg1+"&gradd="+preg2+"&secc="+preg3+"&userr="+preg4;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200){
+                alert(ajax.responseText);
+            }
+        }
+        ajax.send(datos);
+    };
+}
+function modificar_alumno(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar este alumno?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_alumno.php";
+        var form = document.forms['formMo'+i];
+        var elemento = form['name'];
+        var elemento1 = form['nick'];
+        var elemento2= form['grade'];
+        var elemento3= form['section'];
+        var elemento5=form['id_alu'];
+        alert(elemento5);
+        var preg = elemento.value;
+        var preg1  = elemento1.value;
+        var preg2 = elemento2.value;
+        var preg3 = elemento3.value;
+        var preg5 = elemento5.value;
+        var datos = "nombre="+preg+"&apellido="+preg1+"&gradd="+preg2+"&secc="+preg3+"&id="+preg5;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        alert(ajax);
+        ajax.onreadystatechange=function()
+        {            
+            if (ajax.readyState==4 && ajax.status==200) 
+            {                       
+                alert(ajax.responseText);                
+            }
+            
+        }
+        ajax.send(datos);
+    }
+}
+function eliminar_alumno(i) {
+    var resp = confirm("¿Estas seguro de eliminar este alumno?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_alumno.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['id_alu'];
+        var pregu = elemento.value;
+        var datos = "id_alu="+pregu;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()

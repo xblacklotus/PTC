@@ -8,8 +8,11 @@
 <label>Apellido :</label>
 <input type="text" id="apellido"></input>
 <label>Grado</label>
-<input type="text" id="grad"></input>
-
+<select id='gradd' >
+<option>7</option>
+<option>8</option>
+<option>9</option>
+</select>
 <?php
 $id_alumnos=array();
 $i=0;
@@ -19,7 +22,7 @@ $peticion= "select  u.id from usuario as u, alumno as al where u.id = al.id_usua
             {
               while($fila=mysqli_fetch_array($resultado)){
               	array_push($id_alumnos, $fila["id"]);
-              	echo $id_alumnos[$i];
+              	//echo $id_alumnos[$i];
               	$i++;
               	
               }
@@ -33,7 +36,7 @@ $peticion= "select  u.id from usuario as u, profesor as pr where u.id = pr.id_us
             {
               while($fila=mysqli_fetch_array($resultado)){
               	array_push($id_profe, $fila["id"]);
-              	echo $id_profe[$i];
+              	//echo $id_profe[$i];
               	$i++;
               }
             } 
@@ -47,7 +50,7 @@ $peticion= "select  id from usuario";
             {
               while($fila=mysqli_fetch_array($resultado)){
               	array_push($id_comparacion, $fila["id"]);
-              	echo $id_comparacion[$i];
+              	//echo $id_comparacion[$i];
               	$i++;
               }
             }
@@ -67,64 +70,116 @@ $peticion= "select  id from usuario";
             	for ($j=0; $j < $con3; $j++) { 
             	   if($id_comparacion[$j]==$id_profe[$i]){
             	   	$id_comparacion[$j]=-1;
- 					echo "gyf".$id_comparacion[$j];
+ 					//echo "gyf".$id_comparacion[$j];
             	   }
             	}
             }
-            echo ".........";
-            echo "<input type='text' list='browsers' >
-                 <datalist id='browsers' >";
+            echo "Usuario";
+            echo "
+                 <select id='userr' name='userr' >";
             for ($i=0; $i <$con3 ; $i++) {             	
             	if($id_comparacion[$i]>0){
                  echo "
                  <option> ".$id_comparacion[$i]."</option>";
             	}
             }
-         echo "</datalist>";
+         echo "</select>";
 
 ?>
 <?php
 $id_s=array();
 $letra=array();
 $i=0;
+echo "Seccion :";
 $peticion= "select id from seccion";
 $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
               while($fila=mysqli_fetch_array($resultado)){
               	array_push($id_s, $fila["id"]);
-              	echo $id_s[$i];
+              	//echo $id_s[$i];
               	$i++;
               }
-            }  
-
-   $i=0;
-   $peticion= "select nombre from seccion";
-$resultado=mysqli_query($conexion,$peticion);
-            if($resultado)
-            {
-              while($fila=mysqli_fetch_array($resultado)){
-              	array_push($letra, $fila["nombre"]);
-              	echo $letra[$i];
-              	$i++;
-              }
-            }
+            } 
               
 
 ?>
+<select name='secc' >
+<?php
+   $secciones="";
+   $peticion= "select * from seccion";
+   $resultado=mysqli_query($conexion,$peticion);
+     while ($rsSecc = mysqli_fetch_array($resultado)) {
+			echo '<option>'.$rsSecc['nombre'].'</option>';
 
-
-<br>
-<input type="text" list="browsers" >
-<datalist id="browsers" >
-   <option> 7
-   <option> 8
-   <option> 9
-</datalist>
-
-<label>Seccion</label>
-<input type="text" id="sec"></input>
-<label>Usuario</label>
-<input type="text" id="user"></input>
+			$secciones=$secciones."<option>".$rsSecc['nombre']."</option>";
+		}
+?>
+</select>
 <button type="button" class="pill orange" onclick="javascript:ingresar_alumno();"><i class="icon-plus-sign">Ingresar</i></button>
 </form>
+<?php
+			$consulta = 'select a.*,s.nombre as seccion FROM alumno as a,seccion as s
+where a.id_seccion=s.id';
+			$res = mysqli_query($conexion,$consulta);
+		?>
+		<table>
+			<th></th>
+			<?php $i = 0; 
+				while ($rsSecc = mysqli_fetch_array($res)) { 
+			?>
+	
+			<tr>
+			
+				<td>
+				<form name="formMo<?php echo $i ?>" method="post">
+				<?php 
+					$grados;
+
+					if($rsSecc['grado']==7)
+					{
+						$grados='<select id="gradd" name="grade">
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+								</select>';
+					}
+					else if($rsSecc['grado']==8)
+					{
+						$grados='<select id="gradd" name="grade">
+									<option>8</option>
+									<option>7</option>
+									<option>9</option>
+								</select>';
+					}
+					else 
+					{
+						$grados='<select id="gradd" name="grade">
+									<option>9</option>
+									<option>7</option>
+									<option>8</option>
+								</select>';
+					}
+				echo '<input type="text" name="name" value="'.$rsSecc['nombres'].'"></input> 
+				<input class="bids" type="hidden" name="id_alu" value='.$rsSecc['id'].'>
+				<input type="text" name="nick" value="'.$rsSecc['apellidos'].'"></input>				
+				'.$grados.'
+				<select id="section'.$i.'" name="section" >
+				'.$secciones.'
+				</select>
+				<button type="button" class="pill orange" onclick="javascript:modificar_alumno('.$i.');" >
+				<i class="icon-plus-sign">Modificar</i></button>
+				<button type="button" class="pill orange" onclick="javascript:eliminar_alumno('.$i.');">
+				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> 
+				</form>
+				</td>
+				<?php  
+				echo '<script>document.getElementById("section'.($i-1).'").value="'.$rsSecc['seccion'].'"; </script>';
+				?>
+			</tr>
+			
+			<?php  }?>
+		</table>
+
+
+<?php include("../includes/footer.php");?>
