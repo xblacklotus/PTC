@@ -417,11 +417,10 @@ function ingresar_perfiles()
                 //y se ejecuta lo de adentro cuando la accion ha sido realizada
               if (ajax.readyState==4 && ajax.status==200) 
               {
-                    if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                    {
+                   
                         alert(ajax.responseText);
                         document.location.href="mantenimiento_perfiles.php";
-                    }
+                    
                     
               };
             }
@@ -446,12 +445,12 @@ function modificar_perfiles(i)
         var url= "../includes/modificar_perfiles.php" ;
         
         //Aqui guardamos la variable de la pagina a llamar a ejecutarse
-        var form = document.forms['formMo'];
+        var form = document.forms['formMo'+i+''];
        // obtenes todo el "formulario"    
-        var elemento = form['descripcion2'];
-        var elemento2 = form['porcentaje2'];
+        var elemento = form['d2'];
+        var elemento2 = form['p2'];
         var elemento3 = form['id_materia2'];
-        var elemento4 = form['trimestre2'];
+        var elemento4 = form['t2'];
         var elemento5 = form['id_per'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
@@ -482,7 +481,7 @@ function modificar_perfiles(i)
         {
             
             //y aqui ya pasas el valor a la variable para ajax
-            var datos="descripcion="+preg+"& porcentaje="+preg2+"& metermateria="+preg3+"& metertri="+preg4+"& id_per="+preg5;
+            var datos="d2="+preg+"& p2="+preg2+"& id_materia2="+preg3+"& t2="+preg4+"& id_per="+preg5;
             
             //Aqui haces el arreglo para todos los datos q fueras a mandar
             ajax.open("POST",url,true);
@@ -499,13 +498,12 @@ function modificar_perfiles(i)
                 //y se ejecuta lo de adentro cuando la accion ha sido realizada
               if (ajax.readyState==4 && ajax.status==200) 
               {
-                    if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                    {
+                    
                         alert(ajax.responseText);
                         document.location.href="mantenimiento_perfiles.php";
-                    }
                     
-              };
+                    
+              }
             }
             ajax.send(datos);
         }
@@ -527,7 +525,10 @@ function eliminar_perfiles(i) {
         ajax.onreadystatechange=function()
         {
             if (ajax.readyState==4 && ajax.status==200) {
-                alert(ajax.responseText);
+               
+                        alert(ajax.responseText);
+                        document.location.href="mantenimiento_perfiles.php";
+                    
             };
             
         }

@@ -33,6 +33,7 @@
             $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
             values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
             $resultado=mysqli_query($conexion,$peticion);
+            echo $resultado;
             if($resultado)
             {
                 echo "Guardado con exito";
