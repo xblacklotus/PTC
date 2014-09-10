@@ -563,7 +563,7 @@ function ingresar_alumno()
         ajax.send(datos);
     };
 }
->>>>>>> origin/master
+
 function combo(thelist, theinput)
 {
   theinput = document.getElementById(theinput);

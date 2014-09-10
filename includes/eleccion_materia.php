@@ -1,7 +1,7 @@
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
-               where p.id=id_profesor and id_seccion=s.id and p.id=12";
+               where p.id=id_profesor and id_seccion=s.id and p.id=1";
     echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px">
     <thead><tr>
         <th>Materia</th>
