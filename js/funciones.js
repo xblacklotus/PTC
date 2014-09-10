@@ -509,6 +509,7 @@ function modificar_perfiles(i)
             }
             ajax.send(datos);
         }
+    }
 }
 
 function eliminar_perfiles(i) {
