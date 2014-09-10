@@ -137,8 +137,6 @@ for($i=0;$i<$cantidad_perfiles-1;$i++)
     }
     echo $letras[$ultcol+1].($i+2)."  - ".$promedios[$i]."<br>";
 }*/
-echo "cantidad_perfiles=".$cantidad_perfiles;
-echo "numperfil=".$numperfil;
 echo "<script type='text/javascript'>
 var tabla=[[
 ";
@@ -172,7 +170,7 @@ for($i=0;$i<$numperfil;$i++)
         echo "".$perfiles[$i][$j].",";
     }
     
-    if($i<$cantidad_perfiles-1)
+    if($i<$numperfil-1)
     {
       echo "".number_format((float)$promedios[$i], 2, '.', '')."],";
     }
@@ -182,14 +180,14 @@ for($i=0;$i<$numperfil;$i++)
     }
     if($i<$numperfil-1)
     {
-      echo ",";
+      //echo ",";
     }
     
     
 }
 echo "];</script>";
 echo "<button type='button' onclick='javascript:exportar_excel(tabla,".($filasi+1).",".($cantidad_perfiles+2).");'>Descargar</button>";
-echo "<div  id='prueba'><a id='descarga' download='importar_excel.xls' href='importar_excel.xls'>asfs</a></div>";
+echo "<div  id='prueba' style='display:none;'><a id='descarga' download='notas.xls' href='importar_excel.xls'>asfs</a></div>";
 }
 
     

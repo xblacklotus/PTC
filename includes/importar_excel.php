@@ -57,7 +57,7 @@ if(isset($_POST['tabla']) && $_POST['tabla']!="undefined" )
 	$columnas=$_POST['columnas'];
 	$tabla=explode(",",$_POST['tabla']);	
 	$letras=array("A","B","C","D","E","F","G","H");
-
+	
 	// Add some data
 	$k=0;
 	for($i=0;$i<intval($filas);$i++)
@@ -65,7 +65,7 @@ if(isset($_POST['tabla']) && $_POST['tabla']!="undefined" )
 	    for($j=0;$j<intval($columnas);$j++)
 	    {
 	        $objPHPExcel->setActiveSheetIndex(0)
-	            ->setCellValue($letras[$j].($i), $tabla[$k]);
+	            ->setCellValue($letras[$j].($i+1), $tabla[$k]);	            
 	        $k++;
 	    }        
 	}
@@ -86,11 +86,12 @@ if(isset($_POST['tabla']) && $_POST['tabla']!="undefined" )
 
 	if (file_exists($file)) {
 	    echo "1";
+
 	}
 	else
 	{
 		echo file_exists($file);
-	var_dump($tabla);
+		var_dump($tabla);
 	/*echo date('H:i:s') , " File written to " , str_replace('.php', '.xls', pathinfo(__FILE__, PATHINFO_BASENAME));
 	*/
 	}
