@@ -58,7 +58,10 @@ $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('C1', 'Hello')
             ->setCellValue('D2', 'world!');
 
-
+// Miscellaneous glyphs, UTF-8
+$objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A4', 'Miscellaneous glyphs')
+            ->setCellValue('A5', 'éàèùâêîôûëïüÿäöüç');
 
 // Rename worksheet
 $objPHPExcel->getActiveSheet()->setTitle('Simple');

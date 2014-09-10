@@ -1,3 +1,28 @@
+function exportar_excel(tabla,filas,columnas)
+{
+    var ajax;
+    ajax=new XMLHttpRequest();
+    var url= "importar_excel.php" ;    
+    ajax.open("POST",url,true);
+    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
+    ajax.onreadystatechange=function()
+    {
+      if (ajax.readyState==4 && ajax.status==200){        
+        //alert(ajax.responseText);
+        
+        if(ajax.responseText=="1")
+        {
+            document.getElementById("descarga").click();            
+        }
+        else{
+            alert("no entra"+ajax.responseText);
+            document.getElementById("prueba").innerHTML=ajax.responseText;
+
+        }
+      }
+    }    
+    ajax.send("tabla="+tabla+"&filas="+filas+"&columnas="+columnas);
+}
 function enviar(name)
 {    
     var resp=confirm("¿Esta seguro que desea eliminar este  perfil?");
