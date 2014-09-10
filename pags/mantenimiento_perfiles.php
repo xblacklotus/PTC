@@ -50,20 +50,25 @@
     	</tr></thead>
 			<th></th>
 			<?php $i = 0; 
-				while ($rsSecc = mysqli_fetch_array($res)) { 
+				while ($rsPer = mysqli_fetch_array($res)) { 
+					$sql="select m.nombre from materias as m, perfiles as  p
+					where m.id=p.id_materia and p.id_materia=".$rsPer['id_materia']."";
+					$re = mysqli_query($conexion,$sql);
+					$fila=mysqli_fetch_array($re);
 			?>
 	
 			<tr>
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="descripcion2" value="'.$rsSecc['descripcion'].'"></input>';?></td>
-				<td><?php echo'	<input type="text" id="porcentaje2" value="'.$rsSecc['porcentaje'].'"></input> ';?></td>
-				<td><?php echo' <input type="text" id= "id_materia" value="'.$rsSecc['id_materia'].'"></input> ';?></td>
+				<?php echo '<input type="text" id="descripcion2" value="'.$rsPer['descripcion'].'"></input>';?></td>
+				<td><?php echo'	<input type="text" id="porcentaje2" value="'.$rsPer['porcentaje'].'"></input> ';?></td>
+				<td><?php echo' <input type="text" id= "id_materia2" value="'.$fila[0].'"></input> ';?></td>
 				<td>
-				<?php echo '<input type="text" id="trimestre2" value='.$rsSecc['trimestre'].'> </input>';?></td>
+				<?php echo '<input type="text" id="trimestre2" value='.$rsPer['trimestre'].'> </input>';?></td>
 				<td>
 				<?php echo '	
+				<input class="bids" type="hidden" name="id_per" value='.$rsPer['id'].'> </input>
 				<button type="button" class="pill orange" onclick="javascript:modificar_perfiles('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_perfiles('.$i.');">

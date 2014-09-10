@@ -5,9 +5,10 @@
     {
         //Validar aqui
 
-        $descripcion=$_POST["descripcion"];
-        $porcentaje=$_POST["porcentaje"];
-        $nombre=$_POST["metermateria"];
+        $descripcion=$_POST["descripcion2"];
+        $porcentaje=$_POST["porcentaje2"];
+        $nombre=$_POST["id_materia2"];
+        $id=$_POST["id_per"];
         $consulta = "select id from materias where nombre = '".$nombre."'";
                                     $res = mysqli_query($conexion,$consulta);
                                     $fila = mysqli_fetch_array($res);
@@ -30,12 +31,12 @@
         else
         {
 
-            $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
-            values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
+            $peticion= "update perfiles set descripcion='".$descripcion."', porcentaje='".$porcentaje."',id_materia='".$id_materia."'
+            ,trimestre='".$trimestre."' where id=".$id;
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-                echo "Guardado con exito";
+                echo "Modificado con exito";
             }
             else
             {
