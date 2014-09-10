@@ -346,7 +346,7 @@ function ingresar_perfiles()
         //aqui obtenes todo el "formulario"    
         var elemento = form['descripcion'];
         var elemento2 = form['porcentaje'];
-        var elemento3 = form['materias'];
+        var elemento3 = form['metermateria'];
         var elemento4 = form['metertri'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
@@ -375,7 +375,7 @@ function ingresar_perfiles()
         else
         {
             //y aqui ya pasas el valor a la variable para ajax
-        var datos="descripcion="+preg+"& porcentaje="+preg2+"& materias="+preg3+"& metertri="+preg4;
+        var datos="descripcion="+preg+"& porcentaje="+preg2+"& metermateria="+preg3+"& metertri="+preg4;
         
         //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
@@ -389,10 +389,13 @@ function ingresar_perfiles()
             //y se ejecuta lo de adentro cuando la accion ha sido realizada
           if (ajax.readyState==4 && ajax.status==200) 
           {
-            //El estado 4 ya completo la accion
-            //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos  
+            if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
+            {
+                alert(ajax.responseText);
+                document.location.href="mantenimiento_perfiles.php";
+            }
                            
-            alert(ajax.responseText);
+            
                 
           };
         }

@@ -6,7 +6,8 @@
 
         $descripcion=$_POST["descripcion"];
         $porcentaje=$_POST["porcentaje"];
-        $materia=$_POST["materias"];
+        $materia=$_POST["metermateria"];
+        echo "materia".$materia;
         $trimestre=$_POST["metertri"];
         //echo "Nombre ".$nombre_maestro;
           //  echo "Apellidos ".$apellido_maestro;

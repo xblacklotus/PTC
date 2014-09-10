@@ -18,7 +18,15 @@
 			
 			
 		?>
-		<table>
+		<br><br>
+		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+			<thead><tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Usuarios</th>
+        <th>Accion</th>
+        
+    	</tr></thead>
 			<th></th>
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
@@ -28,10 +36,10 @@
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="nombre2" value="'.$rsSecc['nombres'].'"></input> 
-				<input type="text" id="apellido2" value="'.$rsSecc['apellidos'].'"></input> 
-				<input type="text" id= "id_usuario2" value="'.$rsSecc['id_usuario'].'"></input> 
-				<input class="bids" type="hidden" name="id_ma" value='.$rsSecc['id'].'> </input>
+				<?php echo '<input type="text" id="nombre2" value="'.$rsSecc['nombres'].'"></input> ';?></td> 
+				<td><?php echo '<input type="text" id="apellido2" value="'.$rsSecc['apellidos'].'"></input> ';?></td>
+				<td><?php echo '<input type="text" id= "id_usuario2" value="'.$rsSecc['id_usuario'].'"></input> ';?></td>
+				<td><?php echo '<input class="bids" type="hidden" name="id_ma" value='.$rsSecc['id'].'> </input>
 				<button type="button" class="pill orange" onclick="javascript:modificar_maestro('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_maestro('.$i.');">

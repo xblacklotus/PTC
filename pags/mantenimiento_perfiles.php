@@ -39,7 +39,15 @@
 			
 			
 		?>
-		<table>
+		<br><br>
+		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+			<thead><tr>
+        <th>Descripcion</th>
+        <th>Porcentaje</th>
+        <th>Sección</th>
+        <th>Trimestre</th>
+        <th>Acción</th>
+    	</tr></thead>
 			<th></th>
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
@@ -49,10 +57,13 @@
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="descripcion2" value="'.$rsSecc['descripcion'].'"></input> 
-				<input type="text" id="porcentaje2" value="'.$rsSecc['porcentaje'].'"></input> 
-				<input type="text" id= "id_materia" value="'.$rsSecc['id_materia'].'"></input> 
-				<input type="text" id="trimestre2" value='.$rsSecc['trimestre'].'> </input>
+				<?php echo '<input type="text" id="descripcion2" value="'.$rsSecc['descripcion'].'"></input>';?></td>
+				<td><?php echo'	<input type="text" id="porcentaje2" value="'.$rsSecc['porcentaje'].'"></input> ';?></td>
+				<td><?php echo' <input type="text" id= "id_materia" value="'.$rsSecc['id_materia'].'"></input> ';?></td>
+				<td>
+				<?php echo '<input type="text" id="trimestre2" value='.$rsSecc['trimestre'].'> </input>';?></td>
+				<td>
+				<?php echo '	
 				<button type="button" class="pill orange" onclick="javascript:modificar_perfiles('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_perfiles('.$i.');">
