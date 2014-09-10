@@ -1,9 +1,9 @@
 <?php include("../includes/header2.php");?>
 
 
-<div  class="col_12 column">
+
 	<CENTER><h1>ALUMNOS</h1></CENTER>
-	<form name="form" method="post" action="index.php" class="vertical">
+	<form name="form" method="post" action="notas.php" class="vertical">
 		<fieldset>
 			<legend>Identificación Requerida</legend>
 			<!-- Placeholder Text -->
@@ -17,8 +17,6 @@
 		</fieldset>
 	</form> 
 	
-
-</div>
 
 
 <?php include("../includes/footer2.php");?>             
