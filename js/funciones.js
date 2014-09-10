@@ -934,8 +934,7 @@ function modificar_alumno(i)
         var elemento1 = form['nick'];
         var elemento2= form['grade'];
         var elemento3= form['section'];
-        var elemento5=form['id_alu'];
-        alert(elemento5);
+        var elemento5=form['id_alu'];        
         var preg = elemento.value;
         var preg1  = elemento1.value;
         var preg2 = elemento2.value;

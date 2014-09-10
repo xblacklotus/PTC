@@ -8,6 +8,19 @@
         $sec=$_POST['secc']; 
         $id=$_POST['id'];
 
+
+        $pet1="select * from seccion";
+        $res1=mysqli_query($conexion,$pet1);
+        while ($fil=mysqli_fetch_array($res1))
+        {
+            if($sec==$fil['nombre'])
+            {
+                $sec=$fil['id'];
+            }
+        }
+
+
+
 				$peticion= "update alumno set nombres ='".$nombre."',apellidos='".$apellido."',grado='".$grado."',id_seccion='".$sec."'where id=".$id;
             		$resultado=mysqli_query($conexion,$peticion);
            			if($resultado)
