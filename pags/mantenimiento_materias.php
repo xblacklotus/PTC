@@ -6,7 +6,7 @@
 /**Agregar materias**/
 <form name="form" method="post">
 <label>Nombre de la materia: </label>
-<input type="text" id="nombre_materia"></input>
+<input type="text" id="nombre_materia" required></input>
 <label>Grado :</label>
 <input class="bids" type="hidden" name="inputgra" id="inputgra"/>
 <select contenteditable="false" id="grados" onchange="combo(this,'inputgra')">

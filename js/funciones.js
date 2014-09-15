@@ -979,3 +979,145 @@ function eliminar_alumno(i) {
         ajax.send(datos);
     };
 }
+
+function ingresar_anuncio(){
+    var resp = confirm("¿Esta seguro de agregar este anuncio?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_anuncio.php";
+        var form = document.forms['form'];
+        var elemento = form['prof'];
+        var elemento1 = form['anuncio'];
+        var elemento2 = form['mat'];
+        var pregunta = elemento.value;
+        var pregunta1 = elemento1.value;
+        var pregunta2 = elemento2.value;
+        if (pregunta == "") {
+            alert("ERROR : No se ha encontrado el identificador del profesor!");
+        }else{
+            if (pregunta1 == "") {
+                alert("ERROR : El anuncio no puede estar vacío!");
+            }else{
+                if (pregunta2 == "") {
+                    alert("ERROR : No se ha encontrado el identificador de la materia!");
+                }else{
+                    if (isNumber(pregunta)) {
+                        if (isNumber(pregunta2)) {
+                            alert("ERROR : No se reconoce el valor del identificador de la materia!");
+                        }else{
+                            if (pregunta1.length > 250) {
+                                alert("ERROR : La longitud del anuncio excede el límite permitido!");
+                            }else{
+                            ///////////////////////////
+                            var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2;
+                            ajax.open("POST",url,true);
+                            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                            ajax.onreadystatechange = function()
+                            {
+                                
+                                if (ajax.readyState == 4 && ajax.status == 200) {
+                                    if (ajax.responseText=="ADVERTENCIA: El anuncio se ha guardado correctamente!") {
+                                        alert(ajax.responseText);
+                                        document.location.href="mantenimiento_anuncios.php";
+                                    }
+                                    
+                                }
+                            }
+                            ajax.send(datos);
+                            ///////////////////////////
+                            }
+                        }
+                    }else{
+                        alert("ERROR : No se reconoce el valor del identificador del profesor!");
+                    }
+                }
+            }
+        }
+    }
+}
+
+function modificar_anuncio(i) {
+    var resp = confirm("¿Esta seguro que desea modificar el anuncio?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url ="../includes/modificar_anuncio.php";
+        var form = document.forms['formAn'+i+''];
+        var elemento = form['new_anu'];
+        var elemento1 = form['an_id'];
+        var pregunta = elemento.value;
+        var pregunta1 = elemento1.value;
+        if (pregunta == "") {
+            alert("ERROR : No se puede guardar un anuncio vacío!");
+        }else{
+            if (pregunta1 == "") {
+                alert("ERROR : No se puede encontrar el valor del ID del anuncio!");
+            }else{
+                if (isNumber(pregunta1)) {
+                    if (pregunta.length > 250) {
+                        alert("ERROR : Se excede la longitud máxima de carácteres en el anuncio!");
+                    }else{
+                        ///////////////
+                        var datos = "new_anu="+pregunta+"&id="+pregunta1;
+                        ajax.open("POST",url,true);
+                                    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                                    ajax.onreadystatechange=function()
+                                    {            
+                                        if (ajax.readyState==4 && ajax.status==200) 
+                                        {                       
+
+                                            if(ajax.responseText =="ADVERTENCIA: El anuncio se ha modificado correctamente!")
+                                            {
+                                                alert(ajax.responseText);
+                                                document.location.href="mantenimiento_anuncios.php";
+                                            }
+                                            
+                                        }
+            
+                                    }
+                                    ajax.send(datos);
+                        ///////////////
+                    }
+                }else{
+                    alert("ERROR : No se puede identificar el valor del ID del anuncio!");
+                }
+            }
+        }
+    };
+}
+
+function eliminar_anuncio(i) {
+    var resp = confirm("¿Estas seguro de eliminar este anuncio?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_anuncio.php";
+        var form = document.forms['formAn'+i+''];
+        var elemento = form['an_id'];
+        var pregunta = elemento.value;
+        if (pregunta == "") {
+            alert("ERROR : No se puede reconocer el identificador del anuncio!");
+        }else{
+            if (isNumber(pregunta)) {
+                ///////////////////////////
+                var datos = "an_id="+pregunta;
+                ajax.open("POST",url,true);
+                ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                ajax.onreadystatechange=function(){
+                    if (ajax.readyState == 4 && ajax.status == 200) {
+                        if (ajax.responseText="ADVERTENCIA: El anuncio se ha eliminado correctamente!") {
+                            alert(ajax.responseText);
+                            document.location.href="mantenimiento_anuncios.php";
+                        }
+                        
+                    }
+                }
+                ajax.send(datos);
+                ///////////////////////////
+            }else{
+                alert("ERROR : Conflicto al eliminar el ID del anuncio!");
+            }
+        }
+    }
+}

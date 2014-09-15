@@ -5,6 +5,16 @@
 		$nombre_materia = $_POST['nombre_materia'];
 		$grado = $_POST['grados'];
 		$seccion = $_POST['secciones'];
+		/////////
+		$consulta1 = "select * from materias";
+		$resp = mysqli_query($conexion,$consulta1);
+		while ($rsCon = mysqli_fetch_array($resp)) {
+			if ($nombre_materia == $rsCon['nombre']) {
+				$con_nombre = $rsCon['nombre'];
+				$con_grado = $rsCon['grado'];
+				$con_seccion = $rsCon['id_seccion'];
+			}
+		}
 		//Validaciónn
 		if ($nombre_materia == "") {
 			echo "ERROR : Llene el campo obligatorio del nombre de la materia!";
@@ -22,9 +32,6 @@
 							echo "ERROR: El nombre de la materia no puede ser un número!";
 						}else{
 							if (is_numeric($grado)) {
-								//if (is_numeric($seccion){
-									//echo "ERROR: El nombre de la sección no puede ser numerica!";
-								//}else{
 									//////////////////////////////////////////
 									//Consulta para determinar el id de la sección
 									$pet = "select id from seccion where nombre = '".$seccion."'";
@@ -32,20 +39,22 @@
 									$fila = mysqli_fetch_array($res);
 									$id_seccion = $fila[0];
 									//
-									$sql ="insert into materias(nombre,grado,id_profesor,id_seccion)
-									values('".$nombre_materia."','".$grado."','".$id_profesor."','".$id_seccion."')";
-									$resultado = mysqli_query($conexion,$sql);
-									if ($resultado) {
-										echo "ADVERTENCIA: La materia se ha guardado correctamente!";
+									if ($con_grado == $grado && $con_seccion == $id_seccion) {
+										echo "ERROR: La sección que intenta ingresar ya existe para este grado y sección!";
 									}else{
-										echo "Error: Error al intentar guardar la materia!";
-										//echo "Nombre materia: ".$nombre_materia;
-										//echo "Grado :".$grado;
-										//echo "Id profesor :".$id_profesor;
-										//echo "Id Seccion :".$id_seccion;
+										$sql ="insert into materias(nombre,grado,id_profesor,id_seccion)
+										values('".$nombre_materia."','".$grado."','".$id_profesor."','".$id_seccion."')";
+										$resultado = mysqli_query($conexion,$sql);
+										if ($resultado) {
+											echo "ADVERTENCIA: La materia se ha guardado correctamente!";
+										}else{
+											echo "Error: Error al intentar guardar la materia!";
+											//echo "Nombre materia: ".$nombre_materia;
+											//echo "Grado :".$grado;
+											//echo "Id profesor :".$id_profesor;
+											//echo "Id Seccion :".$id_seccion;
+										}	
 									}
-									/////////////////////////////////////////
-								//}
 							}else{
 								echo "ERROR: El grado no puede tener letras!";
 							}
