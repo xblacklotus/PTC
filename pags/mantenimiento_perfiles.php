@@ -15,7 +15,7 @@
 		$sql = "select * from materias";
 		$res = mysqli_query($conexion,$sql);
 		while ($rsSecc = mysqli_fetch_array($res)) {
-			echo '<option>'.$rsSecc['nombre'].'</option>';
+			echo '<option>'.$rsSecc['nombre'].','.$rsSecc['grado'].'°</option>';
 		}
 
 	?>

@@ -104,12 +104,10 @@ function ingresar_notas()
                     {
                         document.location.href="perfiles.php";
                     }
-                }
-                
+                }                
             }
             ajax.send(datos);
-        }
-        
+        }        
     }
 }
 
