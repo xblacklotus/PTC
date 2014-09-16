@@ -177,9 +177,12 @@ where a.id_seccion=s.id';
 				echo '<script>document.getElementById("section'.($i-1).'").value="'.$rsSecc['seccion'].'"; </script>';
 				?>
 			</tr>
-			
+			   
 			<?php  }?>
 		</table>
-
+<?php
+   <form name="formomito" method="post">
+   </form>
+ ?>
 
 <?php include("../includes/footer.php");?>
