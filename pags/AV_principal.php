@@ -64,27 +64,22 @@
         </div>
     </header>
     <aside>
-    <div id="block">
-          <h3>Nombre Alumno</h3>
-          <?php
-           echo $nombres." ".$apellidos;
-          ?>
-          <br>
-          <ul>
-            <h4>Año cursado:</h4><br>
-            <?php
-                echo $grado;
-            ?>
-            <h4>Sección: </h4><br>
-            <?php
-                echo $seccion;
-            ?>
-            <h4>Número de lista</h4><br>
-          </ul>
+    <form name="formAl" method="post" id="block">
+            <h5>Nombre Alumno</h5>
+            <?php echo '<label>'.$nombres.'</label>';  ?>
+            <br>
+            <h5>Apellido Alumno</h5>
+            <?php echo '<label>'.$apellidos.'</label>';  ?>
+            <br>
+            <h5>Año cursado</h5>
+            <?php echo '<label>'.$grado.'</label>';  ?>
+            <br>
+            <h5>Sección: </h5>
+            <?php echo '<label>'.$seccion.'</label>';  ?>
           <br><br>
           <hr>
             <h4 id="Log">Log out</h4>
-    </div>
+    </form>
     <section id="Main">
         <h2>PORTAL DEL ESTUDIANTE</h2>
         <div id="Agen">
@@ -100,6 +95,28 @@
                 </optgroup>
             </select>
         </div>
+        <!--Aqui esta el includes de anuncios-->
+        <form>
+        <div id="Anuncio">
+            <h3>Anuncios</h3>
+            <?php
+                $i = 0;
+                $consulta = "select * from anuncios";
+                $res = mysqli_query($conexion,$consulta);
+                while ($resAnu = mysqli_fetch_array($res)) {
+                    
+            ?>
+                <select name="Anuncios" size="4" style="height: 140px; width: 580px; margin-left: 10px;">
+                <optgroup label="Anuncios">
+                <?php
+                    echo '<option>'.$resAnu['anuncio'].'</option>';
+                ?>
+                    </optgroup>
+                <?php  $i++;}?>
+                </select>
+        </div>
+        </form>
+        <!---->
     </section>
 </aside>
 <?php include("../includes/footer2.php");
