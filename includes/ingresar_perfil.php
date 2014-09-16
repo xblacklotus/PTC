@@ -14,35 +14,72 @@
                                     $id_materia = $fila[0];
                                     
         $trimestre=$_POST["metertri"];
-        //echo "Nombre ".$nombre_maestro;
-          //  echo "Apellidos ".$apellido_maestro;
-           // echo "Id :".$usuario;     
-        if($descripcion =="" || $porcentaje =="" || $nombre =="" || $trimestre =="" )
-        {
-            echo "No se puede guardar datos vacios";
-        }elseif (is_numeric($descripcion) || is_numeric($nombre)) {
-            echo "Hay datos que no tienen que ser numericos";
-        }
-        elseif(!is_numeric($porcentaje) || !is_numeric($trimestre)){
 
-            echo "Hay datos que no tienen que ser texto";
-        }
-        else
-        {
 
-            $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
-            values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
-            $resultado=mysqli_query($conexion,$peticion);
-            echo $resultado;
-            if($resultado)
+        $cons1="select sum(porcentaje) FROM perfiles where id_materia=".$id_materia;
+        $resp1=mysqli_query($conexion,$cons1);
+        $valido=false;
+        if($resp1)
+        {
+            if($datos=mysqli_fetch_array($resp1))
             {
-                echo "Guardado con exito";
+                echo $porcentaje;
+                $suma=$datos[0]+$porcentaje;
+                if($suma<100 && $suma>0)
+                {                    
+                    $valido=true;
+                }
+                else
+                {
+                    $valido=false;
+                }
             }
             else
             {
-                echo "Error";
-            }       
+                echo "Hubo un error";
+            }
+
         }
-         
+        else
+        {            
+            echo "Hubo un error";
+        }
+
+        //echo "Nombre ".$nombre_maestro;
+          //  echo "Apellidos ".$apellido_maestro;
+           // echo "Id :".$usuario;     
+        if($valido)
+        {
+            if($descripcion =="" || $porcentaje =="" || $nombre =="" || $trimestre =="" )
+            {
+                echo "No se puede guardar datos vacios";
+            }elseif (is_numeric($descripcion) || is_numeric($nombre)) {
+                echo "Hay datos que no tienen que ser numericos";
+            }
+            elseif(!is_numeric($porcentaje) || !is_numeric($trimestre)){
+
+                echo "Hay datos que no tienen que ser texto";
+            }
+            else
+            {
+
+                $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
+                values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
+                $resultado=mysqli_query($conexion,$peticion);
+                echo $resultado;
+                if($resultado)
+                {
+                    echo "Guardado con exito";
+                }
+                else
+                {
+                    echo "Error";
+                }       
+            }
+        }
+        else
+        {
+            echo "Resultante de porcentajes no valido";
+        }  
     }  
 ?>
