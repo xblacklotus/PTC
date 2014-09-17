@@ -326,6 +326,63 @@ function modificar_maestro(i)
     }
 }
 
+
+
+
+
+
+function modificar_nota(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar la nota?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_nota.php";
+        var form = document.forms['formNots'+i];
+        //aqui ya no furulo xD D:
+        var elemento = form['nota'];
+        var elemento2 = form['id'];
+        var preg = elemento.value;
+         var preg2 = elemento2.value;
+
+        if(preg =="")
+        {
+            alert("No pueden haber espacios en blanco");
+        }
+        else if(preg >10 || preg<0)
+        {
+            alert("Datos no validos");
+        }
+        
+        else
+        {
+
+            var datos = "nota="+preg+"& id="+preg2;
+            alert(datos);
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    alert(ajax.responseText);    
+                    document.location.href="mantenimientos.php";            
+                }
+            }
+            ajax.send(datos);
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
 function eliminar_maestro(i) {
     var resp = confirm("¿Estas seguro de eliminar este maestro?");
     if (resp) {
