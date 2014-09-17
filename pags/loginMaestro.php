@@ -14,9 +14,5 @@
 			<input id="pwd" name ="pwd" type="password" placeholder="12345" required/>
 			<input type="button" value="Entrar" onclick="javascript:logear_profesor();">
 		</fieldset>
-	</form> 
-	
-
-
-
+	</form>
 <?php include("../includes/footer2.php");?>   

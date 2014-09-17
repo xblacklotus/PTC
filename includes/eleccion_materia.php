@@ -2,8 +2,9 @@
 <?php 
   
 
-    $id_profe=1;
+    
    $peticion2="select nombres,apellidos FROM profesor WHERE id=".$id_profe;
+   echo $peticion2;
         $resultado2=mysqli_query($conexion,$peticion2);
                 date_default_timezone_set('America/El_Salvador');
         if($fila2=mysqli_fetch_array($resultado2))
@@ -34,7 +35,7 @@
         <input class="bids" type="text" name="grado" value='.$fila[1].'>                                 
                                  <input class="bids red" type="text" name="m_id" value='.$fila[3].'>                                  
                                  <input class="bids" type="text" name="s_id" value='.$fila[4].'>
-                                 <input class="bids" type="text" name="id_profe" value=1>
+                                 <input class="bids" type="text" name="id_profe" value='.$id_profe.'>
         <button type="submit" class="pill orange"  name="ele_perf" ><i>Elegir perfil</i></button>
          <button type="submit" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria('.$i.');">Ver notas</button>
           </form></td> </tr>';  

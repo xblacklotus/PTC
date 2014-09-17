@@ -309,11 +309,9 @@ function modificar_maestro(i)
        
         else
         {
-            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_ma="+preg2;
-            alert(datos);
+            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_ma="+preg2;            
             ajax.open("POST",url,true);
-            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            alert(ajax);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");            
             ajax.onreadystatechange=function()
             {            
                 if (ajax.readyState==4 && ajax.status==200) 
@@ -1199,8 +1197,9 @@ function logear_alumno()
                 if (ajax.readyState == 4 && ajax.status == 200) {
                     
                     if(ajax.responseText=="Exito")
-                    {
-                        document.location.href="notas.php";
+                    {                        
+                        form.action="notas.php";
+                        form.submit();                        
                     }
                     else
                     {
@@ -1213,6 +1212,7 @@ function logear_alumno()
 }
 function logear_profesor()
 {
+
      var ajax;
     ajax = new XMLHttpRequest();
     var url = "../includes/logear_profesor.php";
@@ -1227,11 +1227,15 @@ function logear_profesor()
             var datos = $("#formLogin").serialize();
             ajax.open("POST",url,true);
             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
             ajax.onreadystatechange=function(){
                 if (ajax.readyState == 4 && ajax.status == 200) {
+                    
                     if(ajax.responseText==1)
                     {
-                        document.location.href="perfiles.php";
+                        form.action="perfiles.php";
+                        form.submit();
+                        //document.location.href="perfiles.php";
                     }
                     else
                     {
@@ -1248,7 +1252,7 @@ function logear_super()
     var user = form['user'];
     var pwd = form['pwd'];
     if(user.value=="admin" && pwd.value=="123")
-    {
+    {        
         document.location.href="mantenimientos.php";
     }
     else

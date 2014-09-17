@@ -1,5 +1,15 @@
 <?php include("../includes/inheader.php");
-    $id_alumno=1;
+
+if(isset($_POST['user']))
+{
+    $id_profe=$_POST['user'];
+    $cons1="select id from alumno where id_usuario=".$id_profe;
+    $resp=mysqli_query($conexion,$cons1);
+    $datos=mysqli_fetch_array($resp);
+    $id_alumno=$datos['id'];
+}
+
+    
 ?>
 <br>
 <div  class="tab-content">
