@@ -1,6 +1,6 @@
 <?php 
 
-include("../includes/inheader.php");
+include("../includes/super_header.php");
 //include("../includes/aside-maestros.php");
 ?>
 <div id="divperfiles">
@@ -12,7 +12,7 @@ include("../includes/inheader.php");
             //
             //if(isset($_POST['user']))
             //{
-                include("../includes/eleccion_materia.php");
+                include("../includes/eleccion_materia_s.php");
             //}         
             
             if(isset($_POST['ele_perf']))

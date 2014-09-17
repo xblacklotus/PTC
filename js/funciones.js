@@ -156,13 +156,17 @@ function ingresar_seccion()
         var elemento = form['nombre_seccion'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preguntatexto =elemento.value;
+        alert(preguntatexto.length);
         if(isNumber(preguntatexto)) {
             alert("ERROR: El nombre de la sección no puede ser un número!");
         }else {
-            if (preguntatexto != "") {
-                if (preguntatexto.length > 1) {
+            if (preguntatexto != "") 
+            {
+                if (preguntatexto.length > 1000) 
+                {                    
                     alert("ERROR: La longitud del nombre de la sección excede el límite permitido!");
-                }else{
+                }
+                else{
                 //y aqui ya pasas el valor a la variable para ajax
                 var datos="nombre_seccion="+preguntatexto;
                 //Aqui haces el arreglo para todos los datos q fueras a mandar
@@ -1173,4 +1177,113 @@ function eliminar_anuncio(i) {
             }
         }
     }
+}
+
+function logear_alumno()
+{
+     var ajax;
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_alumno.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    
+                    if(ajax.responseText=="Exito")
+                    {
+                        document.location.href="notas.php";
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }
+}
+function logear_profesor()
+{
+     var ajax;
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_profesor.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    if(ajax.responseText==1)
+                    {
+                        document.location.href="perfiles.php";
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }
+}
+function logear_super()
+{
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if(user.value=="admin" && pwd.value=="123")
+    {
+        document.location.href="mantenimientos.php";
+    }
+    else
+    {
+
+    }
+
+     /*var ajax;
+    }
+    }
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_super.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    if(ajax.responseText==1)
+                    {
+                        document.location.href="perfiles.php";
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }*/
 }

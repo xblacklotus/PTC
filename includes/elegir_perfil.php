@@ -18,6 +18,7 @@
             echo '<h2>Materia : '.$fila1[0].'</h2>';
         }
 
+            
         echo '<h4>Eliga el perfil</h4>';
         echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" 
               cellspacing="0" cellpadding="0" style="max-width="100px">
@@ -46,9 +47,8 @@
                                      <input class="bids" type="hidden" name="grado" value='.$grado.'>
                                      <input class="bids" type="hidden" name="id_profe" value='.$id_profe.'>
                                      <input class="bids" type="hidden" name="recargada" value="false">   
-            <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar</i></button>            
-            <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:verNotas('.$i.');">Ver</button>
-            <button type="button" class="pill orange" name="botoneliminar" onclick="javascript:enviar('.$i.');" ><i class="icon-minus-sign">Eliminar</i></button>            
+            <button type="submit" class="pill orange"  name="in_notas" ><i>Ingresar</i></button>
+            <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:verNotas('.$i.');">Ver</button>            
               </form></td> </tr>';
               $i++;
         };

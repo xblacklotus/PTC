@@ -24,6 +24,8 @@
 		$consulta1 = "select * from materias";
 		$resp = mysqli_query($conexion,$consulta1);
 		$con_grado = 0;
+		$con_seccion=0;
+		$con_nombre=0;
 		while ($rsCon = mysqli_fetch_array($resp)) {
 			if ($nombre_materia == $rsCon['nombre']) {
 				$con_nombre = $rsCon['nombre'];

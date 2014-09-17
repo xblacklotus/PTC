@@ -1,4 +1,4 @@
-<?php include("../includes/inheader.php");?>
+<?php include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
 //Agergar alumno//

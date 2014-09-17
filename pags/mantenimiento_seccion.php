@@ -1,5 +1,4 @@
-<?php include("../includes/inheader.php");?>
-<?php include("../includes/config.inc");?>
+<?php include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
 <!--Formulario para ingresar una sección-->
@@ -14,8 +13,7 @@
 <!--Formulario para modificar y eleiminar una sección-->
 		<?php
 			$consulta = "select * from seccion";
-			$res = mysqli_query($conexion,$consulta);
-			
+			$res = mysqli_query($conexion,$consulta);			
 		?>
 		<table>
 			<th>Secciones</th>

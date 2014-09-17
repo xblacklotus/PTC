@@ -13,9 +13,12 @@
             if (is_numeric($nombre_seccion)) {
                 echo "ERROR: El nombre de la sección no puede ser un número!";
             }else{
-                if (strlen($nombre_seccion) >1) {
+                if (strlen($nombre_seccion) >1 && !($nombre_seccion!="ñ" || $nombre_seccion!="Ñ"))
+                {                    
                     echo "ERROR: La longitud del nombre de la sección excede el límite permitido!";
-                }else {
+                }
+                else 
+                {
                     $consulta = "select nombre from seccion";
                     $res = mysqli_query($conexion,$consulta);
                     while ($fila = mysqli_fetch_array($res)) {
