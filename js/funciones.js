@@ -391,7 +391,33 @@ function modificar_nota(i)
 
 
 
+function descargar_arch(i)
+{
+       // alert("entro");
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/descargar_arch.php";
+        var form = document.forms['formArch'+i];
 
+        //aqui ya no furulo xD D:
+        var elemento2 = form['id'];
+
+         var preg2 = elemento2.value;
+
+            var datos = "id="+preg2;            
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+           ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    //alert(ajax.responseText);    
+                    document.location.href="descargar_archivo.php";            
+                }
+            }
+            ajax.send(datos);
+            alert(datos);
+}
 
 
 
