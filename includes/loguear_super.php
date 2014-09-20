@@ -24,9 +24,8 @@ if(isset($_POST))
 			if($dato=mysqli_fetch_array($resp))
 			{					
 				if($dato["usuario"])
-				{			
-					echo "hola";
-					$_SESSION['user'] = $dato['usuario'];						
+				{
+					$_SESSION['usuario'] = $dato['usuario'];						
 					header("Location:../pags/mantenimientos.php");
 				}
 				else

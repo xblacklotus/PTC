@@ -11,7 +11,7 @@ self.location = "loginAdmin.php";
 }
 else
 {
-$id_profe = $_SESSION['user'];
+$id_profe = $_SESSION['usuario'];
 include("../includes/super_header.php");
 //include("../includes/aside-maestros.php");
 ?>
