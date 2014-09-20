@@ -6,8 +6,8 @@
 <br>
 /*********Ingresar un anuncio***********/
 <?php 
-	$id_profesor = 1;
-	$n_materia = 'Sociales';
+	$id_profesor = 1;	//***************Atento a modificar estos dos valores dependiendo de la materia en que se este**********
+	$n_materia = 'Sociales'; //*************************************************************************************************//
 	echo '<h3>'.$n_materia.'</h3>';
 ?><!--Le damos el valor del id del profesor que se loguea-->
 <form name="form" method="post">

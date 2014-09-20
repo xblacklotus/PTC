@@ -39,11 +39,12 @@ h3, h4{
 #Main {
 	background-color: #E4E4E4;
 	border: 5px solid #CCC;
-	float: left;
-	margin-top: 340px;
+	padding: 15px 15px 10px 15px;
+	margin-top: 200px;
 	margin-left: 6px;
-	width: 1070px;
-	height: 265px;
+	width: 800px;
+	height: 600px;
+	float: left;
 }
 
 #Anuncio {
