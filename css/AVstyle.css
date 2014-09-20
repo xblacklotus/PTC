@@ -3,7 +3,7 @@
 	text-align: center;
 	font-family: "Baskerville Old Face", "sans-serif";
 	font-style: italic;
-	margin-top: 200px;
+	margin-top: 0px;
 	float: right;
 	height: 520px;
 	width: 320px;
@@ -44,7 +44,7 @@ h3, h4{
 	margin-left: 6px;
 	width: 800px;
 	height: 600px;
-	float: left;
+	
 }
 
 #Anuncio {
