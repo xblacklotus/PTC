@@ -124,11 +124,22 @@ function notasMateria(name)
     form.action= "../includes/notas_Materias.php";
     form.submit();    
 }
-
+function s_notasMateria(name)
+{   
+    var form = document.forms['form'+name];
+    form.action= "../includes/notas_Materias_s.php";
+    form.submit();    
+}
 function verNotas(name)
 {
     var form = document.forms['from'+name];
     form.action= "visualizar_notas.php";
+    form.submit();
+}
+function s_verNotas(name)
+{
+    var form = document.forms['from'+name];
+    form.action= "visualizar_notas_s.php";
     form.submit();
 }
 //función para comprobar si una variable es númerica
@@ -354,12 +365,14 @@ function modificar_nota(i)
         {
             alert("Datos no validos");
         }
-        
+        else if(!isNumber(preg))
+        {
+            alert("la nota no puede ser letra");
+        }
         else
         {
 
-            var datos = "nota="+preg+"& id="+preg2;
-            alert(datos);
+            var datos = "nota="+preg+"& id="+preg2;            
             ajax.open("POST",url,true);
             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
             ajax.onreadystatechange=function()
@@ -428,26 +441,22 @@ function ingresar_perfiles()
        // obtenes todo el "formulario"    
         var elemento = form['descripcion'];
         var elemento2 = form['porcentaje'];
-        var elemento3 = form['metermateria'];
+        var elemento3 = form['materias'];
         var elemento4 = form['metertri'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
         var preg2 =elemento2.value;
-        var preg3 =elemento3.value;
-
-        var materia=preg3.split(",");
-        var preg3=materia[0];
-        alert(preg3);
+        var preg3 =elemento3.selectedIndex;
 
 
         var preg4 =elemento4.value;
 
         
-        if(preg =="" || preg2 =="" || preg3=="" || preg4=="")
+        if(preg =="" || preg2 ==""  || preg4=="")
         {
             alert("No pueden haber espacios en blanco");
         }
-        else if(!isNaN(preg) || !isNaN(preg3) )
+        else if(!isNaN(preg) )
         {
             alert("Hay campos que no tienen que ser numericos");
         }
@@ -528,22 +537,16 @@ function modificar_perfiles(i)
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
         var preg2 =elemento2.value;
-        var preg3 =elemento3.value;
-        preg3.replace(/°/,"");
-        preg3.replace(/ /,"");
-        var preg30=preg3.split(",");
-        var preg31=preg30[0];
-        var preg32=preg30[1];
-        var preg33=preg30[2];
+        var preg3 =elemento3.selectedIndex;       
         var preg4 =elemento4.value;
         var preg5 =elemento5.value;
 
         
-        if(preg =="" || preg2 =="" || preg3=="" || preg4=="")
+        if(preg =="" || preg2 =="" || preg3<0 || preg4=="")
         {
             alert("No pueden haber espacios en blanco");
         }
-        else if(!isNaN(preg) || !isNaN(preg3) )
+        else if(!isNaN(preg))
         {
             alert("Hay campos que no tienen que ser numericos");
         }
@@ -560,7 +563,7 @@ function modificar_perfiles(i)
         {
             
             //y aqui ya pasas el valor a la variable para ajax
-            var datos="d2="+preg+"& p2="+preg2+"& materia="+preg31+"& t2="+preg4+"& id_per="+preg5+"&grado="+preg32+"&seccion="+preg33;
+            var datos="d2="+preg+"& p2="+preg2+"& materia="+preg3+"& t2="+preg4+"& id_per="+preg5;
             
             //Aqui haces el arreglo para todos los datos q fueras a mandar
             ajax.open("POST",url,true);
@@ -581,6 +584,10 @@ function modificar_perfiles(i)
                         alert(ajax.responseText);
                         if(ajax.responseText=="Modificado con exito")
                             document.location.href="mantenimiento_perfiles.php";
+                        else
+                        {
+
+                        }
                         //document.getElementById("prueba1").innerHTML=ajax.responseText;
                     
               }

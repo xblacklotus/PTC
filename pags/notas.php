@@ -1,13 +1,16 @@
-<?php include("../includes/inheader.php");
+<?php include("../includes/header_al.php");
 
-if(isset($_POST['user']))
-{
-    $id_profe=$_POST['user'];
-    $cons1="select id from alumno where id_usuario=".$id_profe;
-    $resp=mysqli_query($conexion,$cons1);
-    $datos=mysqli_fetch_array($resp);
-    $id_alumno=$datos['id'];
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!$_SESSION){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAlumno.php";
+</script>';
 }
+else
+{
+$id_alumno = $_SESSION['user'];
 
     
 ?>
@@ -104,7 +107,7 @@ if(isset($_POST['user']))
   
   </div>
 <!-- Creamos el inicio de la tabla manualmente-->
-<?php include("../includes/footer.php");?>
+<?php include("../includes/footer.php");}?>
 
 
 

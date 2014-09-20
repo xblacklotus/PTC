@@ -30,7 +30,7 @@
                                  <input class="bids" type="text" name="s_id" value='.$fila[4].'>
                                  <input class="bids" type="text" name="id_profe" value=1>
         <button type="submit" class="pill orange"  name="ele_perf" ><i>Elegir perfil</i></button>
-         <button type="submit" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria('.$i.');">Ver notas</button>
+         <button type="submit" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:s_notasMateria('.$i.');">Ver notas</button>
           </form></td> </tr>';  
           $i++ ;        
           //document.formulario.action= "hola.php";

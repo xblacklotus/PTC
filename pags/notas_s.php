@@ -1,4 +1,17 @@
-<?php include("../includes/super_header.php");
+<?php 
+
+
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['usuario'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAdmin.php";
+</script>';
+}
+else
+{
+include("../includes/super_header.php");
     $id_alumno=1;
 ?>
 <br>
@@ -94,7 +107,7 @@
   
   </div>
 <!-- Creamos el inicio de la tabla manualmente-->
-<?php include("../includes/footer.php");?>
+<?php include("../includes/footer.php");}?>
 
 
 

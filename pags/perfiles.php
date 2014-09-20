@@ -1,5 +1,15 @@
-<?php 
-
+<?php
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['userp'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginMaestro.php";
+</script>';
+}
+else
+{
+$id_profe = $_SESSION['userp'];
 include("../includes/inheader.php");
 //include("../includes/aside-maestros.php");
 ?>
@@ -12,29 +22,18 @@ include("../includes/inheader.php");
             //
             //if(isset($_POST['user']))
             //{
-if(isset($_POST['user']))
-{
-    $id_profe=$_POST['user'];
-    $cons1="select id from profesor where id_usuario=".$id_profe;
-    $resp=mysqli_query($conexion,$cons1);
-    $datos=mysqli_fetch_array($resp);
-    $id_profe=$datos['id'];
-}
-if(isset($_POST['id_profe']))
-{
-    $id_profe=$_POST['id_profe'];
-}
 
-                include("../includes/eleccion_materia.php");
-            //}         
-            
-            if(isset($_POST['ele_perf']))
-            {
-                include("../includes/elegir_perfil.php");
-            }
+
+include("../includes/eleccion_materia.php");
+//}         
+
+if(isset($_POST['ele_perf']))
+{
+    include("../includes/elegir_perfil.php");
+}
         
 
     //}
 ?>
 </div>
-<?php include("../includes/footer.php");?>
+<?php include("../includes/footer.php");}?>

@@ -29,6 +29,7 @@
 		<li><a href="../pags/mantenimiento_perfiles.php">Perfiles</a></li>
 		</ul>
 	</li>
+	<li><a href="../includes/desconectar_super_usuario.php">Cerrar sesión</a></li>
 	<!--<<ul>
 	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
 	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>

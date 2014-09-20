@@ -1,4 +1,14 @@
 <?php 
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['userp'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginMaestro.php";
+</script>';
+}
+else
+{
 include("../includes/inheader.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
@@ -194,5 +204,5 @@ for($i=0;$i<$cantidad_perfiles-1;$i++)
     
 ?>
 <?php 
-include("../includes/footer.php");
+include("../includes/footer.php");}
 ?>

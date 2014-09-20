@@ -17,20 +17,7 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li id="primerli"><a href="../pags/perfiles.php">Notas</a></li>
-<li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>
-	<!--<<ul>
-	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
-	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
-		ul>
-		<li><a href=""><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="k"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="J"></span>Sub Item</a></li>
-		<li><a href=""><span class="icon" data-icon="="></span>Sub Item</a></li>
-		</ul>
-	</li>
-	<li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
-	</ul>-->
+<li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>	
 </ul>
 
 <div class="grid">

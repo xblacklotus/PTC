@@ -1,5 +1,15 @@
-<?php include("../includes/super_header.php");?>
-<?php include("../includes/config.inc");?>
+<?php
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['usuario'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAdmin.php";
+</script>';
+}
+else
+{
+include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
 <form name="forming" method="post" >
@@ -11,14 +21,21 @@
 <input class="bids" type="hidden" name="metermateria" id="metermateria"/>
 	<select id="materias" onchange="combo(this,'metermateria')">
 	<?php 
-		$sql = "select m.*,s.nombre as seccion from materias as m, seccion as s where m.id_seccion=s.id";
+		$sql = "select m.*,s.nombre as seccion from materias as m, seccion as s where m.id_seccion=s.id order by m.id";
 		$res = mysqli_query($conexion,$sql);
-		while ($rsSecc = mysqli_fetch_array($res)) {
+		
+		while ($rsSecc = mysqli_fetch_array($res))
+		{				
+			
 			echo '<option>'.$rsSecc['nombre'].', '.$rsSecc['grado'].', '.$rsSecc['seccion'].'°</option>';
 		}
 
 	?>
 	</select>
+	<?php 
+	
+	
+	?>
 </input>
 <label>Trimestre :</label>
 <input class="bids" type="hidden" name="metertri" id="metertri"/>
@@ -65,7 +82,7 @@
 				<td><?php echo'	<input type="text" id="p2" value='.$rsPer['porcentaje'].'></input> ';?></td>
 				<td><?php 
 				$materias1='<select id="materias'.$i.'">';
-				$sql1 = "select m.*,s.nombre as seccion from materias as m, seccion as s where m.id_seccion=s.id";
+				$sql1 = "select m.*,s.nombre as seccion from materias as m, seccion as s where m.id_seccion=s.id order by m.id";
 				$res1 = mysqli_query($conexion,$sql1);
 				while ($rsSecc = mysqli_fetch_array($res1)) {
 					$materias1=$materias1.'<option>'.$rsSecc['nombre'].', '.$rsSecc['grado'].'°, '.$rsSecc['seccion'].'</option>';
@@ -103,4 +120,4 @@
 		</table>
 
 		<div id="prueba1"></div>
-<?php include("../includes/footer.php");?>
+<?php include("../includes/footer.php");}?>

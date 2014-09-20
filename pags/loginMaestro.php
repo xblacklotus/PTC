@@ -3,7 +3,7 @@
 
 
 	<CENTER><h1>MAESTROS</h1></CENTER>
-	<form name="formLogin" id="formLogin" method="post" class="vertical">
+	<form name="formLogin" id="formLogin" method="post" action="../includes/loguear_profesor.php" class="vertical">
 		<fieldset>
 			<legend>Identificación Requerida</legend>
 			<!-- Placeholder Text -->
@@ -12,7 +12,7 @@
 			<!-- Placeholder Text -->
 			<label for="pwd">Contraseña</label>
 			<input id="pwd" name ="pwd" type="password" placeholder="12345" required/>
-			<input type="button" value="Entrar" onclick="javascript:logear_profesor();">
+			<input type="submit" value="Entrar">
 		</fieldset>
 	</form>
 <?php include("../includes/footer2.php");?>   
