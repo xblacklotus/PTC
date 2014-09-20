@@ -4,7 +4,6 @@
 if (isset($_POST)) {
 
          $idd= $_POST['id'];
-         echo '<script name="accion">'.$idd.'</script>';
          $qry = "SELECT tipo, contenido,nombre FROM archivos WHERE id='".$idd."'";
 		 $res = mysqli_query($conexion,$qry);
 		 $fila=mysqli_fetch_array($res);
@@ -20,11 +19,7 @@ if (isset($_POST)) {
 		 print $contenido;
      }
      else{
-     	echo '<script name="accion">vale verga</script>';
      }
-
-var_dump($_POST);
-
 
 
 ?>
