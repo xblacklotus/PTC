@@ -125,6 +125,13 @@ function notasMateria(name)
     form.submit();    
 }
 
+function ver_archivos(name)
+{   
+    var form = document.forms['form'+name];
+    form.action= "../pags/listar_archivos.php";
+    form.submit();    
+}
+
 function s_notasMateria(name)
 {   
     var form = document.forms['form'+name];
@@ -1126,7 +1133,6 @@ function eliminar_alumno(i) {
     };
 }
 
-<<<<<<< HEAD
 function ingresar_actividad(i)
 {
     var resp = confirm("¿Estasseguro de ingresar esta actividad?");
@@ -1209,7 +1215,6 @@ function eliminar_actividad(i) {
     };
 }
 
-=======
 function ingresar_anuncio(){
     var resp = confirm("¿Esta seguro de agregar este anuncio?");
     if (resp) {
@@ -1466,4 +1471,3 @@ function logear_super()
             ajax.send(datos);
     }*/
 }
->>>>>>> 9cdec6eb21c4ec06fb0d15a8b49284236702aa9a

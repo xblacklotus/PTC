@@ -191,7 +191,6 @@ where a.id_seccion=s.id';
 			   
 			<?php  }?>
 		</table>
-<<<<<<< HEAD
 <?php
    <form name="formomito" method="post">
    </form>
