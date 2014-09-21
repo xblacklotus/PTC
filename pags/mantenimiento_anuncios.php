@@ -16,7 +16,7 @@
 <label>Titulo</label>
 <input type="text" id="titulo" ></input>
 <label>Anuncio : </label>
-<textarea id="anuncio" cols="50" rows="2" maxlength="250"></textarea>
+<textarea id="anuncio"  maxlength="250"></textarea>
 <label>Fecha</label>
 <input type="text" name="ingreso" id="ingreso" value="dd-mm-yyyy" /> 
 <img src="../imgs/calendario.png" width="16" height="16" border="0" title="Fecha Inicial" id="lanzador">
