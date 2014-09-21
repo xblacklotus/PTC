@@ -1,4 +1,4 @@
-function exportar_excel(tabla,filas,columnas)
+ingrefunction exportar_excel(tabla,filas,columnas)
 {
     var ajax;
     ajax=new XMLHttpRequest();

@@ -4,7 +4,6 @@
 
 <!--Formulario para ingresar anuncios-->
 <br>
-/*********Ingresar un anuncio***********/
 <?php 
 	$id_profesor = 1;	//***************Atento a modificar estos dos valores dependiendo de la materia en que se este**********
 	$n_materia = 'Sociales'; //*************************************************************************************************//
@@ -13,23 +12,27 @@
 <form name="form" method="post">
 <?php echo '<input class="bids" type="hidden" name="prof" id="prof" value="'.$id_profesor.'">'; ?>
 <?php echo '<input class="bids" type="hidden" name="mat" id="mat" value="'.$n_materia.'">'; ?>
-<label>Titulo</label>
+<label>Titulo: </label>
 <input type="text" id="titulo" ></input>
-<label>Anuncio : </label>
+<label>Anuncio: </label>
 <textarea id="anuncio"  maxlength="250"></textarea>
-<label>Fecha</label>
-<input type="text" name="ingreso" id="ingreso" value="dd-mm-yyyy" /> 
+<label>Fecha: </label>
+<?php date_default_timezone_set('UTC');
+	echo '<input type="text" disabled="disabled" name="actual" id="actual" value='.date("Y-m-d").'>';?>
+<label> Fecha de entrega: </label>
+<input type="text" disabled="disabled" name="ingreso" id="ingreso" value="yyy-mm-dd" /> 
 <img src="../imgs/calendario.png" width="16" height="16" border="0" title="Fecha Inicial" id="lanzador">
 <!-- script que define y configura el calendario--> 
 <script type="text/javascript"> 
    Calendar.setup({ 
     inputField     :    "ingreso",     // id del campo de texto 
-     ifFormat     :     "%d-%m-%Y",     // formato de la fecha que se escriba en el campo de texto 
+     ifFormat     :     "%Y-%m-%d",     // formato de la fecha que se escriba en el campo de texto 
      button     :    "lanzador"     // el id del botón que lanzará el calendario 
 }); 
 </script>
 
 <button type="button" class="pill orange" onclick="javascript:ingresar_anuncio();"><i class="icon-plus-sign">Agregar</i></button>
+<hr>
 </form>
 
 
