@@ -6,7 +6,7 @@
 		$materia = $_POST['materia'];
 		$titulo = $_POST['titulo'];
 		$f_actual=$_POST['actual'];
-		$f_entrega=$_POST['entrega'];
+		$f_entrega=$_POST['ingreso'];
 		if ($id_profesor == "") {
 			echo "ERROR : No se ha encontrado el identificador del profesor!";
 		}else{

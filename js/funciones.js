@@ -1126,7 +1126,6 @@ function eliminar_alumno(i) {
     };
 }
 
-<<<<<<< HEAD
 function ingresar_actividad(i)
 {
     var resp = confirm("¿Estasseguro de ingresar esta actividad?");
@@ -1209,7 +1208,6 @@ function eliminar_actividad(i) {
     };
 }
 
-=======
 function ingresar_anuncio(){
     var resp = confirm("¿Esta seguro de agregar este anuncio?");
     if (resp) {
@@ -1222,7 +1220,7 @@ function ingresar_anuncio(){
         var elemento2 = form['mat'];
         var elemento3 = form['titulo'];
         var elemento4= form['actual'];
-        var elemento5= form['entrega']
+        var elemento5= form['ingreso']
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
         var pregunta2 = elemento2.value;
@@ -1245,8 +1243,14 @@ function ingresar_anuncio(){
                             if (pregunta1.length > 250) {
                                 alert("ERROR : La longitud del anuncio excede el límite permitido!");
                             }else{
-                            ///////////////////////////
-                            var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2+"&titulo="+pregunta3+"&actual="+pregunta4+"&entrega="+pregunta5;
+                            ///////////////////////
+
+
+
+
+
+                            ////
+                            var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2+"&titulo="+pregunta3+"&actual="+pregunta4+"&ingreso="+pregunta5;
                             ajax.open("POST",url,true);
                             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                             ajax.onreadystatechange = function()
@@ -1273,6 +1277,8 @@ function ingresar_anuncio(){
     }
 }
 
+
+
 function modificar_anuncio(i) {
     var resp = confirm("¿Esta seguro que desea modificar el anuncio?");
     if (resp) {
@@ -1280,22 +1286,30 @@ function modificar_anuncio(i) {
         ajax = new XMLHttpRequest();
         var url ="../includes/modificar_anuncio.php";
         var form = document.forms['formAn'+i+''];
-        var elemento = form['new_anu'];
-        var elemento1 = form['an_id'];
+        var elemento = form['an_id'];
+        var elemento1 = form['titulo2'];
+        var elemento2 = form['anuncio2'];
+        var elemento3= form['ingreso2'];
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
-        if (pregunta == "") {
+        var pregunta2 = elemento2.value;
+        var pregunta3 = elemento3.value;
+        alert(pregunta1);
+        if (pregunta2 == "") {
             alert("ERROR : No se puede guardar un anuncio vacío!");
         }else{
-            if (pregunta1 == "") {
+            if (pregunta == "") {
+                alert("aqui se queda");
+
                 alert("ERROR : No se puede encontrar el valor del ID del anuncio!");
             }else{
-                if (isNumber(pregunta1)) {
-                    if (pregunta.length > 250) {
+                if (!isNumber(pregunta2)) {
+                    if (pregunta2.length > 250) {
                         alert("ERROR : Se excede la longitud máxima de carácteres en el anuncio!");
                     }else{
                         ///////////////
-                        var datos = "new_anu="+pregunta+"&id="+pregunta1;
+                        var datos = "an_id="+pregunta+"&titulo2="+pregunta1+"&anuncio2="+pregunta2+"&ingreso2="+pregunta3;
+                        alert(datos);
                         ajax.open("POST",url,true);
                                     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                                     ajax.onreadystatechange=function()
@@ -1472,4 +1486,3 @@ function logear_super()
             ajax.send(datos);
     }*/
 }
->>>>>>> 9cdec6eb21c4ec06fb0d15a8b49284236702aa9a

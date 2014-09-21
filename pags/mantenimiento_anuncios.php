@@ -20,7 +20,7 @@
 <?php date_default_timezone_set('UTC');
 	echo '<input type="text" disabled="disabled" name="actual" id="actual" value='.date("Y-m-d").'>';?>
 <label> Fecha de entrega: </label>
-<input type="text" disabled="disabled" name="ingreso" id="ingreso" value="yyy-mm-dd" /> 
+<input type="text" disabled="disabled" name="ingreso" id="ingreso" value="Y-m-d" /> 
 <img src="../imgs/calendario.png" width="16" height="16" border="0" title="Fecha Inicial" id="lanzador">
 <!-- script que define y configura el calendario--> 
 <script type="text/javascript"> 
@@ -38,28 +38,37 @@
 
 <!--formulario para eliminar los anuncios-->
 <br>
-/*********Eliminar un anuncio***********/
 <?php
 	$consulta = "select * from anuncios";
 	$res = mysqli_query($conexion,$consulta);
 ?>
-<table>
-	<th>Anuncios</th>
+<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+<thead>
+	<tr>
+		<th>Titulo</th>
+		<th>Anuncio</th>
+		<th>Fecha de entraga</th>
+		<th>Acción</th>
+	</tr>
+</thead>
 	<?php
 		$i = 0;
 		while ($rsAnu = mysqli_fetch_array($res)) {
 	?>
 	<tr>
 	<td>
+
 		<form name="formAn<?php echo $i ?>" method="post">
 		<?php
-		echo '<textarea id="new_anu" cols="50" rows="7" maxlength="250">'.$rsAnu['anuncio'].'</textarea>
-			<input class="bids" type="hidden" name="an_id" value='.$rsAnu['id'].'> 
-			<button type="button" class="pill orange" onclick="javascript:modificar_anuncio('.$i.');" >
+		echo '<input type="text" name="titulo2" id="titulo2" value='.$rsAnu['titulo'].'>';?> </td>
+		<td><?php echo'<textarea id="anuncio2" name="anuncio2"  maxlength="250">'.$rsAnu['anuncio'].'</textarea>';?></td>
+			<td> <?php echo'<input type="text" name="ingreso2" id="ingreso2" value='.$rsAnu['fecha_entrega'].'>' ; ?></td>
+			 <td><?php echo '<input class="bids" type="hidden" name="an_id" id="an_id" value='.$rsAnu['id'].'>';?>
+			 <?php echo'<button type="button" class="pill orange" onclick="javascript:modificar_anuncio('.$i.');" >
 			<i class="icon-plus-sign">Modificar</i></button>
 			<button type="button" class="pill orange" onclick="javascript:eliminar_anuncio('.$i.');">
-			<i class="icon-minus-sign">Eliminar</i></button>'; $i ++; 
-		?>
+			<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;
+		?></td>
 		</form>
 	</td>
 	</tr>

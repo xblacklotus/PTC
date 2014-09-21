@@ -1,12 +1,15 @@
 <?php include("config.inc");?>
 <?php
 	if (isset($_POST)) {
-		$anuncio = $_POST['new_anu'];
-		$id = $_POST['id'];
+		$id= $_POST['an_id'];
+		$titulo = $_POST['titulo2'];
+		$anuncio=$_POST['anuncio2'];
+		$ingreso=$_POST['ingreso2'];
 		if ($anuncio == "") {
 			echo "ERROR : El anuncio no puede estar vacio!";
 		}else{
 			if ($id == "") {
+				echo "aqui se queda include";
 				echo "ERROR : No se puede encontrar el valor del ID del anuncio!";
 			}else{
 				if (strlen($anuncio) >250) {
@@ -14,8 +17,8 @@
 				}else{
 					if (is_numeric($id)) {
 						////////////////////
-						$sql = "update anuncios
-						set anuncio='".$anuncio."'
+						$sql = "update anuncios 
+						set titulo='".$titulo."', anuncio='".$anuncio."', fecha_entrega='".$ingreso."'
 						where id=".$id;
 						$res = mysqli_query($conexion,$sql);
 						if ($res) {
