@@ -1504,10 +1504,3 @@ function logear_super()
             ajax.send(datos);
     }*/
 }
-<<<<<<< HEAD
-
-function index(){
-    document.location.href="../index.php";
-}
-=======
->>>>>>> origin/master
