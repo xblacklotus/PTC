@@ -8,41 +8,97 @@
         $descripcion=$_POST["descripcion"];
         $porcentaje=$_POST["porcentaje"];
         $nombre=$_POST["metermateria"];
-        $consulta = "select id from materias where nombre = '".$nombre."'";
-                                    $res = mysqli_query($conexion,$consulta);
-                                    $fila = mysqli_fetch_array($res);
-                                    $id_materia = $fila[0];
+        
+        $consulta6 = "select * from materias";
+            $resp = mysqli_query($conexion,$consulta6);
+            $i=0;
+            while ($rsCon = mysqli_fetch_array($resp)) 
+            {
+                if($i==$nombre)
+                {               
+                    $id_materia=$rsCon['id'];
+                    break;
+                }
+                $i++;
+            }            
                                     
         $trimestre=$_POST["metertri"];
-        //echo "Nombre ".$nombre_maestro;
-          //  echo "Apellidos ".$apellido_maestro;
-           // echo "Id :".$usuario;     
-        if($descripcion =="" || $porcentaje =="" || $nombre =="" || $trimestre =="" )
+        $cons1="select porcentaje FROM perfiles where id_materia=".$id_materia." and trimestre=".$trimestre;
+        $resp1=mysqli_query($conexion,$cons1);        
+        if($resp1)
         {
-            echo "No se puede guardar datos vacios";
-        }elseif (is_numeric($descripcion) || is_numeric($nombre)) {
-            echo "Hay datos que no tienen que ser numericos";
-        }
-        elseif(!is_numeric($porcentaje) || !is_numeric($trimestre)){
+            $cons1="select sum(porcentaje) FROM perfiles where id_materia=".$id_materia." and trimestre=".$trimestre;
+            $resp1=mysqli_query($conexion,$cons1);
+            $valido=false;
+            if($resp1)
+            {
+                if($datos=mysqli_fetch_array($resp1))
+                {
+                    echo $porcentaje;
+                    $suma=$datos[0]+$porcentaje;
+                    if($suma<100 && $suma>0)
+                    {                    
+                        $valido=true;
+                    }
+                    else
+                    {
+                        $valido=false;
+                        echo $suma;
+                        echo "Porcentaje fuera de rango";
+                        echo $suma;
+                    }
+                }
+                else
+                {
+                    echo "Hubo un error";
+                }
 
-            echo "Hay datos que no tienen que ser texto";
+            }
+            else
+            {            
+                echo "Hubo un error";
+            }
         }
         else
         {
+            $valido=true;
+        }
 
-            $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
-            values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
-            $resultado=mysqli_query($conexion,$peticion);
-            echo $resultado;
-            if($resultado)
+
+
+        
+
+        //echo "Nombre ".$nombre_maestro;
+          //  echo "Apellidos ".$apellido_maestro;
+           // echo "Id :".$usuario;     
+        if($valido)
+        {
+            if($descripcion =="" || $porcentaje =="" || $nombre <0 || $trimestre =="" )
             {
-                echo "Guardado con exito";
+                echo "No se puede guardar datos vacios";
+            }elseif (is_numeric($descripcion)) {
+                echo "Hay datos que no tienen que ser numericos";
+            }
+            elseif(!is_numeric($porcentaje) || !is_numeric($trimestre)){
+
+                echo "Hay datos que no tienen que ser texto";
             }
             else
             {
-                echo "Error";
-            }       
-        }
-         
+
+                $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
+                values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
+                $resultado=mysqli_query($conexion,$peticion);
+                echo $resultado;
+                if($resultado)
+                {
+                    echo "Guardado con exito";
+                }
+                else
+                {
+                    echo "Error";
+                }       
+            }
+        }        
     }  
 ?>

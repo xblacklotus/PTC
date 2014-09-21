@@ -81,17 +81,27 @@
             <h4 id="Log">Log out</h4>
     </form>
     <section id="Main">
+        <ul class="menu">
+<li id="primerli"><a href="../pags/mantenimientos.php">Agenda</a></li>
+<li><a href="../pags/notas_s.php">Anuncios</a></li>
+<li><a href=""><span class="icon" data-icon="A"></span>Tareas</a>
+        <ul>
+        <li><a href="../pags/mantenimiento_maestros.php">Lenguaje</a></li>
+        <li><a href="../pags/mantenimiento_materias.php">Matematica</a></li>
+        <li><a href="../pags/mantenimiento_seccion.php">Sociales</a></li>
+        <li><a href="../pags/mantenimiento_usuarios.php">Ciencias</a></li>
+        </ul>
+    </li>
+    
+</ul>
+
         <h2>PORTAL DEL ESTUDIANTE</h2>
+        //**Dentro de este main creo que es donde ira el multipanel**//
         <div id="Agen">
-        <h3>Agenda</h3>
             <select name="Agenda" size="4" style="height: 110px; width: 270px; margin-left: 10px;">
                 <optgroup label="Agenda">
                     <option value="0">Entrega de tarea</option>
                     <option value="1">Entrega de tarea</option>
-                    <option value="2">Entrega de tarea</option>
-                    <option value="3">Entrega de tarea</option>
-                    <option value="4">Entrega de tarea</option>
-                    <option value="5">Entrega de tarea</option>
                 </optgroup>
             </select>
         </div>
@@ -99,20 +109,22 @@
         <form>
         <div id="Anuncio">
             <h3>Anuncios</h3>
+            <select name="Anuncios" size="4" style="height: 140px; width: 580px; margin-left: 10px;">
+                <optgroup label="Anuncios">
             <?php
                 $i = 0;
                 $consulta = "select * from anuncios";
                 $res = mysqli_query($conexion,$consulta);
                 while ($resAnu = mysqli_fetch_array($res)) {
-                    
+                    $consu = "select nombre from materias where id =".$resAnu['id_materia'];
+                    $re = mysqli_query($conexion,$consu);
+                    $fila = mysqli_fetch_array($re);
+                    $mat = $fila[0];
+                    echo '<option><strong>'.$mat."</strong> : ".$resAnu['anuncio'].'</option>';
+                    $i++;
+                    }
             ?>
-                <select name="Anuncios" size="4" style="height: 140px; width: 580px; margin-left: 10px;">
-                <optgroup label="Anuncios">
-                <?php
-                    echo '<option>'.$resAnu['anuncio'].'</option>';
-                ?>
-                    </optgroup>
-                <?php  $i++;}?>
+                </optgroup>
                 </select>
         </div>
         </form>

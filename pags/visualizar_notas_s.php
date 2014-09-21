@@ -1,17 +1,16 @@
-<?php
+<?php 
+
 session_start();
 //Validar si se está ingresando con sesión correctamente
-if (!isset($_SESSION['userp'])){
+if (!isset($_SESSION['usuario'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginAlumno.php";
+self.location = "loginAdmin.php";
 </script>';
 }
 else
 {
-
-
- include("../includes/inheader.php");?>
+include("../includes/super_header.php");?>
 
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php

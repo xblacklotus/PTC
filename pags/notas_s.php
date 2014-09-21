@@ -1,18 +1,18 @@
-<?php include("../includes/header_al.php");
+<?php 
+
 
 session_start();
 //Validar si se está ingresando con sesión correctamente
-if (!$_SESSION){
+if (!isset($_SESSION['usuario'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginAlumno.php";
+self.location = "loginAdmin.php";
 </script>';
 }
 else
 {
-$id_alumno = $_SESSION['user'];
-
-    
+include("../includes/super_header.php");
+    $id_alumno=1;
 ?>
 <br>
 <div  class="tab-content">

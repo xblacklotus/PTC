@@ -3,7 +3,7 @@
 
 
 	<CENTER><h1>ALUMNOS</h1></CENTER>
-	<form name="form" method="post" action="notas.php" class="vertical">
+	<form name="formLogin" id="formLogin" method="post" action="../includes/loguear_alumno.php" class="vertical">
 		<fieldset>
 			<legend>Identificación Requerida</legend>
 			<!-- Placeholder Text -->
@@ -13,10 +13,7 @@
 			<!-- Placeholder Text -->
 			<label for="pwd">Contraseña</label>
 			<input id="pwd" name ="pwd" type="password" placeholder="12345" required/>
-			<input type="submit" value="Entrar">
+			<button type="submit" value="Entrar">Ingresar</button>
 		</fieldset>
-	</form> 
-	
-
-
+	</form>
 <?php include("../includes/footer2.php");?>             

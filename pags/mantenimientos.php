@@ -1,18 +1,22 @@
-<?php
+<?php 
 session_start();
 //Validar si se está ingresando con sesión correctamente
-if (!isset($_SESSION['userp'])){
+ 
+if (!isset($_SESSION['usuario']))
+{
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginMaestro.php";
+self.location = "loginAdmin.php";
 </script>';
 }
 else
 {
-$id_profe = $_SESSION['userp'];
-include("../includes/inheader.php");
+$id_profe = $_SESSION['usuario'];
+include("../includes/super_header.php");
 //include("../includes/aside-maestros.php");
 ?>
+
+<h3><?php echo $id_profe;?></h3>
 <div id="divperfiles">
 <?php
 
@@ -22,15 +26,13 @@ include("../includes/inheader.php");
             //
             //if(isset($_POST['user']))
             //{
-
-
-include("../includes/eleccion_materia.php");
-//}         
-
-if(isset($_POST['ele_perf']))
-{
-    include("../includes/elegir_perfil.php");
-}
+                include("../includes/eleccion_materia_s.php");
+            //}         
+            
+            if(isset($_POST['ele_perf']))
+            {
+                include("../includes/elegir_perfil_s.php");
+            }
         
 
     //}

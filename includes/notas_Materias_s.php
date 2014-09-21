@@ -1,15 +1,16 @@
 <?php 
+
 session_start();
 //Validar si se está ingresando con sesión correctamente
-if (!isset($_SESSION['userp'])){
+if (!isset($_SESSION['usuario'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginMaestro.php";
+self.location = "loginAdmin.php";
 </script>';
 }
 else
 {
-include("../includes/inheader.php");?>
+include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
 if($_POST) 
@@ -181,28 +182,11 @@ echo "<div  id='prueba' style='display:none;'><a id='descarga' download='notas.x
             });
         </script>';
         echo $script;
-        
-      /*  $letras=array("A","B","C","D","E","F","G","H");
-foreach ($titulos as $key => $value) 
-{ 
-    echo $letras[$key].'1', $value;
-}
-echo "<br>";
-$ultcol=$numperfil;
-for($i=0;$i<$cantidad_perfiles-1;$i++)
-{    
-    echo "A".($i+2), $nombres[$i];
-    for($j=0;$j<$numperfil;$j++)
-    {
-        echo $letras[$j+1].($i+2)."  -  ".$perfiles[$i][$j];
-    }
-    echo $letras[$ultcol+1].($i+2)."  - ".$promedios[$i]."<br>";
-}*/
-
 }
 
     
 ?>
 <?php 
-include("../includes/footer.php");}
+include("../includes/footer.php");
+}   
 ?>
