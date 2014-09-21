@@ -13,7 +13,6 @@ else
 include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
-/**Agergar usuarios**/
 <form name="formIng" method="post">
 <label>contraseña de usuario</label>
 <input type="password" id="contra_usu"></input>

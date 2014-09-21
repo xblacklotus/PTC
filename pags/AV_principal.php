@@ -81,6 +81,20 @@
             <h4 id="Log">Log out</h4>
     </form>
     <section id="Main">
+        <ul class="menu">
+<li id="primerli"><a href="../pags/mantenimientos.php">Agenda</a></li>
+<li><a href="../pags/notas_s.php">Anuncios</a></li>
+<li><a href=""><span class="icon" data-icon="A"></span>Tareas</a>
+        <ul>
+        <li><a href="../pags/mantenimiento_maestros.php">Lenguaje</a></li>
+        <li><a href="../pags/mantenimiento_materias.php">Matematica</a></li>
+        <li><a href="../pags/mantenimiento_seccion.php">Sociales</a></li>
+        <li><a href="../pags/mantenimiento_usuarios.php">Ciencias</a></li>
+        </ul>
+    </li>
+    
+</ul>
+
         <h2>PORTAL DEL ESTUDIANTE</h2>
         //**Dentro de este main creo que es donde ira el multipanel**//
         <div id="Agen">

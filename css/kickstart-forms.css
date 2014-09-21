@@ -202,11 +202,11 @@ vertical-align: middle;
         }
 
 textarea{
-width:auto;
-height:200px;
-margin:0;
+width:400px;
+height:30px;
+margin:auto;
 border:1px solid #ccc;
-padding:5px;
+
 vertical-align: middle;
 font-family:inherit;
 font-size:0.9em;

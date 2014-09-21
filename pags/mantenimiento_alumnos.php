@@ -188,9 +188,14 @@ where a.id_seccion=s.id';
 				echo '<script>document.getElementById("section'.($i-1).'").value="'.$rsSecc['seccion'].'"; </script>';
 				?>
 			</tr>
-			
+			   
 			<?php  }?>
 		</table>
+<?php
+   <form name="formomito" method="post">
+   </form>
+ ?>
+=======
     <div  class='tab-content'>
     <h5>Agregar lista de alumnos desde un archivo en excel:</h5>
       <form  method="post" action="../includes/agregar_alumnosPrueba2.php" enctype="multipart/form-data">
@@ -199,5 +204,6 @@ where a.id_seccion=s.id';
       </form>
     </div>
 
+>>>>>>> origin/master
 
 <?php include("../includes/footer.php");}?>

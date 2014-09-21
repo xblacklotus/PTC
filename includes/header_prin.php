@@ -8,22 +8,28 @@
 <meta name="copyright" content="" />
 <link rel="stylesheet" type="text/css" href="../css/style2.css">
 <link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />                  <!-- KICKSTART -->
-<link rel="stylesheet" type="text/css" href="../style.css" media="all" />   
-<link rel="stylesheet" type="text/css" href="../css/calendario.css " media = "all"/>                       <!-- CUSTOM STYLES -->
+<link rel="stylesheet" type="text/css" href="../style.css" media="all" />                          <!-- CUSTOM STYLES -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../js/kickstart.js"></script>   
-<script src="../js/calendar.js" type="text/javascript"></script>
-<script src="../js/calendar-es.js" type="text/javascript"></script>
-<script src="../js/calendar-setup.js" type="text/javascript"></script>       
-                               <!-- KICKSTART -->
+<script type="text/javascript" src="../js/kickstart.js"></script>                                  <!-- KICKSTART -->
 </head><body>
 
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li id="primerli"><a href="../pags/perfiles.php">Notas</a></li>
-<li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>
+<li id="primerli"><a href="../pags/mantenimientos.php">Notas</a></li>
+<li><a href="../pags/notas_s.php">Ver notas por alumno</a></li>
+<li><a href=""><span class="icon" data-icon="A"></span>Mantenimientos</a>
+		<ul>
+		<li><a href="../pags/mantenimiento_maestros.php">Maestros</a></li>
+		<li><a href="../pags/mantenimiento_materias.php">Materias</a></li>
+		<li><a href="../pags/mantenimiento_seccion.php">Sección</a></li>
+		<li><a href="../pags/mantenimiento_usuarios.php">Usuarios</a></li>
+
+		<li><a href="../pags/mantenimiento_alumnos.php">Alumnos</a></li>
+		<li><a href="../pags/mantenimiento_perfiles.php">Perfiles</a></li>
+		</ul>
+	</li>
+	<li><a href="../includes/desconectar_super_usuario.php">Cerrar sesión</a></li>
 	<!--<<ul>
 	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
 	<li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
@@ -39,4 +45,5 @@
 </ul>
 
 <div class="grid">
+	
 <!-- ===================================== END HEADER ===================================== -->
