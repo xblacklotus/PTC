@@ -1220,9 +1220,15 @@ function ingresar_anuncio(){
         var elemento = form['prof'];
         var elemento1 = form['anuncio'];
         var elemento2 = form['mat'];
+        var elemento3 = form['titulo'];
+        var elemento4= form['actual'];
+        var elemento5= form['entrega']
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
         var pregunta2 = elemento2.value;
+        var pregunta3 = elemento3.value;
+        var pregunta4 = elemento4.value;
+        var pregunta5 = elemento5.value;
         if (pregunta == "") {
             alert("ERROR : No se ha encontrado el identificador del profesor!");
         }else{
@@ -1240,7 +1246,7 @@ function ingresar_anuncio(){
                                 alert("ERROR : La longitud del anuncio excede el límite permitido!");
                             }else{
                             ///////////////////////////
-                            var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2;
+                            var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2+"&titulo="+pregunta3+"&actual="+pregunta4+"&entrega="+pregunta5;
                             ajax.open("POST",url,true);
                             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                             ajax.onreadystatechange = function()

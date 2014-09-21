@@ -4,6 +4,9 @@
 		$id_profesor = $_POST['profesor'];
 		$anuncio = $_POST['anuncio'];
 		$materia = $_POST['materia'];
+		$titulo = $_POST['titulo'];
+		$f_actual=$_POST['actual'];
+		$f_entrega=$_POST['entrega'];
 		if ($id_profesor == "") {
 			echo "ERROR : No se ha encontrado el identificador del profesor!";
 		}else{
@@ -27,8 +30,8 @@
 								$fila = mysqli_fetch_array($res);
 								$id_materia = $fila[0];
 								//
-								$sql = "insert into anuncios(id_materia,anuncio)
-										values ('".$id_materia."','".$anuncio."')";
+								$sql = "insert into anuncios(id_materia,titulo,anuncio,fecha,fecha_entrega)
+										values ('".$id_materia."','".$titulo."','".$anuncio."','".$f_actual."','".$f_entrega."')";
 								$resultado = mysqli_query($conexion,$sql);
 										if ($resultado) {
 											echo "ADVERTENCIA: El anuncio se ha guardado correctamente!";
