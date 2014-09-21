@@ -81,23 +81,26 @@
             <h4 id="Log">Log out</h4>
     </form>
     <section id="Main">
-        <ul class="menu">
-<li id="primerli"><a href="../pags/mantenimientos.php">Agenda</a></li>
-<li><a href="../pags/notas_s.php">Anuncios</a></li>
-<li><a href=""><span class="icon" data-icon="A"></span>Tareas</a>
-        <ul>
-        <li><a href="../pags/mantenimiento_maestros.php">Lenguaje</a></li>
-        <li><a href="../pags/mantenimiento_materias.php">Matematica</a></li>
-        <li><a href="../pags/mantenimiento_seccion.php">Sociales</a></li>
-        <li><a href="../pags/mantenimiento_usuarios.php">Ciencias</a></li>
-        </ul>
-    </li>
-    
-</ul>
+       
 
         <h2>PORTAL DEL ESTUDIANTE</h2>
-        //**Dentro de este main creo que es donde ira el multipanel**//
         <div id="Agen">
+       
+         <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+            <thead><tr>
+                <th>Tarea</th>
+                <th>Fecha de entrega</th></tr>
+            </thead>
+            <tr>
+                 <?php 
+        $consulta="select titulo, fecha_entrega from anuncios";
+        $res2=mysqli_query($conexion,$consulta);
+        $fila3=mysqli_fetch_array($res2);
+        $titulo=$fila3[0];
+        $fecha =$fila3[1];
+        ?>
+            </tr>
+        </table>
             <select name="Agenda" size="4" style="height: 110px; width: 270px; margin-left: 10px;">
                 <optgroup label="Agenda">
                     <option value="0">Entrega de tarea</option>
@@ -108,6 +111,7 @@
         <!--Aqui esta el includes de anuncios-->
         <form>
         <div id="Anuncio">
+       
             <h3>Anuncios</h3>
             <select name="Anuncios" size="4" style="height: 140px; width: 580px; margin-left: 10px;">
                 <optgroup label="Anuncios">
