@@ -13,6 +13,7 @@
 			<label for="pwd">Contraseña</label>
 			<input id="pwd" name ="pwd" type="password" placeholder="12345" required/>
 			<input type="submit" value="Entrar">
+			
 		</fieldset>
 	</form>
 <?php include("../includes/footer2.php");?>   

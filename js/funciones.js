@@ -1355,3 +1355,7 @@ function logear_super()
             ajax.send(datos);
     }*/
 }
+
+function index(){
+    document.location.href="../index.php";
+}

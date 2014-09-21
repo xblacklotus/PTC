@@ -1,0 +1,88 @@
+* {
+	margin: 0px;
+	padding: 0px;
+
+}
+h3,h5 {
+	font-family: "Maiandra GD";
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+	opacity: .6;
+}
+
+#Back {
+	float: center;
+	margin-left: -95px;
+	height: 580px;
+	width: 1350px;
+	background-image: url("../imgs/home-banner.jpg");
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-family: "Maiandra GD";
+}
+
+#Aside_Log{
+	margin: auto;
+	float: right;
+	width: 500px;
+	height: 575px;
+	background: -webkit-linear-gradient(right, #120A2A, #086A87);
+}
+
+div.contenedor {
+	width: 150px;
+	height: 240px;
+	margin:110px  auto;
+	margin-right: 5px;
+	margin-left: 5px;
+	float: left;
+	-webkit-transition:height .4s;
+	-o-transition:height .4s;
+}
+
+div#uno {
+	background-color: rgb(22,107,162);
+}
+
+div#dos {
+	background-color: rgb(27,54,71);
+}
+
+div#tres {
+	background-color: rgb(21,48,54);
+}
+
+img.icon {
+	display: block;
+	margin:50px auto;
+	background-color: rgba(255,255,255,.15);
+	width: 65px;
+	padding: 20px;
+	-webkit-border-radius: 50%;
+	-o-border-radius: 50%;
+	-webkit-box-shadow:0px 0px 0px 30px rgba(255,255,255,0);
+	-webkit-transition:box-shadow .4s;
+}
+
+p.texto {
+	font-size: 1.2em;
+	color: white;
+	text-align: center;
+	padding-top: 10px;
+	opacity: .6;
+	-webkit-transition:padding-top .4s;
+	-o-transition:padding-top .4s;
+}
+
+div.contenedor:hover {
+	height: 260px;
+}
+div.contenedor:hover p.texto {
+	padding-top: 30px;
+	opacity: 1;
+}
+
+div.contenedor:hover img.icon {
+	-webkit-box-shadow:0px 0px 0px 0px rgba(255,255,255,.6);
+}
