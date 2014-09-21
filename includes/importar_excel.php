@@ -60,15 +60,37 @@ if(isset($_POST['tabla']) && $_POST['tabla']!="undefined" )
 	
 	// Add some data
 	$k=0;
+	$fil=0;
+	$colum=0;
 	for($i=0;$i<intval($filas);$i++)
 	{ 
+		$colum=0;
 	    for($j=0;$j<intval($columnas);$j++)
 	    {
 	        $objPHPExcel->setActiveSheetIndex(0)
 	            ->setCellValue($letras[$j].($i+1), $tabla[$k]);	            
 	        $k++;
+	        $colum++;
 	    }        
+	    $fil++;
 	}
+
+PHPExcel_Shared_Font::setAutoSizeMethod(PHPExcel_Shared_Font::AUTOSIZE_METHOD_EXACT);
+foreach(range('A','H') as $columnID) {
+    $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+        ->setAutoSize(true);
+}
+
+$objPHPExcel->getActiveSheet()->getStyle('A1:'.$letras[$colum-1].$fil)->applyFromArray(
+		  array(
+		  'borders' => array(
+								'bottom'	=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
+								'left'	=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
+								'top'	=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM),
+								'right'		=> array('style' => PHPExcel_Style_Border::BORDER_MEDIUM)
+							)
+		 ));
+
 
 
 

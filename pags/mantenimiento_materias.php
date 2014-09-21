@@ -6,7 +6,7 @@
 /**Agregar materias**/
 <form name="form" method="post">
 <label>Nombre de la materia: </label>
-<input type="text" id="nombre_materia"></input>
+<input type="text" id="nombre_materia" required></input>
 <label>Grado :</label>
 <input class="bids" type="hidden" name="inputgra" id="inputgra"/>
 <select contenteditable="false" id="grados" onchange="combo(this,'inputgra')">
@@ -18,9 +18,9 @@
 </input>
 <label>Sección :</label>
 <input class="bids" type="hidden" name="inputse" id="inputse"/>
-<input type="text" contenteditable="false"list="secciones" name="secciones" onchange="combo(this,'inputse')">
-	<datalist id="secciones">
+	<select id="secciones" onchange="combo(this,'inputse')">
 	<?php
+		echo '<option></option>';
 		$sql = "select * from seccion";
 		$res = mysqli_query($conexion,$sql);
 		while ($rsSecc = mysqli_fetch_array($res)) {
@@ -28,7 +28,7 @@
 		}
 
 	?>
-	</datalist>
+	</select>
 </input>
 <button type="button" class="pill orange" onclick="javascript:ingresar_materias();"><i class="icon-plus-sign">Ingresar</i></button>
 </form>

@@ -3,8 +3,7 @@
     if(isset($_POST))
     {
 
-        $id=$_POST['id_ma'];        
-        echo "usuario: ".$id;
+        $id=$_POST['id_ma'];   
         if($id=="")
         {
             echo "No hay maestro ingresado";

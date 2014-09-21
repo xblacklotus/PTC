@@ -6,15 +6,16 @@
 
         $nombre_maestro=$_POST['nombre_maestro'];
         $apellido_maestro=$_POST['apellido_maestro']; 
-        $usuario=$_POST["usuario"];
-        echo "Nombre ".$nombre_maestro;
-            echo "Apellidos ".$apellido_maestro;
-            echo "Id :".$usuario;     
+        $usuario=$_POST['usuario'];  
         if($nombre_maestro =="")
         {
             echo "No se puede guardar datos vacios";
         }elseif ($apellido_maestro == "") {
             echo "No se puede guardar datos vacios";
+        }
+        else if(is_numeric($nombre_maestro) || is_numeric($apellido_maestro))
+        {
+            echo "No pueden haber datos numericos";
         }
         else
         {
@@ -24,9 +25,7 @@
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
-
                 echo "Guardado con exito";
-
             }
             else
             {

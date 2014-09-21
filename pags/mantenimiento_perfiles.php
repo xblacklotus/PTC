@@ -1,4 +1,5 @@
 <?php include("../includes/inheader.php");?>
+<?php include("../includes/config.inc");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
 <form name="forming" method="post" >
@@ -14,7 +15,7 @@
 		$sql = "select * from materias";
 		$res = mysqli_query($conexion,$sql);
 		while ($rsSecc = mysqli_fetch_array($res)) {
-			echo '<option>'.$rsSecc['nombre'].'</option>';
+			echo '<option>'.$rsSecc['nombre'].','.$rsSecc['grado'].'°</option>';
 		}
 
 	?>
@@ -61,14 +62,14 @@
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="descripcion2" value="'.$rsPer['descripcion'].'"></input>';?></td>
-				<td><?php echo'	<input type="text" id="porcentaje2" value="'.$rsPer['porcentaje'].'"></input> ';?></td>
+				<?php echo '<input type="text" id="d2" value="'.$rsPer['descripcion'].'"></input>';?></td>
+				<td><?php echo'	<input type="text" id="p2" value='.$rsPer['porcentaje'].'></input> ';?></td>
 				<td><?php echo' <input type="text" id= "id_materia2" value="'.$fila[0].'"></input> ';?></td>
 				<td>
-				<?php echo '<input type="text" id="trimestre2" value='.$rsPer['trimestre'].'> </input>';?></td>
+				<?php echo '<input type="text" id="t2" value='.$rsPer['trimestre'].'> </input>';?></td>
 				<td>
 				<?php echo '	
-				<input class="bids" type="hidden" name="id_per" value='.$rsPer['id'].'> </input>
+				<input class="bids" type="hidden" name="id_per" value='.$rsPer['id'].'> 
 				<button type="button" class="pill orange" onclick="javascript:modificar_perfiles('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_perfiles('.$i.');">

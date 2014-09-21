@@ -1,7 +1,17 @@
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
+  
+
+    $id_profe=1;
+   $peticion2="select nombres,apellidos FROM profesor WHERE id=".$id_profe;
+        $resultado2=mysqli_query($conexion,$peticion2);
+                date_default_timezone_set('America/El_Salvador');
+        if($fila2=mysqli_fetch_array($resultado2))
+        {
+            echo '<h2>'.$fila2[0].' '.$fila2[1].' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'.date("d-m-y h:m").'</h2>';
+        }
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
-               where p.id=id_profesor and id_seccion=s.id and p.id=12";
+               where p.id=id_profesor and id_seccion=s.id and p.id=".$id_profe;
     echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px">
     <thead><tr>
         <th>Materia</th>

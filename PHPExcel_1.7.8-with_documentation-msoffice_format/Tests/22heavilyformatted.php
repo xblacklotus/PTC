@@ -70,13 +70,7 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:T100')->applyFromArray(
 		 )
 	);
 
-$objPHPExcel->getActiveSheet()->getStyle('C5:R95')->applyFromArray(
-	array('fill' 	=> array(
-								'type'		=> PHPExcel_Style_Fill::FILL_SOLID,
-								'color'		=> array('argb' => 'FFFFFF00')
-							),
-		 )
-	);
+PHPExcel_Shared_Font::setAutoSizeMethod(PHPExcel_Shared_Font::AUTOSIZE_METHOD_EXACT);
 
 // Save Excel 2007 file
 echo date('H:i:s') , " Write to Excel2007 format" , EOL;

@@ -45,7 +45,7 @@ if($_POST)
             echo "<tr>";
             
             array_push($nombres, $fila2[1]." ".$fila2[2]);
-            echo "<td style=padding:3px;>f".$fila2[1].", ".$fila2[2]."</td>";
+            echo "<td style=padding:3px;>".$fila2[1].", ".$fila2[2]."</td>";
             $peticion3="select * from perfiles where id_materia=".$a;
             $resultado3=mysqli_query($conexion,$peticion3);
             $total=0;
