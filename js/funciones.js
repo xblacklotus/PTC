@@ -125,10 +125,22 @@ function notasMateria(name)
     form.submit();    
 }
 
+function s_notasMateria(name)
+{   
+    var form = document.forms['form'+name];
+    form.action= "../includes/notas_Materias_s.php";
+    form.submit();    
+}
 function verNotas(name)
 {
     var form = document.forms['from'+name];
     form.action= "visualizar_notas.php";
+    form.submit();
+}
+function s_verNotas(name)
+{
+    var form = document.forms['from'+name];
+    form.action= "visualizar_notas_s.php";
     form.submit();
 }
 //función para comprobar si una variable es númerica
@@ -156,13 +168,17 @@ function ingresar_seccion()
         var elemento = form['nombre_seccion'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preguntatexto =elemento.value;
+        alert(preguntatexto.length);
         if(isNumber(preguntatexto)) {
             alert("ERROR: El nombre de la sección no puede ser un número!");
         }else {
-            if (preguntatexto != "") {
-                if (preguntatexto.length > 1) {
+            if (preguntatexto != "") 
+            {
+                if (preguntatexto.length > 1000) 
+                {                    
                     alert("ERROR: La longitud del nombre de la sección excede el límite permitido!");
-                }else{
+                }
+                else{
                 //y aqui ya pasas el valor a la variable para ajax
                 var datos="nombre_seccion="+preguntatexto;
                 //Aqui haces el arreglo para todos los datos q fueras a mandar
@@ -305,11 +321,9 @@ function modificar_maestro(i)
        
         else
         {
-            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_ma="+preg2;
-            alert(datos);
+            var datos = "nombre2="+preg+"&apellido2="+preg1+"&id_ma="+preg2;            
             ajax.open("POST",url,true);
-            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            alert(ajax);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");            
             ajax.onreadystatechange=function()
             {            
                 if (ajax.readyState==4 && ajax.status==200) 
@@ -323,6 +337,91 @@ function modificar_maestro(i)
         
     }
 }
+
+
+
+
+
+
+function modificar_nota(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar la nota?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_nota.php";
+        var form = document.forms['formNots'+i];
+        //aqui ya no furulo xD D:
+        var elemento = form['nota'];
+        var elemento2 = form['id'];
+        var preg = elemento.value;
+         var preg2 = elemento2.value;
+
+        if(preg =="")
+        {
+            alert("No pueden haber espacios en blanco");
+        }
+        else if(preg >10 || preg<0)
+        {
+            alert("Datos no validos");
+        }
+        else if(!isNumber(preg))
+        {
+            alert("la nota no puede ser letra");
+        }
+        else
+        {
+
+            var datos = "nota="+preg+"& id="+preg2;            
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    alert(ajax.responseText);    
+                    document.location.href="mantenimientos.php";            
+                }
+            }
+            ajax.send(datos);
+        }
+        
+    }
+}
+
+
+
+function descargar_arch(i)
+{
+       // alert("entro");
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/descargar_arch.php";
+        var form = document.forms['formArch'+i];
+
+        //aqui ya no furulo xD D:
+        var elemento2 = form['id'];
+
+         var preg2 = elemento2.value;
+
+            var datos = "id="+preg2;            
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+           ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    //alert(ajax.responseText);    
+                    document.location.href="descargar_archivo.php";            
+                }
+            }
+            ajax.send(datos);
+            alert(datos);
+}
+
+
+
 
 function eliminar_maestro(i) {
     var resp = confirm("¿Estas seguro de eliminar este maestro?");
@@ -369,20 +468,22 @@ function ingresar_perfiles()
        // obtenes todo el "formulario"    
         var elemento = form['descripcion'];
         var elemento2 = form['porcentaje'];
-        var elemento3 = form['metermateria'];
+        var elemento3 = form['materias'];
         var elemento4 = form['metertri'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
         var preg2 =elemento2.value;
-        var preg3 =elemento3.value;
+        var preg3 =elemento3.selectedIndex;
+
+
         var preg4 =elemento4.value;
 
         
-        if(preg =="" || preg2 =="" || preg3=="" || preg4=="")
+        if(preg =="" || preg2 ==""  || preg4=="")
         {
             alert("No pueden haber espacios en blanco");
         }
-        else if(!isNaN(preg) || !isNaN(preg3) )
+        else if(!isNaN(preg) )
         {
             alert("Hay campos que no tienen que ser numericos");
         }
@@ -417,8 +518,17 @@ function ingresar_perfiles()
               if (ajax.readyState==4 && ajax.status==200) 
               {
                    
-                        alert(ajax.responseText);
-                        document.location.href="mantenimiento_perfiles.php";
+                        
+                        if(ajax.responseText=="Guardado con exito")
+                        {
+                            alert(ajax.responseText);
+                            document.location.href="mantenimiento_perfiles.php";
+                        }
+                        else
+                        {
+                            alert(ajax.responseText);    
+                        }
+                        
                     
                     
               };
@@ -448,22 +558,22 @@ function modificar_perfiles(i)
        // obtenes todo el "formulario"    
         var elemento = form['d2'];
         var elemento2 = form['p2'];
-        var elemento3 = form['id_materia2'];
+        var elemento3 = form['materias'+i];
         var elemento4 = form['t2'];
         var elemento5 = form['id_per'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preg =elemento.value;
         var preg2 =elemento2.value;
-        var preg3 =elemento3.value;
+        var preg3 =elemento3.selectedIndex;       
         var preg4 =elemento4.value;
         var preg5 =elemento5.value;
 
         
-        if(preg =="" || preg2 =="" || preg3=="" || preg4=="")
+        if(preg =="" || preg2 =="" || preg3<0 || preg4=="")
         {
             alert("No pueden haber espacios en blanco");
         }
-        else if(!isNaN(preg) || !isNaN(preg3) )
+        else if(!isNaN(preg))
         {
             alert("Hay campos que no tienen que ser numericos");
         }
@@ -480,7 +590,7 @@ function modificar_perfiles(i)
         {
             
             //y aqui ya pasas el valor a la variable para ajax
-            var datos="d2="+preg+"& p2="+preg2+"& id_materia2="+preg3+"& t2="+preg4+"& id_per="+preg5;
+            var datos="d2="+preg+"& p2="+preg2+"& materia="+preg3+"& t2="+preg4+"& id_per="+preg5;
             
             //Aqui haces el arreglo para todos los datos q fueras a mandar
             ajax.open("POST",url,true);
@@ -499,8 +609,13 @@ function modificar_perfiles(i)
               {
                     
                         alert(ajax.responseText);
-                        document.location.href="mantenimiento_perfiles.php";
-                    
+                        if(ajax.responseText=="Modificado con exito")
+                            document.location.href="mantenimiento_perfiles.php";
+                        else
+                        {
+
+                        }
+                        //document.getElementById("prueba1").innerHTML=ajax.responseText;
                     
               }
             }
@@ -581,53 +696,81 @@ function ingresar_materias(){
         var elemento = form['nombre_materia'];
         var elemento1 = form['inputgra'];
         var elemento2 = form['inputse'];
+        var elemento3 = form['profesor'];        
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
-        var pregunta2 = elemento2.value;
-        if (pregunta =="") {
+        var pregunta2 = elemento2.value;        
+        if (pregunta =="") 
+        {
             alert("ERROR : Llene el campo obligatorio del nombre de la materia!");
-        }else{
-            if (pregunta1 =="") {
+        }
+        else
+        {
+            if (pregunta1 =="") 
+            {
                 alert("ERROR : Llene el campo obligatorio del grado al que pertenece la materia!");
-            }else{
-                if (pregunta2 == "") {
+            }
+            else
+            {
+                if (pregunta2 == "") 
+                {
                     alert("ERROR : Llene el campo obligatorio de la sección del grado al que pertenece la materia!");
-                }else{
-                    if (pregunta.length > 20) {
+                }
+                else
+                {
+                    if (pregunta.length > 20) 
+                    {
                         alert("ERROR: La longitud del nombre de la materia excede el límite permitido!");
-                    }else{
-                        if (pregunta1.length > 1) {
+                    }
+                    else
+                    {
+                        if (pregunta1.length > 1) 
+                        {
                             alert("ERROR: La longitud del grado excede el límite permitido!");
-                        }else{
-                            if (isNumber(pregunta)) {
-                            alert("ERROR: El nombre de la materia no puede ser un número!");
-                        }else{
-                            if (isNumber(pregunta1)) {
-                                if (isNumber(pregunta2)) {
-                                    alert("ERROR: El nombre de la sección no puede ser numerica!");
-                                }else{
-                                    ///////////////////////////
-                                    var datos = "nombre_materia="+elemento.value+"&grados="+elemento1.value+"&secciones="+elemento2.value;
-                                    ajax.open("POST",url,true);
-                                    ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-                                    ajax.onreadystatechange=function()
-                                    {
-                                        if (ajax.readyState==4 && ajax.status==200) {
-                                            if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                                            {
-                                                alert(ajax.responseText);
-                                                document.location.href="mantenimiento_materias.php";
-                                            }
-                                            
-                                        };
-                                    }
-                                    ajax.send(datos);
-                                    ///////////////////////////
-                                }
-                            }else{
-                                alert("ERROR: El grado no puede tener letras!");
-                            }
                         }
+                        else
+                        {
+                            if (isNumber(pregunta)) 
+                            {
+                            alert("ERROR: El nombre de la materia no puede ser un número!");
+                            }
+                            else
+                            {       
+                                if (isNumber(pregunta1)) 
+                                {
+                                    if (isNumber(pregunta2)) 
+                                    {
+                                        alert("ERROR: El nombre de la sección no puede ser numerica!");
+                                    }
+                                    else
+                                    {
+                                        ///////////////////////////
+                                        var datos = "nombre_materia="+elemento.value+"&grados="+elemento1.value+"&secciones="+elemento2.value+"&profesor="+elemento3.selectedIndex;;
+                                        ajax.open("POST",url,true);
+                                        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                                        ajax.onreadystatechange=function()
+                                        {
+                                            if (ajax.readyState==4 && ajax.status==200) {
+                                                if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
+                                                {
+                                                    alert(ajax.responseText);
+                                                    document.location.href="mantenimiento_materias.php";
+                                                }
+                                                else
+                                                {
+                                                    alert(ajax.responseText);
+                                                }
+                                            };
+                                        }
+                                        ajax.send(datos);
+                                        ///////////////////////////
+                                    }
+                                }
+                                else
+                                {
+                                    alert("ERROR: El grado no puede tener letras!");
+                                }
+                            }
                         }
                     }
                 }
@@ -652,8 +795,9 @@ function modificar_materia(i){
         var form = document.forms['formMo'+i+''];
         var elemento = form['new_ma'];
         var elemento1 = form['new_gra'];
-        var elemento2 = form['new_se'];
+        var elemento2 = form['secciones'+i];
         var elemento3 = form['ma_id'];
+        var elemento4 = form['profesor'+i];
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
         var pregunta2 = elemento2.value;
@@ -681,7 +825,7 @@ function modificar_materia(i){
                                     alert("ERROR: El nombre de la sección no puede ser numerica!");
                                 }else{
                                     /////////////////////////////
-                                    var datos = "new_ma="+pregunta+"&new_gra="+pregunta1+"&new_se="+pregunta2+"&ma_id="+pregunta3;
+                                    var datos = "new_ma="+pregunta+"&new_gra="+pregunta1+"&new_se="+pregunta2+"&ma_id="+pregunta3+"&profesor="+elemento4.selectedIndex;
                                     ajax.open("POST",url,true);
                                     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                                     ajax.onreadystatechange=function()
@@ -693,6 +837,10 @@ function modificar_materia(i){
                                             {
                                                 alert(ajax.responseText);
                                                 document.location.href="mantenimiento_materias.php";
+                                            }
+                                            else
+                                            {
+                                                alert(ajax.responseText);
                                             }
                                             
                                         }
@@ -1203,4 +1351,119 @@ function eliminar_anuncio(i) {
         }
     }
 }
->>>>>>> origin/master
+
+function logear_alumno()
+{
+     var ajax;
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_alumno.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    
+                    if(ajax.responseText=="Exito")
+                    {                        
+                        form.action="notas.php";
+                        form.submit();                        
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }
+}
+function logear_profesor()
+{
+
+     var ajax;
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_profesor.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    
+                    if(ajax.responseText==1)
+                    {
+                        form.action="perfiles.php";
+                        form.submit();
+                        //document.location.href="perfiles.php";
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }
+}
+function logear_super()
+{
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if(user.value=="admin" && pwd.value=="123")
+    {        
+        document.location.href="mantenimientos.php";
+    }
+    else
+    {
+
+    }
+
+     /*var ajax;
+    }
+    }
+    ajax = new XMLHttpRequest();
+    var url = "../includes/logear_super.php";
+    var form = document.forms['formLogin'];
+    var user = form['user'];
+    var pwd = form['pwd'];
+    if (user.value == "" || pwd.value=="") {
+        alert("Complete los campos");
+    }
+    else
+    {
+            var datos = $("#formLogin").serialize();
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            ajax.onreadystatechange=function(){
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    if(ajax.responseText==1)
+                    {
+                        document.location.href="perfiles.php";
+                    }
+                    else
+                    {
+                        alert(ajax.responseText);
+                    }
+                }
+            }
+            ajax.send(datos);
+    }*/
+}
+>>>>>>> 9cdec6eb21c4ec06fb0d15a8b49284236702aa9a
