@@ -39,7 +39,7 @@ while($fila=mysqli_fetch_array($resul))
                     <td> '.$fila[3].'</td> 
                    <td>
                    <input class="bids" type="hidden" name="id" value='.$fila[0].'> </input> <button type="submit" class="pill orange"   >
-                   <i class="icon-plus-sign">Modificar</i></button></td> 
+                   <i class="icon-plus-sign">Descargar</i></button></td> 
                     </form>                   
                  </tr>';
                  $i++; 
