@@ -19,7 +19,7 @@
 <textarea id="anuncio" cols="50" rows="2" maxlength="250"></textarea>
 <label>Fecha</label>
 <input type="text" name="ingreso" id="ingreso" value="dd-mm-yyyy" /> 
-<img src="ima/calendario.png" width="16" height="16" border="0" title="Fecha Inicial" id="lanzador">
+<img src="../imgs/calendario.png" width="16" height="16" border="0" title="Fecha Inicial" id="lanzador">
 <!-- script que define y configura el calendario--> 
 <script type="text/javascript"> 
    Calendar.setup({ 
