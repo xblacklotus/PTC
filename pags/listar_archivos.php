@@ -1,5 +1,14 @@
 <?php 
-
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['userp'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginMaestro.php";
+</script>';
+}
+else
+{
 include("../includes/inheader.php");?>
 
 
@@ -7,6 +16,13 @@ include("../includes/inheader.php");?>
 <?php
 if($_POST) {
         $id=$_POST['m_id'];
+        echo '<div  class="tab-content">';
+        echo "<h1>Agregar Archivo:</h1>
+        <form enctype='multipart/form-data' action='../includes/guardar_archivo.php' method='post'>
+Descripción <input type='text' name='titulo' size='30'>
+<br> <input  type='file' name='archivito' >
+<br><input type='submit' value='Enviar archivo'>
+</form><br><br>";
 
     $qry = "SELECT id, nombre, titulo, size tipo FROM archivos where id_materia='".$id."'";
     //$res = mysql_query($qry);
@@ -21,8 +37,8 @@ if($_POST) {
         <br>
         <br>";
     }*/
-    echo '<div  class="tab-content">';
-    echo '<!-- Table --><table id="tbmats" class="striped tight" 
+    
+    echo '<!-- Table --><table id="tbmats" class="striped tight sortable" 
               cellspacing="0" cellpadding="0" style="max-width="500px">
             <thead><tr>
                 
@@ -43,7 +59,9 @@ if($_POST) {
                         <td> '.$fila[3].'</td> 
                        <td>
                        <input class="bids" type="hidden" name="id" value='.$fila[0].'> </input> <button type="submit" class="pill orange"   >
-                       <i class="icon-plus-sign">Descargar</i></button></td> 
+                       <i class="icon-plus-sign">Descargar</i></button>
+                       <button type="button" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:eliminarArch('.$i.');">Eliminar</button></td> 
+
                         </form>                   
                      </tr>';
                      $i++; 
@@ -51,7 +69,7 @@ if($_POST) {
                  echo '</table>';
                  echo '</div>';
     }
-
+}
 ?>
 
 
