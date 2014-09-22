@@ -5,10 +5,21 @@
 
 
 <?php include("../includes/config.inc");?>
-<?php
 
+<?php
+	
 if (isset($_POST)) {
          $idd= $_POST['id'];
+
+         $abc = "SELECT nombre FROM materias where id='".$idd."'";
+    $resultao10=mysqli_query($conexion,$abc);
+    $fff=mysqli_fetch_array($resultao10);
+
+	echo '<div  class="tab-content">
+	<ul class="breadcrumbs alt1">
+		<li><a href="AV_principal.php">Home</a></li>
+		<li><a>'.$fff[0].'</a></li>
+		</ul>';
           $qry = "SELECT id, nombre, titulo, size tipo FROM archivos where id_materia='".$idd."'";
     //$res = mysql_query($qry);
     		$resul=mysqli_query($conexion,$qry);
@@ -45,7 +56,7 @@ if (isset($_POST)) {
                      </tr>';
             }
                  echo '</table>';
-                 echo '</div></div><div id="tabr2" class="tab-content">';
+                 echo '</div><div id="tabr2" class="tab-content">';
 
 
                  $peticion ="select * from anuncios where id_materia='".$idd."'";
@@ -75,7 +86,7 @@ if (isset($_POST)) {
             }
             echo '</table>';
 
-                 echo '</div></div><div id="tabr3" class="tab-content">
+                 echo '</div><div id="tabr3" class="tab-content">
 		                 <ul class="tabs left">
 						<li><a href="#tab1">Primer Trimestre</a></li>
 						<li><a href="#tab2">Segundo Trimestre</a></li>
@@ -84,7 +95,7 @@ if (isset($_POST)) {
 
 						<div id="tab1" class="tab-content">';
 						$peticion2 ="select * from perfiles where id_materia='".$idd."' AND trimestre='1'";
-						var_dump($peticion2);
+						//var_dump($peticion2);
                  		$resul3=mysqli_query($conexion,$peticion2);
                  		echo '
 				                 <!-- Table --><table id="tbco" class="striped tight sortable" 
@@ -100,8 +111,8 @@ if (isset($_POST)) {
 					                echo '<tr>
 					                        <form name="formArch" method="post" action="descargar_archivo.php" >
 
-					                        <td> '.$fila2[1].'</td>
-					                        <td> '.$fila2[2].'</td> 
+					                        <td> '.$fila3[1].'</td>
+					                        <td> '.$fila3[2].'</td> 
 					                        </form>                   
 					                     </tr>';
 					            }
@@ -125,8 +136,8 @@ if (isset($_POST)) {
 					                echo '<tr>
 					                        <form name="formArch" method="post" action="descargar_archivo.php" >
 
-					                        <td> '.$fila2[1].'</td>
-					                        <td> '.$fila2[2].'</td> 
+					                        <td> '.$fila4[1].'</td>
+					                        <td> '.$fila4[2].'</td> 
 					                        </form>                   
 					                     </tr>';
 					            }
@@ -149,13 +160,14 @@ if (isset($_POST)) {
 					                echo '<tr>
 					                        <form name="formArch" method="post" action="descargar_archivo.php" >
 
-					                        <td> '.$fila2[1].'</td>
-					                        <td> '.$fila2[2].'</td> 
+					                        <td> '.$fila5[1].'</td>
+					                        <td> '.$fila5[2].'</td> 
 					                        </form>                   
 					                     </tr>';
 					            }
 					            echo '</table>';
-                 			echo '</div></div><div id="tabr2" class="tab-content">';
+                 			echo '</div></div><div id="tabr2" class="tab-content">
+                 			</div>';
 
 
      }
