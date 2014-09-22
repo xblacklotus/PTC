@@ -1,8 +1,8 @@
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
-  
-
-    date("d-m-y h:m").'</h2>';
+    echo "<input type='text' placeholder='Id alumno'>";
+    echo "<h3>".$id_profe."</h3>";
+    echo '<h2>'.date("d-m-y").'</h2>';
         
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
                where p.id=id_profesor and id_seccion=s.id ";

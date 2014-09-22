@@ -36,7 +36,8 @@ include("../includes/super_header.php");?>
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="contra" placeholder="'.$rsSecc['contraseña'].'"></input> 
+				<?php echo '<label>'.$rsSecc['id'].'</label>
+				<input type="text" id="contra" placeholder="'.$rsSecc['contraseña'].'"></input> 
 				<input class="bids" type="hidden" name="id_usuario" value='.$rsSecc['id'].'> </input>
 				<button type="button" class="pill orange" onclick="javascript:modificar_usuario('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>

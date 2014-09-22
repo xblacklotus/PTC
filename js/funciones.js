@@ -110,6 +110,35 @@ function ingresar_notas()
         }        
     }
 }
+function s_ingresar_notas()
+{
+    var resp=confirm("¿Esta seguro que desea modificar las secciones?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "guardar_notas.php";        
+        var datos = $("#notas").serialize();
+        if(validar_notas())
+        {
+            
+            ajax.open("POST",url,true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");            
+            ajax.onreadystatechange=function()
+            {            
+                if (ajax.readyState==4 && ajax.status==200) 
+                {                       
+                    alert(ajax.responseText);
+                    if(ajax.responseText=='Exito al guardar notas')
+                    {
+                        document.location.href="mantenimientos.php";
+                    }
+                }                
+            }
+            ajax.send(datos);
+        }        
+    }
+}
 
 function modi(name)
 {

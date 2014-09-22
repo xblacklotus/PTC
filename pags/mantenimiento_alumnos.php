@@ -191,11 +191,6 @@ where a.id_seccion=s.id';
 			   
 			<?php  }?>
 		</table>
-<?php
-   <form name="formomito" method="post">
-   </form>
- ?>
-=======
     <div  class='tab-content'>
     <h5>Agregar lista de alumnos desde un archivo en excel:</h5>
       <form  method="post" action="../includes/agregar_alumnosPrueba2.php" enctype="multipart/form-data">
@@ -203,7 +198,5 @@ where a.id_seccion=s.id';
           <input type="submit" value="Subir lista de alumnos">
       </form>
     </div>
-
->>>>>>> origin/master
 
 <?php include("../includes/footer.php");}?>

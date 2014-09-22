@@ -84,7 +84,22 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
                 echo '<input class="bids" type="hidden" form="notas"name="a_id'.$cantidad.'" value='.$fila[6].'> ';        
             $cantidad++;        
         }
-        echo '</tbody></table>
+        if($_SESSION['usuario'])
+        {
+            echo '</tbody></table>
+        <form name="notas" id="notas" method="post"">
+            <input class="bids" type="hidden" name="p_id" value='.$p_id.'>        
+            <input class="bids" type="hidden" name="cantidad" id="cantidad" value='.$cantidad.'>        
+             <input class="bids" type="hidden" name="m_id" value='.$m_id.'>
+             <input class="bids" type="hidden" name="s_id" value='.$s_id.'>
+             <input class="bids" type="hidden" name="grado" value='.$grado.'>
+             <input class="bids" type="hidden" name="id_profe" value='.$id_profe.'>         
+            <button type="button"class="orange spill" name="guardar_notas" onclick="s_ingresar_notas();">Ingresar notas</button>
+            </form>';
+        }
+        else
+        {
+            echo '</tbody></table>
         <form name="notas" id="notas" method="post"">
             <input class="bids" type="hidden" name="p_id" value='.$p_id.'>        
             <input class="bids" type="hidden" name="cantidad" id="cantidad" value='.$cantidad.'>        
@@ -93,7 +108,9 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
              <input class="bids" type="hidden" name="grado" value='.$grado.'>
              <input class="bids" type="hidden" name="id_profe" value='.$id_profe.'>         
             <button type="button"class="orange spill" name="guardar_notas" onclick="ingresar_notas();">Ingresar notas</button>
-            </form>';
+            </form>';   
+        }
+        
     }
     else
     {

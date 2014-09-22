@@ -16,7 +16,7 @@ include("../includes/super_header.php");
 //include("../includes/aside-maestros.php");
 ?>
 
-<h3><?php echo $id_profe;?></h3>
+
 <div id="divperfiles">
 <?php
 
