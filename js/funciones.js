@@ -1,4 +1,4 @@
-function exportar_excel(tabla,filas,columnas)
+ingrefunction exportar_excel(tabla,filas,columnas)
 {
     var ajax;
     ajax=new XMLHttpRequest();
@@ -51,6 +51,39 @@ function enviar(name)
         ajax.send(datos);
     }    
 }
+
+function eliminarArch(name)
+{    
+    var resp=confirm("¿Esta seguro que desea eliminar este  archivo?");
+    if (resp)
+    {
+        var ajax;
+        ajax=new XMLHttpRequest();
+        var url= "../includes/eliminarArch.php" ;
+        var oForm1 = document.forms['formArch'+name];//aqui obtenes todo el "formulario"    
+        var oForm1Element = oForm1['id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
+        var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
+        var datos="id="+preguntatexto;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
+        ajax.onreadystatechange=function()
+        {
+          if (ajax.readyState==4 && ajax.status==200) 
+          {
+            alert(ajax.responseText);
+            if(ajax.responseText==ajax.responseText)
+            {
+                document.location.href="listar_archivos.php";
+            }
+          }
+        }
+        ajax.send(datos);
+    }    
+}
+
+
+
+
 function validar_notas()
 {
     var validas=false;
@@ -151,6 +184,13 @@ function notasMateria(name)
 {   
     var form = document.forms['form'+name];
     form.action= "../includes/notas_Materias.php";
+    form.submit();    
+}
+
+function ver_archivos(name)
+{   
+    var form = document.forms['form'+name];
+    form.action= "../pags/listar_archivos.php";
     form.submit();    
 }
 
