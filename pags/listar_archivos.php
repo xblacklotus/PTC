@@ -20,6 +20,7 @@ if($_POST) {
         echo "<h1>Agregar Archivo:</h1>
         <form enctype='multipart/form-data' action='../includes/guardar_archivo.php' method='post'>
 Descripción <input type='text' name='titulo' size='30'>
+ <input class='bids' type='hidden' name='id' value='".$id."''>
 <br> <input  type='file' name='archivito' >
 <br><input type='submit' value='Enviar archivo'>
 </form><br><br>";

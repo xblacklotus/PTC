@@ -1,5 +1,7 @@
 <?php include("config.inc");
-$id_materia=1;
+if($_POST) {
+        $id=$_POST['id'];
+        }
 $archivo = $_FILES["archivito"]["tmp_name"]; 
  $tamanio = $_FILES["archivito"]["size"];
  $tipo    = $_FILES["archivito"]["type"];
@@ -14,7 +16,7 @@ $archivo = $_FILES["archivito"]["tmp_name"];
     fclose($fp); 
 
     $qry = "INSERT INTO archivos VALUES 
-            (0,'".$nombre."','".$titulo."','".$contenido."','".$tipo."','".$id_materia."','".$tamanio."')";
+            (0,'".$nombre."','".$titulo."','".$contenido."','".$tipo."','".$id."','".$tamanio."')";
     $re=mysqli_query($conexion,$qry);
     //mysql_query($qry);
 

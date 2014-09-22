@@ -178,7 +178,15 @@ function modi(name)
     var form = document.forms['from'+name];
     form.action= "modificar_notas.php";
     form.submit();
-}   
+}
+
+function perfilesMateria(name)
+{
+    alert(name);
+    var form = document.forms['frmma'+name];
+    form.action= "av_contenido.php";
+    form.submit();
+}    
 
 function notasMateria(name)
 {   

@@ -108,12 +108,21 @@
     $numero=1;
     while ($fila5=mysqli_fetch_array($resultado5)) {
       $total=0;
-       echo "<button type='button' class='pill orange' onclick='javascript:aula();'><i class='icon-plus-sign'>".$fila5[1]."</i></button>";}?>
+       echo "
+       <form name='formA' method='post' action='av_contenido.php' >
+       <input class='bids' type='hidden' name='id' value=".$fila5[0]."> </input> <button type='submit' class='pill orange' >
+       <i class='icon-plus-sign'>".$fila5[1]."</i></button>
+       </form>
+       ";
+       var_dump($fila5[0]);
+        }
+       ?>
             
         </div>
        
     </section>
 </aside>
+
 <?php include("../includes/footer2.php");
 //hola
 ?>
