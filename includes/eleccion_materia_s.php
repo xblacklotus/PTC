@@ -1,6 +1,8 @@
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
-    echo "<input type='text' placeholder='Id alumno'>";
+    echo "<form method='POST' action='notas_s.php'><input type='text' id='id_alumno' name='id_alumno' placeholder='Id alumno'>
+    <button class='orange pill' type='submit'>Buscar</button>
+    </form><br>";
     echo "<h3>".$id_profe."</h3>";
     echo '<h2>'.date("d-m-y").'</h2>';
         

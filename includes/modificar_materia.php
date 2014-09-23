@@ -8,6 +8,9 @@
 		$id = $_POST['ma_id'];
 		/////////
 		$consulta1 = "select * from materias";
+		$con_nombre;
+		$con_grado;
+		$con_seccion;
 		$resp = mysqli_query($conexion,$consulta1);
 		while ($rsCon = mysqli_fetch_array($resp)) {
 			if ($materia == $rsCon['nombre']) {

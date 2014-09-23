@@ -1,7 +1,9 @@
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php 
   
-
+echo "<form method='POST' action='notas.php'><input type='text' id='id_alumno' name='id_alumno' placeholder='Id alumno'>
+    <button class='orange pill' type='submit'>Buscar</button>
+    </form><br>";
     
    $peticion2="select nombres,apellidos FROM profesor WHERE id=".$id_profe;   
         $resultado2=mysqli_query($conexion,$peticion2);

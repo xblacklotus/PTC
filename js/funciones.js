@@ -1151,21 +1151,25 @@ function modificar_alumno(i)
         var elemento1 = form['nick'];
         var elemento2= form['grade'];
         var elemento3= form['section'];
-        var elemento5=form['id_alu'];        
+        var elemento5=form['id_alu'];
+        var elemento6=form['userr'];
         var preg = elemento.value;
         var preg1  = elemento1.value;
         var preg2 = elemento2.value;
         var preg3 = elemento3.value;
         var preg5 = elemento5.value;
-        var datos = "nombre="+preg+"&apellido="+preg1+"&gradd="+preg2+"&secc="+preg3+"&id="+preg5;
+        var datos = "nombre="+preg+"&apellido="+preg1+"&gradd="+preg2+"&secc="+preg3+"&id="+preg5+"&id_usuario="+elemento6.value;
         ajax.open("POST",url,true);
-        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        alert(ajax);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
         ajax.onreadystatechange=function()
         {            
             if (ajax.readyState==4 && ajax.status==200) 
             {                       
-                alert(ajax.responseText);                
+                if(ajax.responseText=="Exito")
+                {
+                    document.location.href="mantenimiento_alumnos.php";
+                    alert(ajax.responseText);
+                }
             }
             
         }

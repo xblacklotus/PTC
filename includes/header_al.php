@@ -17,7 +17,7 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>	
+<li><a href="../includes/desconectar_alumno.php">Cerrar sesión</a></li>	
 </ul>
 
 <div class="grid">

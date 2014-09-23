@@ -17,7 +17,6 @@
 <!-- Menu Horizontal -->
 <ul class="menu">
 <li id="primerli"><a href="../pags/mantenimientos.php">Notas</a></li>
-<li><a href="../pags/notas_s.php">Ver notas por alumno</a></li>
 <li><a href=""><span class="icon" data-icon="A"></span>Mantenimientos</a>
 		<ul>
 		<li><a href="../pags/mantenimiento_maestros.php">Maestros</a></li>

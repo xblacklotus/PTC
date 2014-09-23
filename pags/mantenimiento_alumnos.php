@@ -51,18 +51,21 @@ $peticion= "select  u.id from usuario as u, profesor as pr where u.id = pr.id_us
               	$i++;
               }
             } 
+
+
+function imprimirUsuario($conexion,$id_profe,$id_alumnos,$valor_propio)
+{
+$i=0;  
 $id_comparacion = array();
 $id_vacios= array();
-
-$i=0;
-$peticion= "select  id from usuario";
+    $peticion= "select  id from usuario";
             $resultado=mysqli_query($conexion,$peticion);
             if($resultado)
             {
               while($fila=mysqli_fetch_array($resultado)){
-              	array_push($id_comparacion, $fila["id"]);
-              	//echo $id_comparacion[$i];
-              	$i++;
+                array_push($id_comparacion, $fila["id"]);
+                //echo $id_comparacion[$i];
+                $i++;
               }
             }
             $con= sizeof($id_alumnos);
@@ -70,31 +73,37 @@ $peticion= "select  id from usuario";
             $con3=sizeof($id_comparacion);
 
             for ($i=0; $i <$con ; $i++) { 
-            	for ($j=0; $j <$con3 ; $j++) { 
-            	    if($id_comparacion[$j]==$id_alumnos[$i])
-            	    {
-            	    	$id_comparacion[$j]=-1;
-            	    }
-            	}
+              for ($j=0; $j <$con3 ; $j++) { 
+                  if($id_comparacion[$j]==$id_alumnos[$i])
+                  {
+                    $id_comparacion[$j]=-1;
+                  }
+              }
             }
             for ($i=0; $i < $con2; $i++) { 
-            	for ($j=0; $j < $con3; $j++) { 
-            	   if($id_comparacion[$j]==$id_profe[$i]){
-            	   	$id_comparacion[$j]=-1;
- 					//echo "gyf".$id_comparacion[$j];
-            	   }
-            	}
+              for ($j=0; $j < $con3; $j++) { 
+                 if($id_comparacion[$j]==$id_profe[$i]){
+                  $id_comparacion[$j]=-1;
+          //echo "gyf".$id_comparacion[$j];
+                 }
+              }
             }
             echo "Usuario";
             echo "
                  <select id='userr' name='userr' >";
-            for ($i=0; $i <$con3 ; $i++) {             	
-            	if($id_comparacion[$i]>0){
-                 echo "
-                 <option> ".$id_comparacion[$i]."</option>";
-            	}
+                 if($valor_propio!="-1")
+                 {
+                    echo "<option> ".$valor_propio."</option>";
+                 }
+            for ($i=0; $i <$con3 ; $i++) {
+              if($id_comparacion[$i]>0){
+                 echo "<option> ".$id_comparacion[$i]."</option>";
+              }
             }
          echo "</select>";
+}
+imprimirUsuario($conexion,$id_profe,$id_alumnos,"-1");
+
 
 ?>
 <?php
@@ -132,12 +141,13 @@ $resultado=mysqli_query($conexion,$peticion);
 <?php
 			$consulta = 'select a.*,s.nombre as seccion FROM alumno as a,seccion as s
 where a.id_seccion=s.id';
+
 			$res = mysqli_query($conexion,$consulta);
 		?>
 		<table>
 			<th></th>
-			<?php $i = 0; 
-				while ($rsSecc = mysqli_fetch_array($res)) { 
+			<?php $i = 0;
+				while ($rsSecc = mysqli_fetch_array($res)) {
 			?>
 	
 			<tr>
@@ -146,6 +156,7 @@ where a.id_seccion=s.id';
 				<form name="formMo<?php echo $i ?>" method="post">
 				<?php 
 					$grados;
+
 
 					if($rsSecc['grado']==7)
 					{
@@ -171,6 +182,7 @@ where a.id_seccion=s.id';
 									<option>8</option>
 								</select>';
 					}
+
 				echo '<input type="text" name="name" value="'.$rsSecc['nombres'].'"></input> 
 				<input class="bids" type="hidden" name="id_alu" value='.$rsSecc['id'].'>
 				<input type="text" name="nick" value="'.$rsSecc['apellidos'].'"></input>				
@@ -178,7 +190,9 @@ where a.id_seccion=s.id';
 				<select id="section'.$i.'" name="section" >
 				'.$secciones.'
 				</select>
-				<button type="button" class="pill orange" onclick="javascript:modificar_alumno('.$i.');" >
+        ';
+        imprimirUsuario($conexion,$id_profe,$id_alumnos,$rsSecc['id_usuario']);
+        echo '<button type="button" class="pill orange" onclick="javascript:modificar_alumno('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_alumno('.$i.');">
 				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> 

@@ -12,12 +12,35 @@ self.location = "loginAdmin.php";
 else
 {
 include("../includes/super_header.php");
-    $id_alumno=1;
+$imprimir=false;
+if(isset($_POST['id_alumno']))
+{
+  if ($_POST['id_alumno']>=1)
+  {
+    $imprimir=true;
+    $id_alumno=$_POST['id_alumno'];
+  }
+  else
+    echo '<script language = javascript>
+alert("Id invalido");
+self.location = "mantenimientos.php";
+</script>';
+}
+else
+  echo '<script language = javascript>
+alert("Id invalido");
+self.location = "mantenimientos.php";
+</script>';  
 ?>
 <br>
 <div  class="tab-content">
 <?php
 //Bloque de grado
+if($imprimir)
+{
+
+
+
     $peticion="select grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);
     $fila=mysqli_fetch_array($resultado);
@@ -42,6 +65,10 @@ include("../includes/super_header.php");
 <?php
     $peticion3="select count(*) from materias where grado=".$grado." and id_seccion=".$seccion."" ;
     $resultado3=mysqli_query($conexion,$peticion3);
+    if($resultado3)
+    {
+      
+
     $fila3=mysqli_fetch_array($resultado3);
     $materias = $fila3[0]; 
     //echo 'materias: '.$materias;
@@ -107,7 +134,11 @@ include("../includes/super_header.php");
   
   </div>
 <!-- Creamos el inicio de la tabla manualmente-->
-<?php include("../includes/footer.php");}?>
+<?php include("../includes/footer.php");}
+else
+{
+  echo "<h3>Alumno no existente</h3>";
+}}}?>
 
 
 

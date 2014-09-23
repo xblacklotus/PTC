@@ -14,7 +14,7 @@
         $fila=mysqli_fetch_array($re);
         $id=$fila[0];
         echo "Id".$id;
-        if($nombre=="")
+        if($nombre=="" || $apellido=="" || $use=="")
         {
             echo "No se puede guardar datos vacios";
         }
