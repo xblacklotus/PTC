@@ -1,6 +1,6 @@
 <?php include ("../includes/header_aula.php");
     include("../includes/inheader.php");
-    $id_alumno=1;
+    $id_alumno=3;
     $peticion="select id_seccion, nombres, apellidos,grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);
     $fila=mysqli_fetch_array($resultado);
@@ -86,32 +86,53 @@
         <h2>PORTAL DEL ESTUDIANTE</h2>
         <div id="Agen">
        
-         <?php
-//Bloque de grado
-    $peticion3="select grado from alumno where id=".$id_alumno."" ;
-    $resultado3=mysqli_query($conexion,$peticion3);
-    $fila3=mysqli_fetch_array($resultado3);
-    $grado = $fila3[0];
-?>
-<?php
-    $peticion4="select id_seccion from alumno where id=".$id_alumno."" ;
-    $resultado4=mysqli_query($conexion,$peticion4);
-    $fila4=mysqli_fetch_array($resultado4);
-    $seccion = $fila4[0];
-   // echo 'seccion: '.$seccion;
-?>
-<?php
-    $peticion5="select * from materias where grado=".$grado." and id_seccion=".$seccion."" ;
-        $resultado5=mysqli_query($conexion,$peticion5);
-    
-    $a=0;
-    $numero=1;
-    while ($fila5=mysqli_fetch_array($resultado5)) {
-      $total=0;
-       echo "<button type='button' class='pill orange' onclick='javascript:aula();'><i class='icon-plus-sign'>".$fila5[1]."</i></button>";}?>
-            
+         <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+            <thead><tr>
+                <th>Tarea</th>
+                <th>Fecha de entrega</th></tr>
+            </thead>
+            <tr>
+                 <?php 
+        $consulta="select titulo, fecha_entrega from anuncios";
+        $res2=mysqli_query($conexion,$consulta);
+        $fila3=mysqli_fetch_array($res2);
+        $titulo=$fila3[0];
+        $fecha =$fila3[1];
+        ?>
+            </tr>
+        </table>
+            <select name="Agenda" size="4" style="height: 110px; width: 270px; margin-left: 10px;">
+                <optgroup label="Agenda">
+                    <option value="0">Entrega de tarea</option>
+                    <option value="1">Entrega de tarea</option>
+                </optgroup>
+            </select>
         </div>
+        <!--Aqui esta el includes de anuncios-->
+        <form>
+        <div id="Anuncio">
        
+            <h3>Anuncios</h3>
+            <select name="Anuncios" size="4" style="height: 140px; width: 580px; margin-left: 10px;">
+                <optgroup label="Anuncios">
+            <?php
+                $i = 0;
+                $consulta = "select * from anuncios";
+                $res = mysqli_query($conexion,$consulta);
+                while ($resAnu = mysqli_fetch_array($res)) {
+                    $consu = "select nombre from materias where id =".$resAnu['id_materia'];
+                    $re = mysqli_query($conexion,$consu);
+                    $fila = mysqli_fetch_array($re);
+                    $mat = $fila[0];
+                    echo '<option><strong>'.$mat."</strong> : ".$resAnu['anuncio'].'</option>';
+                    $i++;
+                    }
+            ?>
+                </optgroup>
+                </select>
+        </div>
+        </form>
+        <!---->
     </section>
 </aside>
 <?php include("../includes/footer2.php");
