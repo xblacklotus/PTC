@@ -1,6 +1,6 @@
 /* demo page styles */
 body {
-    background:#eee;
+    background:#F5F3E7;
     margin:0;
     padding:0;
 }
@@ -96,13 +96,14 @@ body {
     visibility:visible;
 }
 #nav ul {
+    background-color: #E6E0F8;
     opacity:0;
     visibility:hidden;
     padding:0;
     width:175px;
     position:absolute;
     border:1px solid #7788aa;
-
+    z-index: 2;
     border-radius:10px; /*some css3*/
     -moz-border-radius:10px;
     -webkit-border-radius:10px;

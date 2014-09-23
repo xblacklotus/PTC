@@ -6,13 +6,14 @@ echo '<script language = javascript>
 alert("Sesion invalida");
 self.location = "loginAdmin.php";
 </script>';
+
 }
 else
 {  
  include("../includes/super_header.php");?>
 <script type="text/javascript" src="../js/funciones.js"></script>
 
-//Agergar alumno//
+
 <form name="formIng" method="post">
 <label>Nombre Alumno</label>
 <input type="text" id="nombre"></input>
