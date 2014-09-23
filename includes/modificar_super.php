@@ -1,16 +1,16 @@
 <?php include("config.inc");?>
 <?php
 	if (isset($_POST)) {
-
+		
 		$contra = $_POST['contra'];
-		$id = $_POST['id_usuario'];
+		$id = $_POST['nombre2'];
 		$bole = false;
 		?>
 		<?php 
 		if ($contra == "") {
 			echo "No se pueden ingresar valores nulos";
 		}else{
-			$consulta = "select contraseña from usuario";
+			$consulta = "select contra from super_usuario";
 			$res = mysqli_query($conexion,$consulta);
 			while ($fila = mysqli_fetch_array($res)) {
 				if ($fila == $contra) {
@@ -18,7 +18,7 @@
 				}
 			}
 			if ($bole == false) {
-				$peticion= "update usuario set contraseña ='".$contra."' where id ='".$id."'";
+				$peticion= "update super_usuario set contra ='".$contra."' where usuario ='".$id."'";
             		$resultado=mysqli_query($conexion,$peticion);
            			if($resultado)
             		{
@@ -29,7 +29,7 @@
                 		echo "Error";
             		}
 			}else{
-				echo "Ya existe la seccion";
+				echo "Ya existe ";
 			}
 		}
 	}

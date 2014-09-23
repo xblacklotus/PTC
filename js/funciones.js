@@ -336,28 +336,13 @@ function ingresar_maestro()
         else if(preg2<1)
         {
             alert("Usuario fuera de rango");
-             
-            
         }
         else
         {
-           
-            //y aqui ya pasas el valor a la variable para ajax
         var datos="nombre_maestro="+preg+"& apellido_maestro="+preg2+"& usuario="+preg3;
-        
-        //Aqui haces el arreglo para todos los datos q fueras a mandar
         ajax.open("POST",url,true);
-        
-        //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
-        //No recuerdo para q era el true pero ahi lo dejan
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        
-        //y esto es otra cosa q ahi la dejan
-        //ajax.onreadystatechange se ejecuta cuando este listo el ajax
-        ajax.onreadystatechange=function()
         {
-            
-            //y se ejecuta lo de adentro cuando la accion ha sido realizada
           if (ajax.readyState==4 && ajax.status==200) 
           {           
             alert(ajax.responseText);
@@ -1061,6 +1046,7 @@ function ingresar_usuario(i)
         {
             if (ajax.readyState==4 && ajax.status==200){
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_usuarios.php";
             }
         }
         ajax.send(datos);
@@ -1087,7 +1073,8 @@ function modificar_usuario(i)
         {            
             if (ajax.readyState==4 && ajax.status==200) 
             {                       
-                alert(ajax.responseText);                
+                alert(ajax.responseText);        
+                document.location.href="mantenimiento_super.php";        
             }
             
         }
@@ -1110,12 +1097,92 @@ function eliminar_usuario(i) {
         {
             if (ajax.readyState==4 && ajax.status==200) {
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_super.php";
             };
             
         }
         ajax.send(datos);
     };
 }
+
+
+function ingresar_super(i)
+{
+    var resp = confirm("¿Estasseguro de ingresar este usuario?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/ingresar_super.php";
+        var form = document.forms['formIng']
+        var elemento = form['contra_usu'];
+        var elemento1 = form['contra_rea'];
+        var elemento2= form['nombre'];
+        var datos = "contra_usu="+elemento.value+"&contra_rea="+elemento1.value+"&nombre="+elemento2.value;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200){
+                alert(ajax.responseText);
+                document.location.href="mantenimiento_super.php";
+            }
+        }
+        ajax.send(datos);
+    };
+}
+function modificar_super(i)
+{
+    var resp=confirm("¿Esta seguro que desea modificar el usuario?");
+    if (resp) 
+    {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/modificar_super.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['contra'];
+        var elemento1 = form['nombre2'];
+        var preg = elemento.value;
+        var preg1 = elemento1.value;
+        var datos = "contra="+preg+"&nombre2="+preg1;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        alert(ajax);
+        ajax.onreadystatechange=function()
+        {            
+            if (ajax.readyState==4 && ajax.status==200) 
+            {                       
+                alert(ajax.responseText);         
+                document.location.href="mantenimiento_super.php";       
+            }
+            
+        }
+        ajax.send(datos);
+    }
+}
+function eliminar_super(i) {
+    var resp = confirm("¿Estas seguro de eliminar este usuario?");
+    if (resp) {
+        var ajax;
+        ajax = new XMLHttpRequest();
+        var url = "../includes/eliminar_super.php";
+        var form = document.forms['formMo'+i+''];
+        var elemento = form['nombre2'];
+        var pregu = elemento.value;
+        var datos = "nombre2="+pregu;
+        ajax.open("POST",url,true);
+        ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
+        {
+            if (ajax.readyState==4 && ajax.status==200) {
+                alert(ajax.responseText);
+                document.location.href="mantenimiento_super.php";
+            };
+            
+        }
+        ajax.send(datos);
+    };
+}
+
 function ingresar_alumno(i)
 {
     var resp = confirm("¿Estasseguro de ingresar este alumno?");
