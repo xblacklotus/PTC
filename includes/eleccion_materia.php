@@ -10,7 +10,8 @@ echo "<form method='POST' action='notas.php'><input type='text' id='id_alumno' n
                 date_default_timezone_set('America/El_Salvador');
         if($fila2=mysqli_fetch_array($resultado2))
         {
-            echo '<h2>'.$fila2[0].' '.$fila2[1].' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp'.date("d-m-y").'</h2>';
+          //'.date("d-m-y").sss
+            echo '<h2>'.$fila2[0].' '.$fila2[1].'</h2>';
         }
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
                where p.id=id_profesor and id_seccion=s.id and p.id=".$id_profe;

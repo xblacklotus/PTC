@@ -164,7 +164,7 @@ function s_ingresar_notas()
                     alert(ajax.responseText);
                     if(ajax.responseText=='Exito al guardar notas')
                     {
-                        document.location.href="mantenimientos.php";
+                        document.location.href="perfiles.php";
                     }
                 }                
             }

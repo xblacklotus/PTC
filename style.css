@@ -17,16 +17,19 @@ font-family: "Arimo", arial, verdana, sans-serif;
 font-weight:normal;
 }
 h1{
-	text-align:center;
-padding:20px;
-margin:0;
-border-top:1px solid #ddd;
-color:#999;
-font-size:2.0em;
-text-shadow:0px 1px 1px #fff;
-position: relative;
-background: #fff;
+	margin:0px 300px 50px 300px;
+	padding:5px 20px;
+	border-radius: 15px;
+	font-size:42px;
+	color:#000;
+	font-weight:400;
+    text-align:center;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
+
+	background: rgba(79, 217, 223, 0.2);
 }
+
 
 thead th,
 tbody th{

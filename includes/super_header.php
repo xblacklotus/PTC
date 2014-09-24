@@ -7,6 +7,7 @@
 <meta name="description" content="" />
 <meta name="copyright" content="" />
 <link rel="stylesheet" type="text/css" href="../css/style2.css">
+<link rel="stylesheet" href="../css/tablas.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="../css/kickstart.css" media="all" />                  <!-- KICKSTART -->
 <link rel="stylesheet" type="text/css" href="../style.css" media="all" />
 <link rel="stylesheet" type="text/css" href="../css/calendario.css " media = "all"/>  

@@ -72,13 +72,31 @@ line-height:140%;
 }
 
 h1{
-font-size:3.5em;
-margin:10px 0 10px 0;
+margin:0px 300px 50px 300px;
+	padding:5px 20px;
+	border-radius: 15px;
+	font-size:42px;
+	color:#000;
+	font-weight:400;
+    text-align:center;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
+
+	background: rgba(79, 217, 223, 0.2);
 }
 
 h2{
-font-size:3em;
-margin:10px 0 10px 0;
+margin:0px 300px 50px 300px;
+	padding:5px 20px;
+	border-radius: 15px;
+	font-size:42px;
+	color:#000;
+	font-weight:400;
+    text-align:center;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
+
+	background: rgba(79, 217, 223, 0.2);
 }
 
 h3{
