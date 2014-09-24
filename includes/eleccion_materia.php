@@ -40,6 +40,7 @@ echo "<form method='POST' action='notas.php'><input type='text' id='id_alumno' n
         <button type="submit" class="pill orange"  name="ele_perf" ><i>Elegir perfil</i></button>
          <button type="submit" class="pill orange"  name="ver_notas" id="ver_notas" onclick="javascript:notasMateria('.$i.');">Ver notas</button>
          <button type="submit" class="pill orange"  name="ver_arch" id="archivos" onclick="javascript:ver_archivos('.$i.');">Ver Archivos</button>
+          <button type="submit" class="pill orange"  name="ver_arch" id="archivos" onclick="javascript:ver_anuncios('.$i.');">Ver Anuncios</button>
           </form></td> </tr>';  
           $i++ ;        
           //document.formulario.action= "hola.php";

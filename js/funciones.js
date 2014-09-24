@@ -202,6 +202,13 @@ function ver_archivos(name)
     form.submit();    
 }
 
+function ver_anuncios(name)
+{   
+    var form = document.forms['form'+name];
+    form.action= "../pags/mantenimiento_anuncios.php";
+    form.submit();    
+}
+
 function s_notasMateria(name)
 {   
     var form = document.forms['form'+name];
