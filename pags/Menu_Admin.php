@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
        
         <link rel="stylesheet" type="text/css" href="../css/base_menuAdmin.css" />
-        <link rel="stylesheet" type="text/css" href="../css/mantenimiento_admin.css" />
+        <link rel="stylesheet" type="text/css" href="../css/Menu_admin.css" />
         
     </head>
     <body style="background-image: url(../imgs/pattern.png), url(../imgs/fondo1.jpg);">
