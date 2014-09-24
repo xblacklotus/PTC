@@ -57,15 +57,15 @@ include("../includes/super_header.php");?>
 			
 		?>
 		<br><br>
-		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
-			<thead><tr>
+		<table class="tablestyle">
+		<tbody>
+			<tr class="tablehead">
         <th>Descripcion</th>
         <th>Porcentaje</th>
         <th>Sección</th>
         <th>Trimestre</th>
         <th>Acción</th>
-    	</tr></thead>
-			<th></th>
+    	</tr>
 			<?php $i = 0; 
 				while ($rsPer = mysqli_fetch_array($res)) { 
 					$sql="select m.nombre from materias as m, perfiles as  p
@@ -89,7 +89,7 @@ include("../includes/super_header.php");?>
 				}
 				$materias1=$materias1.'</select>';			
 				echo $materias1;
-				?>
+				?></td>
 				<td><?php echo '<input type="text" id="t2" value='.$rsPer['trimestre'].'> </input>';?></td>
 				<td>
 				<?php echo '	
@@ -117,6 +117,7 @@ include("../includes/super_header.php");?>
 				</tr>
 			</form>
 			<?php  }?>
+			</tbody>
 		</table>
 
 		<div id="prueba1"></div>

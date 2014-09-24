@@ -27,13 +27,14 @@ include("../includes/super_header.php");?>
 			
 		?>
 		<hr>
-		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
-			<thead><tr>
+		<table class="tablestyle">
+		<tbody>
+			<tr  class="tablehead">
 			<th>id</th>
         <th>Contraseña</th>
-        <th>Accion<th>
+        <th>Accion</th>
         
-    	</tr></thead>
+    	</tr>
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
 			?>
@@ -48,13 +49,14 @@ include("../includes/super_header.php");?>
 				<button type="button" class="pill orange" onclick="javascript:modificar_usuario('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_usuario('.$i.');">
-				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> 
+				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> </td>
 				</form>
-				</td>
+				
 				
 			</tr>
 			
 			<?php  }?>
+			</tbody>
 		</table>
 
 

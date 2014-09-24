@@ -21,14 +21,19 @@ else
 </form>
 <div id="divprueba"></div>
 
-/**Modificar, Eliminar sección**/
+
 <!--Formulario para modificar y eleiminar una sección-->
 		<?php
 			$consulta = "select * from seccion";
 			$res = mysqli_query($conexion,$consulta);			
 		?>
-		<table>
+		<table class="tablestyle">
+		<tbody>
+		<tr class="tablehead">
 			<th>Secciones</th>
+			<th>Accion</th>
+		</tr>
+			
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
 			?>
@@ -37,8 +42,8 @@ else
 			
 				<td>
 				<form name="formMo<?php echo $i ?>" method="post">
-				<?php echo '<input type="text" id="new_se" value="'.$rsSecc['nombre'].'"></input> 
-				<input class="bids" type="hidden" name="se_id" value='.$rsSecc['id'].'> 
+				<?php echo '<input type="text" id="new_se" value="'.$rsSecc['nombre'].'"></input> ';?></td>
+				<td><?php echo'<input class="bids" type="hidden" name="se_id" value='.$rsSecc['id'].'> 
 				<button type="button" class="pill orange" onclick="javascript:modificar_seccion('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_seccion('.$i.');">
@@ -49,6 +54,7 @@ else
 			</tr>
 			
 			<?php  }?>
+			</tbody>
 		</table>
 
 

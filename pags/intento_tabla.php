@@ -91,8 +91,8 @@ $peticion= "select  id from usuario";
 
 ?>
 <button type="button" class="pill orange" onclick="javascript:ingresar_maestro();" ><i class="icon-plus-sign">Ingresar</i></button>          
-</form>
-<div id="divprueba"></div>
+
+</table>
 
 <?php
 			$consulta = "select * from profesor";
@@ -126,9 +126,9 @@ $peticion= "select  id from usuario";
   				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> 
   				</form>
   				</td>
-				</tbody>
-			</tr>
 			
+			</tr>
+      </tbody>			
 			<?php  }?>
 		</table>
 

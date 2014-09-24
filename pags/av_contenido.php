@@ -20,7 +20,7 @@ include ("../includes/header_aula.php");
 <?php
 	
 if (isset($_POST)) {
-         $idd= $_SESSION['user'];
+         $idd=$_POST['id'];
 
          $abc = "SELECT nombre FROM materias where id='".$idd."'";
     $resultao10=mysqli_query($conexion,$abc);

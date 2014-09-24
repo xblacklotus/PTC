@@ -13,8 +13,7 @@ else
 
 <script type="text/javascript" src="../js/funciones.js"></script>
 
-<!--Formulario para ingresar una materia-->
-/**Agregar materias**/
+
 <form name="form" method="post">
 <label>Nombre de la materia: </label>
 <input type="text" id="nombre_materia" required></input>
@@ -55,14 +54,20 @@ else
 </form>
 
 
-<!--Formulario para modificar y eliminar una materia-->
-/**Modificar, eliminar materias**/
+
 <?php
 	$consulta = "select m.*,p.nombres,p.apellidos as apellidos from materias as m, profesor as p where m.id_profesor=p.id";
 	$res = mysqli_query($conexion,$consulta);
 ?>
-<table>
-	<th>Materias</th>
+<table class="tablestyle">
+<tbody>
+	<tr class="tablehead">
+		<th>Materias</th>
+		<th>Maestro</th>
+		<th>Grado</th>
+		<th>Seccion</th>
+		<th>Accion</th>
+	</tr>
 		<?php $i = 0; 
 
 			while ($rsMat = mysqli_fetch_array($res)) { 
@@ -75,12 +80,6 @@ else
 		?>
 	
 	<tr>
-			
-
-<?php
-   
-?>
-
 		<td>
 			<form name="formMo<?php echo $i ?>" method="post">
 
@@ -127,11 +126,11 @@ else
 				}
 			$profesores=$profesores."</select>";
 
-
-			echo '<input type="text" id="new_ma" value="'.$rsMat['nombre'].'"></input>
-			'.$profesores.'
-			'.$grados.'			
-			'.$secciones.'			
+			echo '<input type="text" id="new_ma" value="'.$rsMat['nombre'].'"></input>';?></td>
+			<td><?php echo $profesores ;?></td>
+			<td><?php echo $grados;?></td>			
+			<td><?php echo $secciones;?></td>
+			<td><?php echo'			
 			<input class="bids" type="hidden" name="ma_id" value='.$rsMat['id'].'> 
 			<button type="button" class="pill orange" onclick="javascript:modificar_materia('.$i.');" >
 			<i class="icon-plus-sign">Modificar</i></button>
@@ -148,6 +147,7 @@ else
 		document.getElementById("profesor'.($i-1).'").value="'.$rsMat['nombres'].' '.$rsMat['apellidos'].'";
 		</script>';
 		  }?>
+ </tbody>
 </table>
 
 <?php include("../includes/footer.php");}?>

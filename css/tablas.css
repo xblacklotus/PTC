@@ -50,7 +50,7 @@ table caption{
 .tablestyle th {
     background-color: #e0ffc2;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#bbee77), to(#d7f5ad));
-    background-image: -webkit-linear-gradient(top, #bbee77, #d7f5ad);
+    background-image: -webkit-linear-gradient(top,  #9FDB4F, #d7f5ad);
     background-image:    -moz-linear-gradient(top, #bbee77, #d7f5ad);
     background-image:     -ms-linear-gradient(top, #bbee77, #d7f5ad);
     background-image:      -o-linear-gradient(top, #bbee77, #d7f5ad);
@@ -113,6 +113,7 @@ tr td{
 tr th {
   padding:4px 5px;
   border:1px solid #fff;
+  text-align: center;
 }
 
 #footer-wrapper tr td,
@@ -126,7 +127,7 @@ tr.odd {
 
 tr,
 tr.even {
-  background:#f3f7f8;
+ background-image: -webkit-linear-gradient(top, #CCF892, #E9FDCD);
 }
 
 table ul.links {

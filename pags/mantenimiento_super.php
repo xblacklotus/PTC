@@ -29,13 +29,14 @@ include("../includes/super_header.php");?>
 			
 		?>
 		<hr>
-		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
-			<thead><tr>
+		<table class="tablestyle">
+		<tbody>
+			<tr class="tablehead">
 			<th>usuario</th>
         <th>Contraseña</th>
-        <th>Accion<th>
+        <th>Accion</th>
         
-    	</tr></thead>
+    	</tr>
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
 			?>
@@ -57,6 +58,7 @@ include("../includes/super_header.php");?>
 			</tr>
 			
 			<?php  }?>
+			</tbody>
 		</table>
 
 

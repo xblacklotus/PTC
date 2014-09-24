@@ -1,10 +1,7 @@
 /*---------------------------------
 	FORMS
 -----------------------------------*/
-form{
-padding:0;
-margin:0;
-}
+
 
 fieldset{
 margin:30px 0 20px 0;
@@ -239,6 +236,13 @@ float:none;display:inline-block;*display:inline;margin-bottom:0;
 -----------------------------------*/
 form.vertical{
 
+}
+form.hola{
+	 border-collapse: separate;
+    border-spacing: 1px;
+    background-color:#e6e6ff;
+	width:100%;
+	margin:5px 0;
 }
 
 	form.vertical label{display:block;}

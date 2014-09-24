@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['user'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAlumno.php";
+</script>';
+}
+else
+{;?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -47,4 +56,4 @@
 			
         </div>
     </body>
-</html>
+</html><?php } ?>
