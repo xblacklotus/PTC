@@ -14,6 +14,7 @@
     $fila2=mysqli_fetch_array($resultado2);
     $seccion=$fila2[0];
 ?>
+
 <header>
         <div class="slider">
             <ul class="frames">

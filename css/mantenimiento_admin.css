@@ -1,0 +1,47 @@
+.content{
+	margin: 0 20px;
+}
+.bmenu{
+    padding: 0px;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.bmenu li{
+    font-size: 50px;
+    display: block;
+}
+.bmenu li a{
+	white-space: nowrap;
+	display: block;
+	text-transform: uppercase;
+	text-shadow: 1px 1px 2px rgba(71,80,23,0.3);
+	color: #fff;
+	padding: 5px 20px;
+	margin: 2px;
+	background: rgba(255,255,255,0.2);
+	letter-spacing: 1px;
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.bmenu li:first-child a{
+	-webkit-border-radius: 15px 15px 0px 0px;
+	-moz-border-radius: 15px 15px 0px 0px;
+	border-radius: 15px 15px 0px 0px;
+}
+.bmenu li:last-child a{
+	-webkit-border-radius: 0px 0px 15px 15px;
+	-moz-border-radius: 0px 0px 15px 15px;
+	border-radius: 0px 0px 15px 15px;
+}
+.bmenu:hover li a{
+	text-shadow: 0px 0px 10px #fff;
+	color: transparent;
+}
+.bmenu li a:hover{
+	background: transparent;
+	text-shadow: 1px 1px 10px rgba(71,80,23,0.6);
+	color: #c4d85a;
+}
