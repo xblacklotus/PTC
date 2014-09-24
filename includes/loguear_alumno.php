@@ -31,7 +31,7 @@ if(isset($_POST))
 				{			
 					echo "hola";
 					$_SESSION['user'] = $dato['_id'];						
-					header("Location:../pags/notas.php");
+					header("Location:../pags/Menu_Alumno.php");
 				}
 				else
 				{						

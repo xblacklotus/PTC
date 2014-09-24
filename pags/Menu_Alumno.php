@@ -28,6 +28,7 @@
 						<div class="ch-item ch-img-1">
 							<div class="ch-info">
 								<h3>Aula Virtual</h3>
+								<p><a href="AV_principal.php">Entrar</a></p>
 							</div>
 						</div>
 					</li>
@@ -36,6 +37,7 @@
 						<div class="ch-item ch-img-3">
 							<div class="ch-info">
 								<h3>Reporte de Notas</h3>
+								<p><a href="notas.php">Entrar</a></p>
 							</div>
 						</div>
 					</li>
