@@ -26,7 +26,7 @@ if(isset($_POST))
 				if($dato["usuario"])
 				{
 					$_SESSION['usuario'] = $dato['usuario'];						
-					header("Location:../pags/mantenimientos.php");
+					header("Location:../pags/Menu_Admin.php");
 				}
 				else
 				{						
