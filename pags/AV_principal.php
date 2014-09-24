@@ -1,6 +1,17 @@
-<?php include ("../includes/header_aula.php");
+<?php 
+session_start();
+//Validar si se está ingresando con sesión correctamente
+if (!isset($_SESSION['user'])){
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAdmin.php";
+</script>';
+}
+else
+{
+include ("../includes/header_aula.php");
     include("../includes/inheader.php");
-    $id_alumno=1;
+    $id_alumno=$_SESSION['user'];
     $peticion="select id_seccion, nombres, apellidos,grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);
     $fila=mysqli_fetch_array($resultado);
@@ -124,5 +135,5 @@
 </aside>
 
 <?php include("../includes/footer2.php");
-//hola
+}
 ?>
