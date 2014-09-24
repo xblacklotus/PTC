@@ -1,27 +1,15 @@
-<?php
-
-session_start();
-//Validar si se está ingresando con sesión correctamente
-if (!isset($_SESSION['user'])){
-echo '<script language = javascript>
-alert("Sesion invalida");
-self.location = "loginAlumno.php";
-</script>';
-}
-else
-{
- include ("../includes/header_aula.php");
+<?php include ("../includes/header_aula.php");
     include("../includes/inheader.php");?>
 
 
 
 
-
+<?php include("../includes/config.inc");?>
 
 <?php
 	
 if (isset($_POST)) {
-         $idd= $_SESSION['user'];
+         $idd= $_POST['id'];
 
          $abc = "SELECT nombre FROM materias where id='".$idd."'";
     $resultao10=mysqli_query($conexion,$abc);
@@ -182,6 +170,6 @@ if (isset($_POST)) {
                  			</div>';
 
 
-     }}
+     }
 ?>
      

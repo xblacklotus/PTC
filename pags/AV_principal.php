@@ -1,18 +1,6 @@
-<?php 
-
-
-session_start();
-//Validar si se está ingresando con sesión correctamente
-if (!isset($_SESSION['user'])){
-echo '<script language = javascript>
-alert("Sesion invalida");
-self.location = "loginAlumno.php";
-</script>';
-}
-else
-{   
+<?php include ("../includes/header_aula.php");
     include("../includes/inheader.php");
-    $id_alumno=$_SESSION['user'];
+    $id_alumno=1;
     $peticion="select id_seccion, nombres, apellidos,grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);
     $fila=mysqli_fetch_array($resultado);
@@ -128,7 +116,6 @@ else
        ";
        //var_dump($fila5[0]);
         }
-    }
        ?>
             
         </div>
@@ -136,7 +123,6 @@ else
     </section>
 </aside>
 
-<?php 
-include("../includes/footer2.php");
-
+<?php include("../includes/footer2.php");
+//hola
 ?>
