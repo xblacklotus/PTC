@@ -93,7 +93,7 @@ include("../includes/super_header.php");?>
 				<td><?php echo '<input type="text" id="t2" value='.$rsPer['trimestre'].'> </input>';?></td>
 				<td>
 				<?php echo '	
-				<input class="bids" type="hidden" name="id_per" value='.$rsPer['id'].'> 
+				<input class="bids" type="hidden" name="id_per" id="id_per" value='.$rsPer['id'].'> 
 				<button type="button" class="pill orange" onclick="javascript:modificar_perfiles('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_perfiles('.$i.');">

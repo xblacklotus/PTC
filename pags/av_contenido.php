@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['user'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginAdmin.php";
+self.location = "loginAlumno.php";
 </script>';
 }
 else

@@ -23,7 +23,6 @@
 <!-- Menu Horizontal -->
 <div >
 	<ul id="nav">
-	<li class="current"><a href="../pags/mantenimientos.php">Notas</a></li>
 	<li><a href="">Mantenimientos</a>
 			<ul>
 			<li><a href="../pags/mantenimiento_maestros.php">Maestros</a></li>
@@ -33,10 +32,9 @@
 			<li><a href="../pags/mantenimiento_super.php">Administradores</a></li>
 			<li><a href="../pags/mantenimiento_alumnos.php">Alumnos</a></li>
 			<li><a href="../pags/mantenimiento_perfiles.php">Perfiles</a></li>
-			<li><a href="../pags/mantenimiento_anuncios.php">Anuncios</a></li>
 			</ul>
 		</li>
-		<li><a href="../includes/desconectar_super_usuario.php">Cerrar sesión</a></li>
+		<li class="cerrar"><a href="../includes/desconectar_super_usuario.php">Cerrar sesión</a></li>
 		
 	</ul></div>
 

@@ -42,7 +42,7 @@
 	$consulta = "select * from anuncios";
 	$res = mysqli_query($conexion,$consulta);
 ?>
-<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+<table class="tablestyle" cellspacing="0" cellpadding="0" style="max-width='100px'">
 <thead>
 	<tr>
 		<th>Titulo</th>

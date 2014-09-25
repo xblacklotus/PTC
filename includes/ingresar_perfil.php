@@ -64,13 +64,6 @@
             $valido=true;
         }
 
-
-
-        
-
-        //echo "Nombre ".$nombre_maestro;
-          //  echo "Apellidos ".$apellido_maestro;
-           // echo "Id :".$usuario;     
         if($valido)
         {
             if($descripcion =="" || $porcentaje =="" || $nombre <0 || $trimestre =="" )
@@ -89,7 +82,7 @@
                 $peticion= "insert into perfiles (descripcion,porcentaje,id_materia,trimestre)
                 values ('".$descripcion."','".$porcentaje."','".$id_materia."','".$trimestre."')";
                 $resultado=mysqli_query($conexion,$peticion);
-                echo $resultado;
+               
                 if($resultado)
                 {
                     echo "Guardado con exito";

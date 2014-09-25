@@ -252,7 +252,7 @@ function ingresar_seccion()
         var elemento = form['nombre_seccion'];
         //aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preguntatexto =elemento.value;
-        alert(preguntatexto.length);
+        
         if(isNumber(preguntatexto)) {
             alert("ERROR: El nombre de la sección no puede ser un número!");
         }else {
@@ -280,6 +280,7 @@ function ingresar_seccion()
                         //El estado 4 ya completo la accion
                         //el estado 4 es q no me acuerdo ni el 200 pero es q estan listos                        
                         alert(ajax.responseText);
+                        document.location.href="mantenimiento_seccion.php";
                     };
                 }
                 ajax.send(datos);
@@ -346,9 +347,11 @@ function ingresar_maestro()
         }
         else
         {
+
         var datos="nombre_maestro="+preg+"& apellido_maestro="+preg2+"& usuario="+preg3;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        ajax.onreadystatechange=function()
         {
           if (ajax.readyState==4 && ajax.status==200) 
           {           
@@ -567,39 +570,17 @@ function ingresar_perfiles()
         }
         else
         {
-            
-            //y aqui ya pasas el valor a la variable para ajax
             var datos="descripcion="+preg+"& porcentaje="+preg2+"& metermateria="+preg3+"& metertri="+preg4;
-            
-            //Aqui haces el arreglo para todos los datos q fueras a mandar
             ajax.open("POST",url,true);
-            
-            //Aqui "configuras" el ajax, sera por metodo post, ponemos la direccion
-            //No recuerdo para q era el true pero ahi lo dejan
             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-            
-            //y esto es otra cosa q ahi la dejan
-            //ajax.onreadystatechange se ejecuta cuando este listo el ajax
             ajax.onreadystatechange=function()
             {
-               
-                //y se ejecuta lo de adentro cuando la accion ha sido realizada
               if (ajax.readyState==4 && ajax.status==200) 
               {
-                   
                         
-                        if(ajax.responseText=="Guardado con exito")
-                        {
-                            alert(ajax.responseText);
-                            document.location.href="mantenimiento_perfiles.php";
-                        }
-                        else
-                        {
-                            alert(ajax.responseText);    
-                        }
+                    alert(ajax.responseText);
+                    document.location.href="mantenimiento_perfiles.php";
                         
-                    
-                    
               };
             }
             ajax.send(datos);
@@ -702,11 +683,14 @@ function eliminar_perfiles(i) {
         var form = document.forms['formMo'+i+''];
         var elemento = form['id_per'];
         var pregu = elemento.value;
-        var datos = "id_per="+pregu;        
+        var datos = "id_per="+pregu;     
+        alert(datos);   
         ajax.open("POST",url,true);
+        
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()
         {
+            alert("12");
             if (ajax.readyState==4 && ajax.status==200) {
                
                         alert(ajax.responseText);
@@ -742,6 +726,7 @@ function ingresar_alumno()
         {
             if (ajax.readyState==4 && ajax.status==200){
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_alumnos";
             }
         }
         ajax.send(datos);
@@ -820,19 +805,13 @@ function ingresar_materias(){
                                         ajax.onreadystatechange=function()
                                         {
                                             if (ajax.readyState==4 && ajax.status==200) {
-                                                if(ajax.responseText=="ADVERTENCIA: La materia se ha guardado correctamente!")
-                                                {
+                                                
                                                     alert(ajax.responseText);
                                                     document.location.href="mantenimiento_materias.php";
-                                                }
-                                                else
-                                                {
-                                                    alert(ajax.responseText);
-                                                }
+                                               
                                             };
                                         }
                                         ajax.send(datos);
-                                        ///////////////////////////
                                     }
                                 }
                                 else
@@ -949,11 +928,10 @@ function eliminar_materia(i){
             ajax.onreadystatechange=function()
             {
                 if (ajax.readyState==4 && ajax.status==200) {
-                    if(ajax.responseText=="ADVERTENCIA: La materia se ha eliminado correctamente!")
-                    {
+                    
                         alert(ajax.responseText);
                         document.location.href="mantenimiento_materias.php";
-                    }
+                    
                 };
             
             }
@@ -992,7 +970,8 @@ function modificar_seccion(i)
                     {            
                         if (ajax.readyState==4 && ajax.status==200) 
                         {                       
-                            alert(ajax.responseText);                
+                            alert(ajax.responseText);       
+                            document.location.href="mantenimiento_seccion.php";         
                         }
             
                     }
@@ -1025,6 +1004,7 @@ function eliminar_seccion(i) {
                 {
                     if (ajax.readyState==4 && ajax.status==200) {
                     alert(ajax.responseText);
+                    document.location.href="mantenimiento_seccion.php";  
                     };
                 }
                 ajax.send(datos);
@@ -1075,13 +1055,13 @@ function modificar_usuario(i)
         var datos = "contra="+preg+"&id_usuario="+preg1;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        alert(ajax);
+        
         ajax.onreadystatechange=function()
         {            
             if (ajax.readyState==4 && ajax.status==200) 
             {                       
                 alert(ajax.responseText);        
-                document.location.href="mantenimiento_super.php";        
+                document.location.href="mantenimiento_usuarios.php";        
             }
             
         }
@@ -1104,7 +1084,7 @@ function eliminar_usuario(i) {
         {
             if (ajax.readyState==4 && ajax.status==200) {
                 alert(ajax.responseText);
-                document.location.href="mantenimiento_super.php";
+                document.location.href="mantenimiento_usuarios.php";
             };
             
         }
@@ -1153,7 +1133,7 @@ function modificar_super(i)
         var datos = "contra="+preg+"&nombre2="+preg1;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-        alert(ajax);
+        
         ajax.onreadystatechange=function()
         {            
             if (ajax.readyState==4 && ajax.status==200) 
@@ -1215,6 +1195,7 @@ function ingresar_alumno(i)
         {
             if (ajax.readyState==4 && ajax.status==200){
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_alumnos.php";  
             }
         }
         ajax.send(datos);
@@ -1247,11 +1228,9 @@ function modificar_alumno(i)
         {            
             if (ajax.readyState==4 && ajax.status==200) 
             {                       
-                if(ajax.responseText=="Exito")
-                {
+                     alert(ajax.responseText);
                     document.location.href="mantenimiento_alumnos.php";
-                    alert(ajax.responseText);
-                }
+                   
             }
             
         }
@@ -1274,6 +1253,7 @@ function eliminar_alumno(i) {
         {
             if (ajax.readyState==4 && ajax.status==200) {
                 alert(ajax.responseText);
+                document.location.href="mantenimiento_alumnos.php";
             };
             
         }

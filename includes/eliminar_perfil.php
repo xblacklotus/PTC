@@ -3,23 +3,31 @@
     if(isset($_POST))
     {
 
-        $id=$_POST['id_per'];        
+        $id=$_POST['id_per']; 
+        echo "id de perfil ".$id;
         if($id=="")
         {
             echo "ERROR: conflicto al intentar eliminar el prefil";
         }
         else
         {
-            $peticion= "delete from perfiles where id =('".$id."')";
-            $resultado=mysqli_query($conexion,$peticion);
-            if($resultado)
+            if (is_numeric($id))
             {
-                echo "ADVERTENCIA: El perfil se ha eliminado correctamente!";
+                    $peticion= "delete from perfiles where id =('".$id."')";
+                $resultado=mysqli_query($conexion,$peticion);
+                if($resultado)
+                {
+                    echo "ADVERTENCIA: El perfil se ha eliminado correctamente!";
+                }
+                else
+                {
+                    echo "Error: Error al intentar eliminar el perfil!";
+                }      
             }
-            else
-            {
-                echo "Error: Error al intentar eliminar el perfil!";
-            }       
+            else{
+                echo "El id no es numerico";
+            }
+             
         }
          
     }  
