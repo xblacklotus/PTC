@@ -10,12 +10,12 @@
 
 /* Slider */
 .slider {
-    height: 200px;
+    height: 250px;
     left: 50%;
     margin: -300px -674px;
     position: absolute;
     top: 48%;
-    width: 0px;
+    width: 10px;
     /*box-shadow*/
     -webkit-box-shadow: 0 0 5px #000;
     -moz-box-shadow: 0 0 5px #000;

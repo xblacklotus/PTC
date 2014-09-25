@@ -23,9 +23,9 @@ else
 			
 				<h1>Área Estudiantil</h1>	
 				<div class="support-note">
-					<span class="no-csstransforms">CSS transforms are not supported in your browser</span>
-					<span class="no-csstransitions">CSS transitions are not supported in your browser</span>
-					<span class="note-ie">Sorry, only modern browsers.</span>
+					<span class="no-csstransforms">Las transformacionesd de CSS no son soportadas en tu navegador</span>
+					<span class="no-csstransitions">Las transiciones de CSS no son soportadas en tu navegador</span>
+					<span class="note-ie">Lo sentimos, solo navegadores modernos.</span>
 				</div>
 				
 			</header>
