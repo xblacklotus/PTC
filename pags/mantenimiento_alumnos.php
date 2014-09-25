@@ -145,8 +145,17 @@ where a.id_seccion=s.id';
 
 			$res = mysqli_query($conexion,$consulta);
 		?>
-		<table>
-			<th></th>
+		<table  class="tablestyle">
+      <tbody>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Grado</th>
+          <th>Sección</th>
+          <th>Usuario</th>
+          <th>Accion</th>
+        </tr>
+			
 			<?php $i = 0;
 				while ($rsSecc = mysqli_fetch_array($res)) {
 			?>
@@ -184,16 +193,16 @@ where a.id_seccion=s.id';
 								</select>';
 					}
 
-				echo '<input type="text" name="name" value="'.$rsSecc['nombres'].'"></input> 
-				<input class="bids" type="hidden" name="id_alu" value='.$rsSecc['id'].'>
-				<input type="text" name="nick" value="'.$rsSecc['apellidos'].'"></input>				
-				'.$grados.'
-				<select id="section'.$i.'" name="section" >
-				'.$secciones.'
-				</select>
-        ';
-        imprimirUsuario($conexion,$id_profe,$id_alumnos,$rsSecc['id_usuario']);
-        echo '<button type="button" class="pill orange" onclick="javascript:modificar_alumno('.$i.');" >
+				echo '<input type="text" name="name" value="'.$rsSecc['nombres'].'"></input>';?></td>  
+				<td><?php echo '<input class="bids" type="hidden" name="id_alu" value='.$rsSecc['id'].'>
+				<input type="text" name="nick" value="'.$rsSecc['apellidos'].'"></input>	';?>			
+				<td><?php echo ''.$grados.'';?></td>
+				<td><?php echo '<select id="section'.$i.'" name="section" >';?>
+				<?php echo ''.$secciones.'</select>';?></td>
+        <td>
+        <?php
+        imprimirUsuario($conexion,$id_profe,$id_alumnos,$rsSecc['id_usuario']);?></td>
+        <td><?php echo '<button type="button" class="pill orange" onclick="javascript:modificar_alumno('.$i.');" >
 				<i class="icon-plus-sign">Modificar</i></button>
 				<button type="button" class="pill orange" onclick="javascript:eliminar_alumno('.$i.');">
 				<i class="icon-minus-sign">Eliminar</i></button>'; $i ++;?> 
@@ -205,6 +214,7 @@ where a.id_seccion=s.id';
 			</tr>
 			   
 			<?php  }?>
+      </tbody>
 		</table>
     <div  class='tab-content'>
     <h5>Agregar lista de alumnos desde un archivo en excel:</h5>
