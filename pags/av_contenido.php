@@ -10,10 +10,8 @@ self.location = "loginAlumno.php";
 else
 {
 include ("../includes/header_aula.php");
+
     include("../includes/header_al.php");?>
-
-
-
 
 <?php include("../includes/config.inc");?>
 

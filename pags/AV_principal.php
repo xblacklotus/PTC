@@ -4,13 +4,16 @@ session_start();
 if (!isset($_SESSION['user'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
+
 self.location = "../index2.php";
+
+self.location = "loginAlumno.php";
+
 </script>';
 }
 else
 {
 include ("../includes/header_aula.php");
-    include("../includes/header_al.php");
     $id_alumno=$_SESSION['user'];
     $peticion="select id_seccion, nombres, apellidos,grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);
@@ -35,40 +38,25 @@ include ("../includes/header_aula.php");
                         <a class="next" href="#two">&rarr;</a>
                     </nav>
                     <li id="two" class="slide">
-                    <img src="../imgs/2.jpg" alt="Slide 2">
+                    <img src="../imgs/1.jpg" alt="Slide 2">
                     <nav>
                         <a class="prev" href="#one">&larr;</a>
                         <a class="next" href="#three">&rarr;</a>
                     </nav>            
                 </li>
                 <li id="three" class="slide">
-                    <img src="../imgs/3.jpg" alt="Slide 3">
+                    <img src="../imgs/1.jpg" alt="Slide 3">
                     <nav>
                         <a class="prev" href="#two">&larr;</a>
                         <a class="next" href="#four">&rarr;</a>
                     </nav>            
                 </li>
-                <li id="four" class="slide">
-                    <img src="../imgs/Slider4.jpg" alt="Slide 4">
-                    <nav>
-                        <a class="prev" href="#three">&larr;</a>
-                        <a class="next" href="#five">&rarr;</a>
-                    </nav>            
-                </li>
-                <li id="five" class="slide">
-                    <img src="../imgs/Slider5.jpg" alt="Slide 5">
-                    <nav>
-                        <a class="prev" href="#four">&larr;</a>
-                        <a class="next" href="#one">&rarr;</a>
-                    </nav>            
-                </li>
+                
                 <li class="quicknav">
                     <ul>
                         <li><a href="#one"></a></li>
                         <li><a href="#two"></a></li>
                         <li><a href="#three"></a></li>
-                        <li><a href="#four"></a></li>
-                        <li><a href="#five"></a></li>
                     </ul>
                 </li>
             </ul>
@@ -87,10 +75,12 @@ include ("../includes/header_aula.php");
             <br>
             <h5>Sección: </h5>
             <?php echo '<label>'.$seccion.'</label>';  ?>
-          <br><br>
+          <br>
           <hr>
-            <h4 id="Log">Log out</h4>
-    </form>
+          <hr>
+          <br>
+           <li><a href="../includes/desconectar_alumno.php">Cerrar sesión</a></li>
+    </form></aside>
     <section id="Main">
        
 
@@ -121,8 +111,10 @@ include ("../includes/header_aula.php");
       $total=0;
        echo "
        <form name='formA' method='post' action='av_contenido.php' >
-       <input class='bids' type='hidden' name='id' value=".$fila5[0]."> </input> <button type='submit' class='pill orange' >
-       <i class='icon-plus-sign'>".$fila5[1]."</i></button>
+       <input class='bids' type='hidden' name='id' value=".$fila5[0]." /> 
+       <button type='submit' class='square orange'>
+        <i class='icon-plus-sign'>".$fila5[1]."</i>
+       </button>
        </form>
        ";
        //var_dump($fila5[0]);
