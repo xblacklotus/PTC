@@ -22,6 +22,7 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
+<li><a href="../index2.php">Inicio</a></li>
 <li id="primerli"><a href="../pags/perfiles.php">Notas</a></li>
 <li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>
 	<!--<<ul>

@@ -88,8 +88,7 @@ $id_vacios= array();
           //echo "gyf".$id_comparacion[$j];
                  }
               }
-            }
-            echo "Usuario";
+            }            
             echo "
                  <select id='userr' name='userr' >";
                  if($valor_propio!="-1")

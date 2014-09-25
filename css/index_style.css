@@ -23,6 +23,16 @@ div#contendor_index{
 	padding-bottom: 5px;
 	font-family: "Maiandra GD";
 }
+#Back2 {
+	float: center;
+	margin-left: -95px;
+	height: 580px;
+	width: 1350px;
+	background-image: url("../imgs/imgAlu.jpg");
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-family: "Maiandra GD";
+}
 
 #Aside_Log{
 	margin: auto;

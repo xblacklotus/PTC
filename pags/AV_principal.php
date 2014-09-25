@@ -4,13 +4,13 @@ session_start();
 if (!isset($_SESSION['user'])){
 echo '<script language = javascript>
 alert("Sesion invalida");
-self.location = "loginAdmin.php";
+self.location = "../index2.php";
 </script>';
 }
 else
 {
 include ("../includes/header_aula.php");
-    include("../includes/inheader.php");
+    include("../includes/header_al.php");
     $id_alumno=$_SESSION['user'];
     $peticion="select id_seccion, nombres, apellidos,grado from alumno where id=".$id_alumno."" ;
     $resultado=mysqli_query($conexion,$peticion);

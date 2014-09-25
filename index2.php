@@ -1,6 +1,6 @@
 <?php include("includes/header.php");?>
 
-<div id="Back">
+<div id="Back2">
 	<div id="Aside_Log">
 		<h3>AULA VIRTUAL</h3>
 		<h5>SELECCIÓN DE TIPO DE USUARIO</h5>

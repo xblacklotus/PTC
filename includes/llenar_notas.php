@@ -84,7 +84,7 @@ from materias as m,perfiles as p, alumno as a, seccion as s,notas_perfiles as np
                 echo '<input class="bids" type="hidden" form="notas"name="a_id'.$cantidad.'" value='.$fila[6].'> ';        
             $cantidad++;        
         }
-        if($_SESSION['usuario'])
+        if(isset($_SESSION['usuario']))
         {
             echo '</tbody></table>
         <form name="notas" id="notas" method="post"">

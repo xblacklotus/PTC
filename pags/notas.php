@@ -1,6 +1,4 @@
-<?php 
-
-
+<?php
 session_start();
 //Validar si se está ingresando con sesión correctamente
 $imprimir=false;
