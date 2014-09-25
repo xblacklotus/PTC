@@ -101,14 +101,13 @@ $peticion= "select  id from usuario";
 			
 		?>
 		<br><br>
-		<table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
+		<table  class="tablestyle" cellspacing="0" cellpadding="0" style="max-width="100px"">
 			<thead><tr>
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Accion</th>
         
     	</tr></thead>
-			<th></th>
 			<?php $i = 0; 
 				while ($rsSecc = mysqli_fetch_array($res)) { 
 			?>
