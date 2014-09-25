@@ -87,12 +87,21 @@ if($imprimir)
     //$fila4=mysqli_fetch_array($resultado4)
     $a=0;
     $numero=1;
+    echo '<ul class="tabs left">
+      <li><a href="#ta1">Prier Trimestre</a></li>
+      <li><a href="#ta2">Segundo Trimestre</a></li>
+      <li><a href="#ta3">Tercer Trimestre</a></li>
+
+      </ul><div id="ta1" class="tab-content">';
+
+
+
     while ($fila4=mysqli_fetch_array($resultado4)) {
       $total=0;
        echo "<h5>".$fila4[1]."</h5>";
         echo '<table  class="striped tight sortable" 
           cellspacing="1" cellpadding="0" style="max-width="200px">';
-        $peticion5="select * from perfiles where id_materia=".$fila4[0];
+        $peticion5="select * from perfiles where id_materia=".$fila4[0]." and trimestre='1'";
         $resultado5=mysqli_query($conexion,$peticion5);
         //$fila5=mysqli_fetch_array($resultado5);
                  echo "<thead>";
@@ -136,6 +145,127 @@ if($imprimir)
          $numero=1;
          echo "</table>";
     }
+    echo '</div>';
+
+
+
+    $peticion41="select * from materias where grado=".$grado." and id_seccion=".$seccion."" ;
+    $resultado41=mysqli_query($conexion,$peticion41);
+    //$fila4=mysqli_fetch_array($resultado4)
+    $a=0;
+    $numero=1;
+    echo '<div id="ta2" class="tab-content">';
+    while ($fila41=mysqli_fetch_array($resultado41)) {
+      $total=0;
+       echo "<h5>".$fila41[1]."</h5>";
+        echo '<table  class="striped tight sortable" 
+          cellspacing="1" cellpadding="0" style="max-width="200px">';
+        $peticion51="select * from perfiles where id_materia=".$fila41[0]." and trimestre='2'";
+        $resultado51=mysqli_query($conexion,$peticion51);
+        //$fila5=mysqli_fetch_array($resultado5);
+                 echo "<thead>";
+         echo "<th style=padding:3px;>".$enca[0]."</th>";
+         echo "<th style=padding:3px;>".$enca[1]."</th>";
+         echo "<th style=padding:3px;>".$enca[2]."</th>";
+         echo "<th style=padding:3px;>".$enca[3]."</th></thead>";
+        while ($fila51=mysqli_fetch_array($resultado51)) {
+            # code...
+          $peticion61="select nota from notas_perfiles where id_perfil=".$fila51[0]." and id_alumno=".$id_alumno."";
+          $resultado61=mysqli_query($conexion,$peticion61);
+          $fila61=mysqli_fetch_array($resultado61);
+          $nota_per = $fila61[0];
+            $t=1;
+          echo "<tr>";
+          //Iniciamos el bucle de las filas tr=table row
+          for($y=0;$y<$columnas;$y++){
+            if ($y==0) {
+              echo "<td style=padding:3px;>".$numero."</td>";
+              $numero++;
+            }
+            elseif ($y==($columnas-1)) {
+              echo "<td style=padding:3px;>".$nota_per."</td>";
+            }
+            else{
+              echo "<td style=padding:3px;>".$fila51[$t]."</td>";                
+                $t++;
+            }
+                
+           }
+           $total=(($nota_per*$fila51[2])/100)+$total;
+           
+           //Cerramos columna
+           echo "</tr>";
+          }
+          echo "<tr>";
+          echo "<td style=padding:3px;>"."<strong>Nota Final</strong>"."</td>";
+         echo "<td style=padding:3px;>".$total."</td>";
+          echo "</tr>";
+
+         $numero=1;
+         echo "</table>";
+    }
+    echo '</div>';
+
+
+
+
+    $peticion42="select * from materias where grado=".$grado." and id_seccion=".$seccion."" ;
+    $resultado42=mysqli_query($conexion,$peticion42);
+    //$fila4=mysqli_fetch_array($resultado4)
+    $a=0;
+    $numero=1;
+    echo '<div id="ta3" class="tab-content">';
+    while ($fila42=mysqli_fetch_array($resultado42)) {
+      $total=0;
+       echo "<h5>".$fila42[1]."</h5>";
+        echo '<table  class="striped tight sortable" 
+          cellspacing="1" cellpadding="0" style="max-width="200px">';
+        $peticion52="select * from perfiles where id_materia=".$fila42[0]." and trimestre='3'";
+        $resultado52=mysqli_query($conexion,$peticion52);
+        //$fila5=mysqli_fetch_array($resultado5);
+                 echo "<thead>";
+         echo "<th style=padding:3px;>".$enca[0]."</th>";
+         echo "<th style=padding:3px;>".$enca[1]."</th>";
+         echo "<th style=padding:3px;>".$enca[2]."</th>";
+         echo "<th style=padding:3px;>".$enca[3]."</th></thead>";
+        while ($fila52=mysqli_fetch_array($resultado52)) {
+            # code...
+          $peticion62="select nota from notas_perfiles where id_perfil=".$fila52[0]." and id_alumno=".$id_alumno."";
+          $resultado62=mysqli_query($conexion,$peticion61);
+          $fila62=mysqli_fetch_array($resultado62);
+          $nota_per = $fila62[0];
+            $t=1;
+          echo "<tr>";
+          //Iniciamos el bucle de las filas tr=table row
+          for($y=0;$y<$columnas;$y++){
+            if ($y==0) {
+              echo "<td style=padding:3px;>".$numero."</td>";
+              $numero++;
+            }
+            elseif ($y==($columnas-1)) {
+              echo "<td style=padding:3px;>".$nota_per."</td>";
+            }
+            else{
+              echo "<td style=padding:3px;>".$fila52[$t]."</td>";                
+                $t++;
+            }
+                
+           }
+           $total=(($nota_per*$fila52[2])/100)+$total;
+           
+           //Cerramos columna
+           echo "</tr>";
+          }
+          echo "<tr>";
+          echo "<td style=padding:3px;>"."<strong>Nota Final</strong>"."</td>";
+         echo "<td style=padding:3px;>".$total."</td>";
+          echo "</tr>";
+
+         $numero=1;
+         echo "</table>";
+    }
+    echo '</div>';
+
 
 
 ?>
