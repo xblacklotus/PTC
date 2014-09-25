@@ -20,8 +20,8 @@
                     <li><a href="mantenimiento_perfiles.php">Perfiles</a></li>
                     <li><a href="mantenimiento_seccion.php">Secciones</a></li>
                     <li><a href="mantenimiento_usuarios.php">Usuarios</a></li>
-                    <li><a href="mantenimiento_super">Administradores</a></li>
-                    <li><a href="mantenimientos.php">Nose como ponerle</a></li>
+                    <li><a href="mantenimiento_super.php">Administradores</a></li>
+                    <li><a href="mantenimientos.php">Visualizar Notas</a></li>
                 </ul>
             </div>
         </div>

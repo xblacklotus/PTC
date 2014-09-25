@@ -101,7 +101,7 @@ $peticion= "select  id from usuario";
 			
 		?>
 		<br><br>
-		<table  class="tablestyle" cellspacing="0" cellpadding="0" style="max-width="100px"">
+		<table  class="tablestyle" cellspacing="0" cellpadding="0" style="max-width='100px'">
 			<thead><tr>
         <th>Nombres</th>
         <th>Apellidos</th>

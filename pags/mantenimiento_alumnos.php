@@ -145,7 +145,7 @@ where a.id_seccion=s.id';
 
 			$res = mysqli_query($conexion,$consulta);
 		?>
-		<table  class="tablestyle">
+		<table  class="tablestyle" cellspacing="0" cellpadding="0" style="max-width='100px'">
       <tbody>
         <tr>
           <th>Nombres</th>

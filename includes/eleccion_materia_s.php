@@ -8,7 +8,7 @@
         
     $peticion="select m.nombre,m.grado,s.nombre,m.id,s.id from profesor as p,materias as m,seccion as s 
                where p.id=id_profesor and id_seccion=s.id ";
-    echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px">
+    echo '<!-- Table --> <table id="tbmats" class="striped tight sortable" cellspacing="0" cellpadding="0" style="max-width="100px"">
     <thead><tr>
         <th>Materia</th>
         <th>Grado</th>
