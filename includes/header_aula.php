@@ -7,9 +7,19 @@
 
 	   
 
-	<link rel="stylesheet" type="text/css" href="../css/slide.css">
-	<link rel="stylesheet" type="text/css" href="../css/AVstyle.css">                      <!-- CUSTOM STYLES -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/kickstart.js"></script>                              <!-- KICKSTART -->
+	<link rel="stylesheet" media="screen" type="text/css" href="../css/aula_estilo.css" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="../js/slides.min.jquery.js"></script>
+<script>
+	$(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '../imgs/loading.gif',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true
+		});
+	});
+</script>                           
 </head>
 <body>

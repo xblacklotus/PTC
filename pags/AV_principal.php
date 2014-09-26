@@ -29,63 +29,52 @@ include ("../includes/header_aula.php");
     $seccion=$fila2[0];
 ?>
 <header>
-        <div class="slider">
-            <ul class="frames">
-                <li id="one" class="slide">
-                    <img src="../imgs/1.jpg" alt="Slide1">
-                    <nav>
-                        <a class="prev" href="#five">&larr;</a>
-                        <a class="next" href="#two">&rarr;</a>
-                    </nav>
-                    <li id="two" class="slide">
-                    <img src="../imgs/1.jpg" alt="Slide 2">
-                    <nav>
-                        <a class="prev" href="#one">&larr;</a>
-                        <a class="next" href="#three">&rarr;</a>
-                    </nav>            
-                </li>
-                <li id="three" class="slide">
-                    <img src="../imgs/1.jpg" alt="Slide 3">
-                    <nav>
-                        <a class="prev" href="#two">&larr;</a>
-                        <a class="next" href="#four">&rarr;</a>
-                    </nav>            
-                </li>
-                
-                <li class="quicknav">
-                    <ul>
-                        <li><a href="#one"></a></li>
-                        <li><a href="#two"></a></li>
-                        <li><a href="#three"></a></li>
-                    </ul>
-                </li>
-            </ul>
+    <hgroup>
+        <h1><a href="#" title="Aula virtual">Aula Virtual</a></h1>
+        <h2>tus tareas a un click</h2>
+    </hgroup>
+    
+</header>
+    <aside id="promotion">
+    <div id="slides">
+        <div class="slides_container">
+            <a href="#" title="Wilhelm Klingspor Gotisch" target="_blank"><img src="../imgs/fondo1.jpg" width="918" height="240" alt="Slide 1"></a>
+            <a href="#" title="Quentin caps" target="_blank"><img src="../imgs/banner.jpg" width="918" height="240" alt="Slide 2"></a>
+            <a href="#" title="Engravers" target="_blank"><img src="../imgs/fondo1.jpg" width="918" height="240" alt="Slide 3"></a>
+            <a href="#" title="Bello Pro" target="_blank"><img src="../imgs/banner.jpg" width="918" height="240" alt="Slide 4"></a>
         </div>
-    </header>
-    <aside>
-    <form name="formAl" method="post" id="block">
-            <h5>Nombre Alumno</h5>
-            <?php echo '<label>'.$nombres.'</label>';  ?>
-            <br>
-            <h5>Apellido Alumno</h5>
-            <?php echo '<label>'.$apellidos.'</label>';  ?>
-            <br>
-            <h5>Año cursado</h5>
-            <?php echo '<label>'.$grado.'</label>';  ?>
-            <br>
-            <h5>Sección: </h5>
-            <?php echo '<label>'.$seccion.'</label>';  ?>
-          <br>
-          <hr>
-          <hr>
-          <br>
-           <li><a href="../includes/desconectar_alumno.php">Cerrar sesión</a></li>
-    </form></aside>
-    <section id="Main">
+        <a href="#" class="prev"><img src="../imgs/arrow-prev.gif" width="20" height="43" alt="Arrow Prev"></a>
+        <a href="#" class="next"><img src="../imgs/arrow-next.gif" width="20" height="43" alt="Arrow Next"></a>
+    </div>
+</aside>
+    <aside id="right">
+        <section>
+
+            <form name="formAl" method="post" id="block">
+                    <h5>Nombre Alumno</h5>
+                    <?php echo '<label>'.$nombres.'</label>';  ?>
+                    <br>
+                    <h5>Apellido Alumno</h5>
+                    <?php echo '<label>'.$apellidos.'</label>';  ?>
+                    <br>
+                    <h5>Año cursado</h5>
+                    <?php echo '<label>'.$grado.'</label>';  ?>
+                    <br>
+                    <h5>Sección: </h5>
+                    <?php echo '<label>'.$seccion.'</label>';  ?>
+                  <br>
+                  <hr>
+                  <hr>
+                  <br>
+                   <li><a href="../includes/desconectar_alumno.php">Cerrar sesión</a></li>
+            </form>
+         </section>   
+    </aside>
+    <article>
        
 
         <h2>PORTAL DEL ESTUDIANTE</h2>
-        <div id="Agen">
+        <h5>Materias inscritas</h5>
        
          <?php
 //Bloque de grado
@@ -110,21 +99,20 @@ include ("../includes/header_aula.php");
     while ($fila5=mysqli_fetch_array($resultado5)) {
       $total=0;
        echo "
-       <form name='formA' method='post' action='av_contenido.php' >
+       <form class='cae_texto'name='formA' method='post' action='av_contenido.php' >
        <input class='bids' type='hidden' name='id' value=".$fila5[0]." /> 
-       <button type='submit' class='square orange'>
-        <i class='icon-plus-sign'>".$fila5[1]."</i>
-       </button>
+       <button type='submit' >
+        
+       </button><p>".$fila5[1]."</p>
        </form>
        ";
        //var_dump($fila5[0]);
         }
        ?>
             
-        </div>
+    
        
-    </section>
-</aside>
+    </article>
 
 <?php include("../includes/footer2.php");
 }
