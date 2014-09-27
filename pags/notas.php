@@ -23,13 +23,13 @@ if(isset($_SESSION['userp']))
     else
       echo '<script language = javascript>
   alert("Id invalido'.$id_alumno.'");
-  self.location = "loginMaestro.php";
+  self.location = "loginAlumno.php";
   </script>';
   }
   else
     echo '<script language = javascript>
   alert("Id invalido");
-  self.location = "loginMaestro.php";
+  self.location = "loginAlumno.php";
   </script>'; 
 }
 else{

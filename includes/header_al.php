@@ -17,7 +17,7 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li><a href="../index.php">Inicio</a></li>
+<li><a href="Menu_Alumno.php">Inicio</a></li>
 <li><a href="../includes/desconectar_alumno.php">Cerrar sesión</a></li>	
 </ul>
 
