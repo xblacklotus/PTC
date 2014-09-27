@@ -1379,23 +1379,16 @@ function ingresar_anuncio(){
                             if (pregunta1.length > 250) {
                                 alert("ERROR : La longitud del anuncio excede el límite permitido!");
                             }else{
-                            ///////////////////////
-
-
-
-
-
-                            ////
                             var datos = "profesor="+pregunta+"&anuncio="+pregunta1+"&materia="+pregunta2+"&titulo="+pregunta3+"&actual="+pregunta4+"&ingreso="+pregunta5;
                             ajax.open("POST",url,true);
                             ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                             ajax.onreadystatechange = function()
-                            {
-                                
+                            {                               
                                 if (ajax.readyState == 4 && ajax.status == 200) {
+                                    alert(ajax.responseText);
                                     if (ajax.responseText=="ADVERTENCIA: El anuncio se ha guardado correctamente!") {
-                                        alert(ajax.responseText);
-                                        document.location.href="perfiles.php";
+                                        
+                                        document.location.href="mantenimiento_anuncios.php";
                                     }
                                     
                                 }
@@ -1450,11 +1443,11 @@ function modificar_anuncio(i) {
                                     {            
                                         if (ajax.readyState==4 && ajax.status==200) 
                                         {                       
-
+                                            alert(ajax.responseText);
                                             if(ajax.responseText =="ADVERTENCIA: El anuncio se ha modificado correctamente!")
                                             {
-                                                alert(ajax.responseText);
-                                                document.location.href="perfiles.php";
+                                                
+                                                document.location.href="mantenimiento_anuncios.php";
                                             }
                                             
                                         }
@@ -1490,9 +1483,10 @@ function eliminar_anuncio(i) {
                 ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                 ajax.onreadystatechange=function(){
                     if (ajax.readyState == 4 && ajax.status == 200) {
+                        alert(ajax.responseText);
                         if (ajax.responseText="ADVERTENCIA: El anuncio se ha eliminado correctamente!") {
-                            alert(ajax.responseText);
-                            document.location.href="perfiles.php";
+                            
+                            document.location.href="mantenimiento_anuncios.php";
                         }
                         
                     }

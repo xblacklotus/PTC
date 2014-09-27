@@ -15,11 +15,20 @@ else{
 	<!--Formulario para ingresar anuncios-->
 	<br>
 	<?php 
-	if($_POST)
-	{
-
-
+	if(isset($_POST['m_id']) || isset($_SESSION['m_id']))
+{
+    if(isset($_POST['m_id']))
+    {
+        $_SESSION['m_id']=$_POST['m_id'];
         $id_profesor=$_POST['m_id'];
+    }
+    else
+    {
+        $id_profesor=$_SESSION['m_id'];
+    }
+
+
+        
         $co = "select nombre from materias where id='".$id_profesor."'";
 		$re = mysqli_query($conexion,$co);
 		$avv= mysqli_fetch_array($re);			
