@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 	line-height:1em;
 	font-weight:normal;
 	font-style:italic;
-	color:#606060;
+	color:black;
 	margin:10px 0px;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -38,9 +38,10 @@ form.cae_texto {
     width: 30px;
     height: 33px;
     line-height: 0px;
+
     color: transparent;
     font-size: 30px;
-    font-family: cursive;
+    font-family: "Maiandra GD";
        font-weight: 300;
     text-transform: uppercase;
     -webkit-transition: all 0.5s ease;
@@ -48,12 +49,13 @@ form.cae_texto {
     -o-transition: all 0.5s ease;
 }
 form.cae_texto:hover {
-    line-height: 133px;
-    color: #575858;
+    line-height:33px;
+
+    color: black;
 }
 form.cae_texto button{
     float: left;
-    margin: 0 15px;
+    margin:  15px;
 }
 a:link, a:visited {
 	color:#af7a85;
@@ -119,13 +121,14 @@ article  {
 	padding:10px;
 	text-align:center;
 	overflow:hidden;
-	background-color: black;
+	background-color:rgb(54, 87, 138);
 	border-radius: 10px;
 	margin: 100px 20px 20px 20px;
 }
 article form {
-	margin:10px 20px;
+	margin:10px 30px;
 	text-align: left;
+	display: inline-block;
 }
 /*
 article p:first-of-type {
@@ -147,7 +150,7 @@ article > p:nth-of-type(3) {
 
 /*** East Side ***/
 aside#right {
-	background-color: black;
+	background-color: rgb(54, 87, 138);;
 	float:right;
 	width:220px;
 	padding:10px 20px 0px 0px;

@@ -6,16 +6,28 @@ echo '<script language = javascript>
 alert("Sesion invalida");
 self.location = "loginMaestro.php";
 </script>';
-}
+}       
 else
 {
+    
 include("../includes/inheader.php");?>
 
 
 <script type="text/javascript" src="../js/funciones.js"></script>
 <?php
-if($_POST) {
+if(isset($_POST['m_id']) || isset($_SESSION['m_id']))
+{
+    if(isset($_POST['m_id']))
+    {
+        $_SESSION['m_id']=$_POST['m_id'];
         $id=$_POST['m_id'];
+    }
+    else
+    {
+        $id=$_SESSION['m_id'];
+    }
+        
+        
         echo '<div  class="tab-content">';
         echo "<h1>Agregar Archivo:</h1>
         <form enctype='multipart/form-data' action='../includes/guardar_archivo.php' method='post'>
@@ -45,7 +57,7 @@ Descripción <input type='text' name='titulo' size='30'>
                 
                 <th>Nombre del archivo</th>
                 <th >Descripcion</th>
-                <th max-width="100px">Peso(MB)</th>  
+                <th max-width="100px">Peso(KB)</th>  
                 <th max-width="50px">Accion</th>            
             </tr></thead>
             <tbody>';
@@ -57,7 +69,7 @@ Descripción <input type='text' name='titulo' size='30'>
 
                         <td> '.$fila[1].'</td>
                         <td> '.$fila[2].'</td> 
-                        <td> '.$fila[3].'</td> 
+                        <td> '.number_format((float)($fila[3]/1024), 2, '.', '').'</td> 
                        <td>
                        <input class="bids" type="hidden" name="id" value='.$fila[0].'> </input> <button type="submit" class="pill orange"   >
                        <i class="icon-plus-sign">Descargar</i></button>

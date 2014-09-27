@@ -22,9 +22,9 @@
 
 <!-- Menu Horizontal -->
 <div >
-	<ul id="nav">
-	<li><a href="../index.php">Inicio</a></li>
+	<ul id="nav">	
 	<li><a href="../pags/Menu_Admin.php">Menú</a></li>
+	<li><a href="../pags/mantenimientos.php">Visualizar notas</a></li>
 	<li><a href="">Mantenimientos</a>
 			<ul>
 			<li><a href="../pags/mantenimiento_maestros.php">Maestros</a></li>

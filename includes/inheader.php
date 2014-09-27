@@ -22,8 +22,8 @@
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li><a href="../index.php">Inicio</a></li>
-<li id="primerli"><a href="../pags/perfiles.php">Notas</a></li>
+
+<li id="primerli"><a href="../pags/perfiles.php">Inicio</a></li>
 <li><a href="../includes/desconectar_maestro.php">Cerrar sesión</a></li>
 	<!--<<ul>
 	<li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>

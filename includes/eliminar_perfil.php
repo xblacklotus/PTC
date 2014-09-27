@@ -3,8 +3,7 @@
     if(isset($_POST))
     {
 
-        $id=$_POST['id_per']; 
-        echo "id de perfil ".$id;
+        $id=$_POST['id_per'];         
         if($id=="")
         {
             echo "ERROR: conflicto al intentar eliminar el prefil";

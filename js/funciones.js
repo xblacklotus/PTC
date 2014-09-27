@@ -7,7 +7,7 @@ function exportar_excel(tabla,filas,columnas)
     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
     ajax.onreadystatechange=function()
     {
-      if (ajax.readyState==4 && ajax.status==200){        
+      if (ajax.readyState==4 && ajax.status==200){
         //alert(ajax.responseText);
         
         if(ajax.responseText=="1")
@@ -63,6 +63,7 @@ function eliminarArch(name)
         var oForm1 = document.forms['formArch'+name];//aqui obtenes todo el "formulario"    
         var oForm1Element = oForm1['id'];//aqui obtenes el elemento nada mas de el formulario q esta en la variable
         var preguntatexto =oForm1Element.value;;//y aqui ya pasas el valor a la variable para ajax
+        
         var datos="id="+preguntatexto;
         ajax.open("POST",url,true);
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");        
@@ -77,7 +78,7 @@ function eliminarArch(name)
             }
           }
         }
-        ajax.send(datos);
+        ajax.send(datos);        
     }    
 }
 
@@ -579,7 +580,8 @@ function ingresar_perfiles()
               {
                         
                     alert(ajax.responseText);
-                    document.location.href="mantenimiento_perfiles.php";
+                    if(ajax.responseText="Guardado con exito")
+                        document.location.href="mantenimiento_perfiles.php";
                         
               };
             }
@@ -683,18 +685,17 @@ function eliminar_perfiles(i) {
         var form = document.forms['formMo'+i+''];
         var elemento = form['id_per'];
         var pregu = elemento.value;
-        var datos = "id_per="+pregu;     
-        alert(datos);   
+        var datos = "id_per="+pregu;
         ajax.open("POST",url,true);
         
         ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         ajax.onreadystatechange=function()
-        {
-            alert("12");
+        {            
             if (ajax.readyState==4 && ajax.status==200) {
                
                         alert(ajax.responseText);
-                        document.location.href="mantenimiento_perfiles.php";
+                        if(ajax.responseText=="ADVERTENCIA: El perfil se ha eliminado correctamente!")
+                            document.location.href="mantenimiento_perfiles.php";
                     
             };
             
@@ -1394,7 +1395,7 @@ function ingresar_anuncio(){
                                 if (ajax.readyState == 4 && ajax.status == 200) {
                                     if (ajax.responseText=="ADVERTENCIA: El anuncio se ha guardado correctamente!") {
                                         alert(ajax.responseText);
-                                        document.location.href="mantenimiento_anuncios.php";
+                                        document.location.href="perfiles.php";
                                     }
                                     
                                 }
@@ -1428,8 +1429,7 @@ function modificar_anuncio(i) {
         var pregunta = elemento.value;
         var pregunta1 = elemento1.value;
         var pregunta2 = elemento2.value;
-        var pregunta3 = elemento3.value;
-        alert(pregunta1);
+        var pregunta3 = elemento3.value;        
         if (pregunta2 == "") {
             alert("ERROR : No se puede guardar un anuncio vacío!");
         }else{
@@ -1443,8 +1443,7 @@ function modificar_anuncio(i) {
                         alert("ERROR : Se excede la longitud máxima de carácteres en el anuncio!");
                     }else{
                         ///////////////
-                        var datos = "an_id="+pregunta+"&titulo2="+pregunta1+"&anuncio2="+pregunta2+"&ingreso2="+pregunta3;
-                        alert(datos);
+                        var datos = "an_id="+pregunta+"&titulo2="+pregunta1+"&anuncio2="+pregunta2+"&ingreso2="+pregunta3;                        
                         ajax.open("POST",url,true);
                                     ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
                                     ajax.onreadystatechange=function()
@@ -1455,7 +1454,7 @@ function modificar_anuncio(i) {
                                             if(ajax.responseText =="ADVERTENCIA: El anuncio se ha modificado correctamente!")
                                             {
                                                 alert(ajax.responseText);
-                                                document.location.href="mantenimiento_anuncios.php";
+                                                document.location.href="perfiles.php";
                                             }
                                             
                                         }
@@ -1493,7 +1492,7 @@ function eliminar_anuncio(i) {
                     if (ajax.readyState == 4 && ajax.status == 200) {
                         if (ajax.responseText="ADVERTENCIA: El anuncio se ha eliminado correctamente!") {
                             alert(ajax.responseText);
-                            document.location.href="mantenimiento_anuncios.php";
+                            document.location.href="perfiles.php";
                         }
                         
                     }

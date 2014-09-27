@@ -52,7 +52,7 @@ for ($i=2;$i<=(1+$num);$i++){
     $gradoAlumno= $_DATOS_EXCEL[$i]['grado'];
     $seccionAlumno= $_DATOS_EXCEL[$i]['id_seccion'];
     $usuarioAlumno= $_DATOS_EXCEL[$i]['id_usuario'];
-    $peticion= "insert into alumno (nombres,apellidos,grado,id_seccion,id_usuario) VALUES ('".$nombreAlumno."','".$apellidosAlumno."','".$gradoAlumno."','".$seccionAlumno."','".$usuarioAlumno."')";
+    $peticion= "insert into alumno (nombres,apellidos,grado,id_seccion) VALUES ('".$nombreAlumno."','".$apellidosAlumno."','".$gradoAlumno."','".$seccionAlumno."')";
     echo $peticion;
     $resultado=mysqli_query($conexion,$peticion);
     if($resultado)

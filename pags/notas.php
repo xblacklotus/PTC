@@ -86,7 +86,7 @@ if($imprimir)
     $a=0;
     $numero=1;
     echo '<ul class="tabs left">
-      <li><a href="#ta1">Prier Trimestre</a></li>
+      <li><a href="#ta1">Primer Trimestre</a></li>
       <li><a href="#ta2">Segundo Trimestre</a></li>
       <li><a href="#ta3">Tercer Trimestre</a></li>
 

@@ -1,7 +1,25 @@
 <?php include("config.inc");
-if($_POST) {
+session_start();
+//Validar si se está ingresando con sesión correctamente
+ 
+if (!isset($_SESSION['userp']))
+{
+echo '<script language = javascript>
+alert("Sesion invalida");
+self.location = "loginAdmin.php";
+</script>';
+}
+else
+{
+if(isset($_POST['id']))
+{
         $id=$_POST['id'];
-        }
+}
+if(isset($_POST['titulo']))
+{
+    if($_POST['titulo']!="")
+    {
+
 $archivo = $_FILES["archivito"]["tmp_name"]; 
  $tamanio = $_FILES["archivito"]["size"];
  $tipo    = $_FILES["archivito"]["type"];
@@ -21,12 +39,17 @@ $archivo = $_FILES["archivito"]["tmp_name"];
     //mysql_query($qry);
 
     if($re)
-       print "Se ha guardado el archivo en la base de datos.";
+    {
+        print "Se ha guardado el archivo en la base de datos.";
+        header("Location:../pags/listar_archivos.php");
+    }       
     else
        print "NO se ha podido guardar el archivo en la base de datos.";
  }
  else{
     print "No se ha podido subir el archivo al servidor";
  }
+    }
+}
+}
  ?>
-    

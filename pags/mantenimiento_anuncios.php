@@ -20,8 +20,11 @@ else{
 
 
         $id_profesor=$_POST['m_id'];
+        $co = "select nombre from materias where id='".$id_profesor."'";
+		$re = mysqli_query($conexion,$co);
+		$avv= mysqli_fetch_array($re);			
 			//***************Atento a modificar estos dos valores dependiendo de la materia en que se este**********
-		$n_materia = 'Sociales'; //*************************************************************************************************//
+		$n_materia =$avv[0] ; //*************************************************************************************************//
 		echo '<h3>'.$n_materia.'</h3>';
 	?><!--Le damos el valor del id del profesor que se loguea-->
 	<form name="form" method="post">
@@ -54,7 +57,7 @@ else{
 	<!--formulario para eliminar los anuncios-->
 	<br>
 	<?php
-		$consulta = "select * from anuncios";
+		$consulta = "select * from anuncios where id_materia='".$id_profesor."'";
 		$res = mysqli_query($conexion,$consulta);
 	?>
 	<table class="tablestyle" cellspacing="0" cellpadding="0" style="max-width='100px'">

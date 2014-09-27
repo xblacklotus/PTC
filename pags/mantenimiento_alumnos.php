@@ -26,6 +26,7 @@ else
 <option>9</option>
 </select>
 <?php
+echo "Usuario";
 $id_alumnos=array();
 $i=0;
 $peticion= "select  u.id from usuario as u, alumno as al where u.id = al.id_usuario";

@@ -34,7 +34,6 @@
             {
                 if($datos=mysqli_fetch_array($resp1))
                 {
-                    echo $porcentaje;
                     $suma=$datos[0]+$porcentaje;
                     if($suma<100 && $suma>0)
                     {                    
@@ -44,8 +43,7 @@
                     {
                         $valido=false;
                         echo $suma;
-                        echo "Porcentaje fuera de rango";
-                        echo $suma;
+                        echo " Porcentaje fuera de rango";                        
                     }
                 }
                 else
