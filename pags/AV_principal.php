@@ -102,8 +102,8 @@ include ("../includes/header_aula.php");
        <form class='cae_texto'name='formA' method='post' action='av_contenido.php' >
        <input class='bids' type='hidden' name='id' value=".$fila5[0]." /> 
        <button type='submit' >
-        
-       </button><p>".$fila5[1]."</p>
+        <i>".$fila5[1]."</i>
+       </button><p>
        </form>
        ";
        //var_dump($fila5[0]);

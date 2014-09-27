@@ -34,29 +34,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	text-decoration:none;
 	display:block;
 }
-form.cae_texto {
-    width: 30px;
-    height: 33px;
-    line-height: 0px;
 
-    color: transparent;
-    font-size: 30px;
-    font-family: "Maiandra GD";
-       font-weight: 300;
-    text-transform: uppercase;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-}
-form.cae_texto:hover {
-    line-height:33px;
-
-    color: black;
-}
-form.cae_texto button{
-    float: left;
-    margin:  15px;
-}
 a:link, a:visited {
 	color:#af7a85;
 }
@@ -66,6 +44,34 @@ a:hover {
 a img {
 	border:none;
 }
+/**/
+
+ button{ 
+ 	text-decoration: none; 
+ 	padding: 1px 3px; 
+ 	display: inline-block; 
+ 	-webkit-transition: all 1s linear;
+ 	 -moz-transition: all 1s linear; 
+ 	 -ms-transition: all 1s linear;
+ 	  -o-transition: all 1.4s linear; 
+ 	  transition: all 1s linear; }
+  button:hover { 
+  	background: #ccc; 
+  	color: white;
+  	 box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); 
+  	 -webkit-transform: scale(1.5,1.5);
+  	  -moz-transform: scale(1.5,1.5);
+  	   -ms-transform: scale(1.5,1.5);
+  	    -o-transform: scale(1.5,1.5);
+  	     transform: scale(1.5,1.5); 
+  	     -webkit-transition: all .5s linear;
+  	      -moz-transition: all .5s linear;
+  	      -ms-transition: all .5s linear; 
+  	      -o-transition: all .5s linear; 
+  	      transition: all .5s linear; 
+  	}
+
+/**/
 header, footer {
 	margin:10px 0px;
 }
@@ -192,7 +198,7 @@ article button {
 }
 button{
 	height: 30px;
-	width: 80px;
+	width: 100px;
 }
 button:hover {
 	background:#606060;
